@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEOKY — Simple. Bold. Everyday.</title>
+<style>
+:root{--bg:#f5f5f5;--card:#fff;--text:#111;--muted:#666;--line:#ddd}
+body.dark{--bg:#0b0b0b;--card:#161616;--text:#f5f5f5;--muted:#aaa;--line:#2b2b2b}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);transition:.3s;overflow-x:hidden}
+header{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{height:68px;max-width:1100px;margin:auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:900;font-size:25px;letter-spacing:4px}.actions{display:flex;gap:8px}
+.btn{border:1px solid var(--line);background:var(--card);color:var(--text);border-radius:999px;padding:10px 14px;font-weight:700;cursor:pointer}
+.hero{text-align:center;padding:95px 20px 85px;animation:up .8s ease}
+.eyebrow{font-size:11px;letter-spacing:5px;color:var(--muted);margin-bottom:18px}
+h1{font-size:clamp(48px,10vw,92px);line-height:.9;letter-spacing:-5px}
+.hero p{max-width:570px;margin:25px auto;color:var(--muted);line-height:1.7}
+.cta{display:inline-block;padding:14px 24px;border-radius:999px;background:var(--text);color:var(--bg);text-decoration:none;font-weight:800}
+section{max-width:1100px;margin:auto;padding:65px 20px}
+.title{font-size:36px;letter-spacing:-1.5px;margin-bottom:8px}.sub{color:var(--muted);margin-bottom:28px}
+.campaign{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--card)}
+.campaign img{width:100%;display:block}
+.products{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.product{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;transition:.3s}
+.product:hover{transform:translateY(-6px);box-shadow:0 18px 45px #0002}
+.product img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block}
+.info{padding:20px}.name{font-size:21px;font-weight:800}.price{color:var(--muted);margin:7px 0 16px}
+.add{width:100%;border:0;border-radius:11px;background:var(--text);color:var(--bg);padding:14px;font-weight:800;cursor:pointer}
+.about{text-align:center;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.about p{max-width:650px;margin:16px auto;color:var(--muted);line-height:1.8}
+footer{text-align:center;padding:35px;color:var(--muted);font-size:13px}
+.overlay{position:fixed;inset:0;background:#0008;z-index:40;opacity:0;pointer-events:none;transition:.3s}.overlay.show{opacity:1;pointer-events:auto}
+.cart{position:fixed;right:0;top:0;height:100vh;width:min(410px,92vw);background:var(--card);z-index:50;transform:translateX(105%);transition:.35s;padding:24px;display:flex;flex-direction:column;box-shadow:-20px 0 50px #0004}
+.cart.open{transform:translateX(0)}.carthead{display:flex;justify-content:space-between;align-items:center}.close{font-size:28px;border:0;background:none;color:var(--text);cursor:pointer}
+.items{flex:1;overflow:auto;margin-top:20px}.item{padding:16px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px}
+.item small{display:block;color:var(--muted);margin-top:5px}.remove{border:0;background:none;color:var(--muted);cursor:pointer}
+.total{font-size:20px;font-weight:800;margin:16px 0}
+.checkout{display:none;margin-top:10px}.checkout.show{display:block}
+.checkout input,.checkout textarea,.checkout select{width:100%;padding:13px;margin-bottom:10px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);font:inherit}
+.whatsapp{width:100%;padding:14px;border:0;border-radius:11px;background:#25D366;color:#071b0d;font-weight:900;cursor:pointer}
+.empty{color:var(--muted);padding:30px 0}
+@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:none}}
+@media(max-width:700px){.products{grid-template-columns:1fr}.hero{padding:75px 18px}.title{font-size:30px}}
+</style>
+</head>
+<body>
+<header><nav class="nav">
+<div class="logo">SEOKY</div>
+<div class="actions"><button class="btn" id="theme">🌙</button><button class="btn" id="open">Cart <span id="count">0</span></button></div>
+</nav></header>
+
+<main>
+<section class="hero">
+<div class="eyebrow">SEOKY CLOTHING</div>
+<h1>SIMPLE.<br>BOLD.<br>EVERYDAY.</h1>
+<p>Minimal everyday essentials designed around the SEOKY identity.</p>
+<a class="cta" href="#shop">SHOP NOW</a>
+</section>
+
+<section>
+<h2 class="title">Campaign</h2><p class="sub">The latest SEOKY campaign.</p>
+<div class="campaign"><img src="campaign.png" alt="SEOKY Campaign"></div>
+</section>
+
+<section id="shop">
+<h2 class="title">Shop</h2><p class="sub">Rs. 1,500 each.</p>
+<div class="products">
+<article class="product"><img src="black-tee.png" alt="SEOKY Black Tee"><div class="info"><div class="name">SEOKY Black Tee</div><div class="price">Rs. 1,500</div><button class="add" data-name="SEOKY Black Tee">ADD TO CART</button></div></article>
+<article class="product"><img src="white-tee.png" alt="SEOKY White Tee"><div class="info"><div class="name">SEOKY White Tee</div><div class="price">Rs. 1,500</div><button class="add" data-name="SEOKY White Tee">ADD TO CART</button></div></article>
+</div>
+</section>
+
+<section class="about">
+<h2 class="title">About SEOKY</h2>
+<p>SEOKY is a simple clothing concept focused on clean, bold and comfortable everyday pieces. We keep things minimal and let the clothes speak for themselves.</p>
+</section>
+</main>
+<footer>© 2026 SEOKY — Simple. Bold. Everyday.</footer>
+
+<div class="overlay" id="overlay"></div>
+<aside class="cart" id="cart">
+<div class="carthead"><h2>Your Cart</h2><button class="close" id="close">×</button></div>
+<div class="items" id="items"></div>
+<div class="total" id="total">Total: Rs. 0</div>
+<div class="checkout" id="checkout">
+<input id="customer" placeholder="Your name">
+<input id="phone" placeholder="Phone number">
+<textarea id="address" rows="3" placeholder="Delivery address"></textarea>
+<select id="size"><option value="">Select size</option><option>S</option><option>M</option><option>L</option><option>XL</option></select>
+<button class="whatsapp" id="order">ORDER ON WHATSAPP</button>
+</div>
+</aside>
+
+<script>
+const PRICE=1500, PHONE="94762240238";
+let cart=JSON.parse(localStorage.getItem("seoky-cart")||"[]");
+const $=id=>document.getElementById(id);
+function save(){localStorage.setItem("seoky-cart",JSON.stringify(cart))}
+function render(){
+ $("count").textContent=cart.reduce((a,x)=>a+x.qty,0);
+ if(!cart.length){$("items").innerHTML='<div class="empty">Your cart is empty.</div>';$("checkout").classList.remove("show");}
+ else{
+  $("items").innerHTML=cart.map((x,i)=>`<div class="item"><div><b>${x.name}</b><small>Qty: ${x.qty} · Rs. ${(x.qty*PRICE).toLocaleString()}</small></div><button class="remove" onclick="removeItem(${i})">Remove</button></div>`).join("");
+  $("checkout").classList.add("show");
+ }
+ $("total").textContent="Total: Rs. "+cart.reduce((a,x)=>a+x.qty*PRICE,0).toLocaleString();
+}
+function removeItem(i){cart.splice(i,1);save();render()}
+function openCart(){$("cart").classList.add("open");$("overlay").classList.add("show")}
+function closeCart(){$("cart").classList.remove("open");$("overlay").classList.remove("show")}
+document.querySelectorAll(".add").forEach(b=>b.onclick=()=>{let f=cart.find(x=>x.name===b.dataset.name);f?f.qty++:cart.push({name:b.dataset.name,qty:1});save();render();openCart()});
+$("open").onclick=openCart;$("close").onclick=closeCart;$("overlay").onclick=closeCart;
+$("theme").onclick=()=>{document.body.classList.toggle("dark");localStorage.setItem("seoky-dark",document.body.classList.contains("dark"))};
+if(localStorage.getItem("seoky-dark")==="true")document.body.classList.add("dark");
+$("order").onclick=()=>{
+ if(!cart.length)return;
+ const name=$("customer").value.trim(),phone=$("phone").value.trim(),address=$("address").value.trim(),size=$("size").value;
+ if(!name||!phone||!address||!size){alert("Please fill in all checkout details.");return}
+ const lines=cart.map(x=>`${x.name} x${x.qty} — Rs. ${x.qty*PRICE}`).join("\n");
+ const total=cart.reduce((a,x)=>a+x.qty*PRICE,0);
+ const msg=`SEOKY ORDER\n\nName: ${name}\nPhone: ${phone}\nAddress: ${address}\nSize: ${size}\n\n${lines}\n\nTotal: Rs. ${total}`;
+ window.open(`https://wa.me/${PHONE}?text=${encodeURIComponent(msg)}`,"_blank");
+};
+render();
+</script>
+</body>
+</html>
