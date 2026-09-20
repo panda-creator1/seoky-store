@@ -1,2194 +1,1277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080808">
-
-<title>SEOKY — Streetwear</title>
-
-<style>
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
-
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#fff;
-  color:#090909;
-  overflow-x:hidden;
-}
-
-button{
-  font:inherit;
-  border:0;
-  cursor:pointer;
-}
-
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-
-/* ================= HEADER ================= */
-
-.header{
-  position:sticky;
-  top:0;
-  z-index:100;
-
-  height:72px;
-
-  background:#080808;
-  color:#fff;
-
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-
-  padding:0 24px;
-}
-
-.logo{
-  font-size:25px;
-  font-weight:900;
-  letter-spacing:8px;
-}
-
-.header-actions{
-  display:flex;
-  align-items:center;
-  gap:14px;
-}
-
-.icon-btn{
-  width:42px;
-  height:42px;
-
-  display:grid;
-  place-items:center;
-
-  background:transparent;
-  color:#fff;
-
-  font-size:27px;
-}
-
-.cart-wrap{
-  position:relative;
-}
-
-.badge{
-  position:absolute;
-  right:-2px;
-  top:-3px;
-
-  width:20px;
-  height:20px;
-
-  border-radius:50%;
-
-  background:#fff;
-  color:#000;
-
-  font-size:11px;
-  font-weight:800;
-
-  display:grid;
-  place-items:center;
-}
-
-
-/* ================= MENU ================= */
-
-.menu-card{
-  position:absolute;
-
-  top:72px;
-  right:20px;
-
-  width:220px;
-
-  background:#fff;
-  color:#111;
-
-  padding:12px 20px;
-
-  box-shadow:0 15px 40px rgba(0,0,0,.25);
-
-  display:none;
-}
-
-.menu-card.open{
-  display:block;
-}
-
-.menu-card a{
-  display:block;
-
-  padding:15px 0;
-
-  border-bottom:1px solid #eee;
-
-  font-weight:700;
-}
-
-
-/* ================= HERO ================= */
-
-.hero{
-  position:relative;
-
-  width:100%;
-
-  height:calc(100vh - 72px);
-
-  min-height:560px;
-  max-height:850px;
-
-  overflow:hidden;
-
-  background:#080808;
-}
-
-.hero-image{
-  position:absolute;
-  inset:0;
-
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-  object-position:center center;
-
-  display:block;
-}
-
-.hero-overlay{
-  position:absolute;
-  inset:0;
-
-  background:
-    linear-gradient(
-      90deg,
-      rgba(0,0,0,.55),
-      rgba(0,0,0,.10) 70%
-    ),
-    linear-gradient(
-      0deg,
-      rgba(0,0,0,.48),
-      transparent 60%
-    );
-}
-
-.hero-content{
-  position:absolute;
-
-  z-index:3;
-
-  left:7%;
-  bottom:11%;
-
-  color:#fff;
-}
-
-.eyebrow{
-  font-size:13px;
-
-  font-weight:700;
-
-  letter-spacing:5px;
-
-  margin-bottom:15px;
-}
-
-.hero h1{
-  font-size:clamp(52px,8vw,100px);
-
-  line-height:.86;
-
-  letter-spacing:-4px;
-
-  font-weight:900;
-
-  margin-bottom:28px;
-}
-
-.cta{
-  display:inline-flex;
-
-  align-items:center;
-
-  gap:25px;
-
-  padding:16px 27px;
-
-  background:#080808;
-  color:#fff;
-
-  border:2px solid rgba(255,255,255,.85);
-
-  border-radius:5px;
-
-  font-size:14px;
-
-  font-weight:800;
-
-  letter-spacing:2px;
-
-  transition:.25s ease;
-}
-
-.cta span{
-  font-size:25px;
-}
-
-.cta:hover{
-  background:#fff;
-  color:#080808;
-
-  transform:translateY(-3px);
-}
-
-.hero-dots{
-  position:absolute;
-
-  z-index:5;
-
-  left:50%;
-  bottom:24px;
-
-  transform:translateX(-50%);
-
-  display:flex;
-  gap:12px;
-}
-
-.hero-dots span{
-  width:9px;
-  height:9px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.45);
-}
-
-.hero-dots span.active{
-  background:#fff;
-}
-
-
-/* ================= SHIPPING ================= */
-
-.ticker{
-  height:64px;
-
-  background:#080808;
-  color:#fff;
-
-  display:flex;
-
-  align-items:center;
-  justify-content:center;
-
-  gap:15px;
-
-  font-size:12px;
-
-  letter-spacing:3px;
-
-  text-align:center;
-}
-
-
-/* ================= SECTION ================= */
-
-.section{
-  padding:55px 6%;
-}
-
-.section-head{
-  display:flex;
-
-  align-items:end;
-  justify-content:space-between;
-
-  margin-bottom:28px;
-}
-
-.kicker{
-  color:#777;
-
-  font-size:12px;
-
-  letter-spacing:4px;
-
-  margin-bottom:8px;
-}
-
-.section h2{
-  font-size:44px;
-
-  line-height:.95;
-
-  letter-spacing:-2px;
-}
-
-.view{
-  font-size:13px;
-
-  font-weight:700;
-}
-
-
-/* ================= PRODUCTS ================= */
-
-.products{
-  display:grid;
-
-  grid-template-columns:
-    repeat(2,minmax(0,1fr));
-
-  gap:20px;
-}
-
-.product-img{
-  position:relative;
-
-  overflow:hidden;
-
-  background:#eee;
-
-  border-radius:12px;
-
-  aspect-ratio:1/1.12;
-}
-
-.product-img img{
-  width:100%;
-  height:100%;
-
-  object-fit:cover;
-
-  transition:transform .5s ease;
-}
-
-.product:hover .product-img img{
-  transform:scale(1.04);
-}
-
-.heart{
-  position:absolute;
-
-  right:12px;
-  top:12px;
-
-  width:40px;
-  height:40px;
-
-  border-radius:50%;
-
-  background:rgba(255,255,255,.9);
-
-  font-size:21px;
-
-  display:grid;
-  place-items:center;
-}
-
-.product-info{
-  padding-top:14px;
-}
-
-.product-title{
-  font-size:17px;
-  font-weight:800;
-}
-
-.price{
-  margin-top:6px;
-
-  color:#666;
-
-  font-size:14px;
-}
-
-.add{
-  width:100%;
-
-  margin-top:13px;
-
-  padding:13px;
-
-  border-radius:6px;
-
-  background:#080808;
-  color:#fff;
-
-  font-size:12px;
-
-  font-weight:800;
-
-  letter-spacing:1px;
-}
-
-.add:hover{
-  background:#222;
-}
-
-
-/* ================= CAMPAIGN ================= */
-
-.campaign{
-  position:relative;
-
-  margin:15px 6% 20px;
-
-  min-height:430px;
-
-  overflow:hidden;
-
-  border-radius:14px;
-
-  background:#111;
-}
-
-.campaign img{
-  width:100%;
-  height:100%;
-
-  min-height:430px;
-
-  object-fit:cover;
-
-  filter:brightness(.72);
-}
-
-.campaign-content{
-  position:absolute;
-
-  left:7%;
-  bottom:9%;
-
-  color:#fff;
-}
-
-.campaign-content h3{
-  font-size:45px;
-
-  line-height:.92;
-
-  margin:8px 0 18px;
-}
-
-
-/* ================= ABOUT ================= */
-
-.about{
-  background:#080808;
-  color:#fff;
-}
-
-.about .kicker{
-  color:#999;
-}
-
-.about p{
-  max-width:700px;
-
-  margin-top:20px;
-
-  color:#aaa;
-
-  line-height:1.7;
-}
-
-
-/* ================= FOOTER ================= */
-
-.footer{
-  padding:55px 6% 100px;
-
-  background:#080808;
-  color:#fff;
-}
-
-.footer-grid{
-  display:grid;
-
-  grid-template-columns:
-    2fr 1fr 1fr;
-
-  gap:40px;
-}
-
-.footer p{
-  color:#999;
-
-  line-height:1.7;
-
-  margin-top:12px;
-}
-
-.footer h4{
-  margin-bottom:10px;
-}
-
-
-/* ================= BOTTOM NAV ================= */
-
-.bottom-nav{
-  position:fixed;
-
-  z-index:90;
-
-  bottom:0;
-  left:0;
-  right:0;
-
-  height:72px;
-
-  background:rgba(8,8,8,.98);
-
-  border-top:1px solid #222;
-
-  display:flex;
-
-  align-items:center;
-
-  justify-content:space-around;
-}
-
-.nav-item{
-  background:transparent;
-
-  color:#888;
-
-  display:flex;
-
-  flex-direction:column;
-
-  align-items:center;
-
-  gap:5px;
-
-  font-size:11px;
-}
-
-.nav-item span{
-  font-size:23px;
-}
-
-.nav-item.active{
-  color:#fff;
-}
-
-.nav-item sup{
-  font-size:11px;
-}
-
-
-/* ================= CART ================= */
-
-.drawer{
-  position:fixed;
-
-  z-index:200;
-
-  inset:0;
-
-  background:rgba(0,0,0,.55);
-
-  display:none;
-}
-
-.drawer.open{
-  display:block;
-}
-
-.drawer-card{
-  position:absolute;
-
-  right:0;
-  top:0;
-
-  width:min(430px,92%);
-
-  height:100%;
-
-  background:#fff;
-
-  padding:25px;
-
-  overflow:auto;
-
-  animation:slide .25s ease;
-}
-
-@keyframes slide{
-
-  from{
-    transform:translateX(100%);
-  }
-
-  to{
-    transform:translateX(0);
-  }
-
-}
-
-.drawer-head{
-  display:flex;
-
-  align-items:center;
-  justify-content:space-between;
-
-  margin-bottom:20px;
-}
-
-.close{
-  background:none;
-
-  font-size:28px;
-}
-
-.cart-item{
-  display:flex;
-
-  gap:14px;
-
-  padding:15px 0;
-
-  border-bottom:1px solid #eee;
-}
-
-.cart-item img{
-  width:80px;
-  height:90px;
-
-  object-fit:cover;
-
-  border-radius:8px;
-
-  background:#eee;
-}
-
-.cart-meta{
-  flex:1;
-}
-
-.cart-meta h4{
-  margin-bottom:6px;
-}
-
-.qty{
-  display:flex;
-
-  align-items:center;
-
-  gap:10px;
-
-  margin-top:10px;
-}
-
-.qty button{
-  width:29px;
-  height:29px;
-
-  background:#fff;
-
-  border:1px solid #ddd;
-}
-
-.checkout{
-  width:100%;
-
-  margin-top:22px;
-
-  padding:15px;
-
-  background:#080808;
-  color:#fff;
-
-  border-radius:5px;
-
-  font-weight:800;
-}
-
-.empty{
-  text-align:center;
-
-  color:#777;
-
-  padding:50px 10px;
-}
-
-
-/* ================= SEARCH ================= */
-
-.search-panel{
-  position:fixed;
-
-  z-index:210;
-
-  inset:0;
-
-  background:rgba(0,0,0,.55);
-
-  display:none;
-}
-
-.search-panel.open{
-  display:block;
-}
-
-.search-card{
-  position:absolute;
-
-  top:0;
-  left:0;
-  right:0;
-
-  background:#fff;
-
-  padding:25px;
-}
-
-.search-row{
-  display:flex;
-
-  gap:10px;
-}
-
-.search-row input{
-  flex:1;
-
-  padding:14px;
-
-  border:1px solid #ddd;
-
-  border-radius:5px;
-
-  font-size:16px;
-}
-
-
-/* ================= TOAST ================= */
-
-.toast{
-  position:fixed;
-
-  z-index:300;
-
-  left:50%;
-  bottom:90px;
-
-  transform:translate(-50%,20px);
-
-  background:#080808;
-  color:#fff;
-
-  padding:13px 20px;
-
-  border-radius:30px;
-
-  font-size:13px;
-
-  opacity:0;
-
-  pointer-events:none;
-
-  transition:.25s;
-}
-
-.toast.show{
-  opacity:1;
-
-  transform:translate(-50%,0);
-}
-
-
-/* ================= MOBILE ================= */
-
-@media(max-width:700px){
-
-  .header{
-    height:64px;
-
-    padding:0 17px;
-  }
-
-  .logo{
-    font-size:20px;
-
-    letter-spacing:6px;
-  }
-
-  .header-actions{
-    gap:7px;
-  }
-
-  .hero{
-    height:calc(100svh - 64px);
-
-    min-height:570px;
-
-    max-height:none;
-  }
-
-  .hero-image{
-    object-position:center center;
-  }
-
-  .hero-content{
-    left:7%;
-
-    bottom:10%;
-  }
-
-  .eyebrow{
-    font-size:11px;
-
-    letter-spacing:4px;
-  }
-
-  .hero h1{
-    font-size:54px;
-
-    letter-spacing:-3px;
-
-    margin-bottom:24px;
-  }
-
-  .cta{
-    padding:15px 22px;
-
-    gap:20px;
-  }
-
-  .ticker{
-    height:64px;
-
-    font-size:9px;
-
-    letter-spacing:2px;
-
-    padding:0 12px;
-  }
-
-  .section{
-    padding:45px 5%;
-  }
-
-  .section h2{
-    font-size:35px;
-  }
-
-  .products{
-    gap:12px;
-  }
-
-  .product-img{
-    border-radius:9px;
-  }
-
-  .product-title{
-    font-size:15px;
-  }
-
-  .price{
-    font-size:13px;
-  }
-
-  .add{
-    padding:11px 5px;
-
-    font-size:10px;
-  }
-
-  .campaign{
-    margin-left:5%;
-    margin-right:5%;
-
-    min-height:350px;
-  }
-
-  .campaign img{
-    min-height:350px;
-  }
-
-  .campaign-content h3{
-    font-size:35px;
-  }
-
-  .footer-grid{
-    grid-template-columns:1fr 1fr;
-  }
-
-  .footer-grid>div:first-child{
-    grid-column:1/-1;
-  }
-
-}
-
-
-/* ================= DESKTOP ================= */
-
-@media(min-width:900px){
-
-  .bottom-nav{
-    display:none;
-  }
-
-  .header{
-    padding:0 5%;
-  }
-
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>SEOKY — Streetwear</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
+      color: #111;
+      transition: 0.3s;
+    }
+
+    body.dark {
+      background: #0b0b0b;
+      color: #fff;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    /* ================= HEADER ================= */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 70px;
+      z-index: 1000;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      padding: 0 5%;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid #eee;
+    }
+
+    body.dark header {
+      background: rgba(10,10,10,0.94);
+      border-color: #222;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 900;
+      letter-spacing: 5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .icon-btn {
+      width: 42px;
+      height: 42px;
+      border: 1px solid #ddd;
+      background: transparent;
+      border-radius: 50%;
+      font-size: 18px;
+      color: inherit;
+    }
+
+    body.dark .icon-btn {
+      border-color: #333;
+    }
+
+    .cart-button {
+      position: relative;
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -5px;
+      right: -5px;
+      width: 19px;
+      height: 19px;
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      font-size: 11px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.dark .cart-count {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ================= HERO ================= */
+
+    .hero {
+      margin-top: 70px;
+      height: calc(100vh - 70px);
+      min-height: 600px;
+      position: relative;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: flex-end;
+
+      padding: 7%;
+      background:
+        linear-gradient(
+          to top,
+          rgba(0,0,0,0.78),
+          rgba(0,0,0,0.05) 65%
+        );
+
+      color: #fff;
+    }
+
+    .hero-content {
+      max-width: 700px;
+      animation: slideUp 1s ease;
+    }
+
+    .hero-small {
+      font-size: 13px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .hero h1 {
+      font-size: clamp(55px, 11vw, 150px);
+      line-height: 0.85;
+      letter-spacing: -5px;
+      margin-bottom: 25px;
+      font-weight: 900;
+    }
+
+    .hero p {
+      font-size: 18px;
+      margin-bottom: 25px;
+    }
+
+    .shop-btn {
+      display: inline-block;
+      background: #fff;
+      color: #000;
+      padding: 16px 28px;
+      font-weight: 800;
+      border: none;
+      transition: 0.25s;
+    }
+
+    .shop-btn:hover {
+      transform: translateY(-3px);
+      background: #ddd;
+    }
+
+    /* ================= SHIPPING ================= */
+
+    .shipping {
+      background: #000;
+      color: #fff;
+      padding: 16px 5%;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 2px;
+    }
+
+    /* ================= SECTIONS ================= */
+
+    section {
+      padding: 90px 5%;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 35px;
+      gap: 20px;
+    }
+
+    .section-head h2 {
+      font-size: clamp(32px, 5vw, 60px);
+      letter-spacing: -2px;
+    }
+
+    .section-head span {
+      font-size: 13px;
+      color: #777;
+    }
+
+    body.dark .section-head span {
+      color: #aaa;
+    }
+
+    /* ================= PRODUCTS ================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .product {
+      position: relative;
+      overflow: hidden;
+      background: #f2f2f2;
+    }
+
+    body.dark .product {
+      background: #151515;
+    }
+
+    .product-image {
+      width: 100%;
+      aspect-ratio: 1 / 1.15;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .product:hover .product-image img {
+      transform: scale(1.05);
+    }
+
+    .heart {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+
+      width: 42px;
+      height: 42px;
+
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.9);
+      font-size: 20px;
+    }
+
+    .product-info {
+      padding: 20px;
+    }
+
+    .product-info h3 {
+      font-size: 21px;
+      margin-bottom: 7px;
+    }
+
+    .price {
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .add-btn {
+      width: 100%;
+      border: none;
+      padding: 14px;
+      background: #000;
+      color: #fff;
+      font-weight: 700;
+      transition: 0.2s;
+    }
+
+    .add-btn:hover {
+      opacity: 0.75;
+    }
+
+    body.dark .add-btn {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ================= CAMPAIGN ================= */
+
+    .campaign {
+      position: relative;
+      min-height: 600px;
+      overflow: hidden;
+      background: #111;
+    }
+
+    .campaign img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .campaign-overlay {
+      position: absolute;
+      inset: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      color: #fff;
+
+      background: rgba(0,0,0,0.28);
+    }
+
+    .campaign-content h2 {
+      font-size: clamp(50px, 10vw, 130px);
+      font-weight: 900;
+      letter-spacing: -5px;
+    }
+
+    .campaign-content p {
+      font-size: 16px;
+      letter-spacing: 5px;
+      margin-top: 10px;
+    }
+
+    /* ================= ABOUT ================= */
+
+    .about {
+      max-width: 900px;
+    }
+
+    .about h2 {
+      font-size: clamp(40px, 7vw, 80px);
+      margin-bottom: 25px;
+    }
+
+    .about p {
+      font-size: 20px;
+      line-height: 1.7;
+      color: #555;
+    }
+
+    body.dark .about p {
+      color: #bbb;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      padding: 60px 5%;
+      background: #000;
+      color: #fff;
+      text-align: center;
+    }
+
+    footer .footer-logo {
+      font-size: 35px;
+      font-weight: 900;
+      letter-spacing: 6px;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #aaa;
+      font-size: 13px;
+    }
+
+    /* ================= CART ================= */
+
+    .cart-panel {
+      position: fixed;
+      top: 0;
+      right: -430px;
+      width: min(430px, 100%);
+      height: 100vh;
+
+      background: #fff;
+      color: #111;
+
+      z-index: 2000;
+      padding: 25px;
+
+      display: flex;
+      flex-direction: column;
+
+      transition: 0.35s;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+    }
+
+    .cart-panel.open {
+      right: 0;
+    }
+
+    body.dark .cart-panel {
+      background: #111;
+      color: #fff;
+    }
+
+    .cart-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+    }
+
+    body.dark .cart-top {
+      border-color: #333;
+    }
+
+    .close-cart {
+      border: none;
+      background: transparent;
+      font-size: 25px;
+      color: inherit;
+    }
+
+    .cart-items {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px 0;
+    }
+
+    .cart-item {
+      display: flex;
+      gap: 12px;
+      padding: 15px 0;
+      border-bottom: 1px solid #ddd;
+    }
+
+    body.dark .cart-item {
+      border-color: #333;
+    }
+
+    .cart-item img {
+      width: 75px;
+      height: 75px;
+      object-fit: cover;
+      background: #eee;
+    }
+
+    .cart-item-info {
+      flex: 1;
+    }
+
+    .cart-item-info h4 {
+      margin-bottom: 7px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .quantity button {
+      width: 27px;
+      height: 27px;
+      border: 1px solid #aaa;
+      background: transparent;
+      color: inherit;
+    }
+
+    .remove {
+      margin-top: 8px;
+      border: none;
+      background: transparent;
+      color: #d00;
+      font-size: 12px;
+    }
+
+    .cart-bottom {
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+
+    body.dark .cart-bottom {
+      border-color: #333;
+    }
+
+    .total {
+      display: flex;
+      justify-content: space-between;
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 15px;
+    }
+
+    .checkout {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      background: #000;
+      color: #fff;
+      font-weight: 800;
+    }
+
+    body.dark .checkout {
+      background: #fff;
+      color: #000;
+    }
+
+    /* ================= MOBILE NAV ================= */
+
+    .mobile-nav {
+      display: none;
+    }
+
+    /* ================= ANIMATION ================= */
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ================= MOBILE ================= */
+
+    @media (max-width: 700px) {
+
+      header {
+        height: 62px;
+        padding: 0 18px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .header-actions {
+        gap: 5px;
+      }
+
+      .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero {
+        margin-top: 62px;
+        height: 75vh;
+        min-height: 520px;
+      }
+
+      .hero-overlay {
+        padding: 25px;
+      }
+
+      .hero h1 {
+        font-size: 70px;
+        letter-spacing: -4px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      section {
+        padding: 65px 18px;
+      }
+
+      .products {
+        grid-template-columns: 1fr;
+        gap: 35px;
+      }
+
+      .campaign {
+        min-height: 500px;
+      }
+
+      .campaign-content h2 {
+        font-size: 65px;
+      }
+
+      .about p {
+        font-size: 17px;
+      }
+
+      footer {
+        padding-bottom: 100px;
+      }
+
+      .mobile-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        z-index: 1500;
+
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+
+        background: rgba(255,255,255,0.96);
+        border-top: 1px solid #ddd;
+        backdrop-filter: blur(10px);
+      }
+
+      body.dark .mobile-nav {
+        background: rgba(10,10,10,0.96);
+        border-color: #333;
+      }
+
+      .mobile-nav button {
+        border: none;
+        background: transparent;
+        color: inherit;
+        font-size: 21px;
+      }
+
+      .mobile-nav span {
+        display: block;
+        font-size: 9px;
+        margin-top: 3px;
+      }
+    }
+  </style>
 </head>
-
 
 <body>
 
+  <!-- ================= HEADER ================= -->
 
-<!-- ================= HEADER ================= -->
+  <header>
 
-<header class="header">
+    <a href="#" class="logo">SEOKY</a>
 
-  <a href="#home" class="logo">
-    SEOKY
-  </a>
+    <div class="header-actions">
 
+      <button class="icon-btn" onclick="toggleDark()" title="Dark mode">
+        ◐
+      </button>
 
-  <div class="header-actions">
-
-    <button
-      class="icon-btn"
-      onclick="openSearch()">
-
-      ⌕
-
-    </button>
-
-
-    <button
-      class="icon-btn cart-wrap"
-      onclick="openCart()">
-
-      🛍
-
-      <span
-        class="badge"
-        id="cartCount">
-
-        0
-
-      </span>
-
-    </button>
-
-
-    <button
-      class="icon-btn"
-      onclick="toggleMenu()">
-
-      ☰
-
-    </button>
-
-  </div>
-
-
-  <!-- MENU -->
-
-  <div
-    class="menu-card"
-    id="menuCard">
-
-    <a href="#home" onclick="toggleMenu()">
-      Home
-    </a>
-
-    <a href="#shop" onclick="toggleMenu()">
-      Shop
-    </a>
-
-    <a href="#campaign" onclick="toggleMenu()">
-      Campaign
-    </a>
-
-    <a href="#about" onclick="toggleMenu()">
-      About SEOKY
-    </a>
-
-  </div>
-
-</header>
-
-
-
-<!-- ================= HERO ================= -->
-
-<section
-  class="hero"
-  id="home">
-
-
-  <img
-    src="seoky-campaign.png"
-    alt="SEOKY Collection"
-    class="hero-image">
-
-
-  <div class="hero-overlay"></div>
-
-
-  <div class="hero-content">
-
-    <div class="eyebrow">
-      SEOKY / NEW DROP
-    </div>
-
-
-    <h1>
-      SEOKY<br>
-      COLLECTION
-    </h1>
-
-
-    <a
-      href="#shop"
-      class="cta">
-
-      SHOP NOW
-
-      <span>
-        →
-      </span>
-
-    </a>
-
-  </div>
-
-
-  <div class="hero-dots">
-
-    <span class="active"></span>
-    <span></span>
-    <span></span>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= SHIPPING ================= -->
-
-<div class="ticker">
-
-  🚚
-
-  FREE SHIPPING ON ORDERS OVER RS. 3,000
-
-  →
-
-</div>
-
-
-
-<!-- ================= PRODUCTS ================= -->
-
-<section
-  class="section"
-  id="shop">
-
-
-  <div class="section-head">
-
-    <div>
-
-      <div class="kicker">
-        LATEST IN STORE
-      </div>
-
-      <h2>
-        THIS WEEK
-      </h2>
-
-    </div>
-
-
-    <a
-      href="#shop"
-      class="view">
-
-      VIEW ALL →
-
-    </a>
-
-  </div>
-
-
-
-  <div class="products">
-
-
-    <!-- BLACK -->
-
-    <article class="product">
-
-      <div class="product-img">
-
-        <img
-          src="black-tee.png"
-          alt="SEOKY Black Tee">
-
-
-        <button
-          class="heart"
-          onclick="like(this)">
-
-          ♡
-
-        </button>
-
-      </div>
-
-
-      <div class="product-info">
-
-        <div class="product-title">
-          Black Tee
-        </div>
-
-
-        <div class="price">
-          Rs. 1,500
-        </div>
-
-
-        <button
-          class="add"
-          onclick="addToCart(
-            'Black Tee',
-            1500,
-            'black-tee.png'
-          )">
-
-          ADD TO CART
-
-        </button>
-
-      </div>
-
-    </article>
-
-
-
-    <!-- WHITE -->
-
-    <article class="product">
-
-      <div class="product-img">
-
-        <img
-          src="white-tee.png"
-          alt="SEOKY White Tee">
-
-
-        <button
-          class="heart"
-          onclick="like(this)">
-
-          ♡
-
-        </button>
-
-      </div>
-
-
-      <div class="product-info">
-
-        <div class="product-title">
-          White Tee
-        </div>
-
-
-        <div class="price">
-          Rs. 1,500
-        </div>
-
-
-        <button
-          class="add"
-          onclick="addToCart(
-            'White Tee',
-            1500,
-            'white-tee.png'
-          )">
-
-          ADD TO CART
-
-        </button>
-
-      </div>
-
-    </article>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= CAMPAIGN ================= -->
-
-<section
-  class="campaign"
-  id="campaign">
-
-
-  <img
-    src="seoky-campaign.png"
-    alt="SEOKY Campaign">
-
-
-  <div class="campaign-content">
-
-    <div
-      class="kicker"
-      style="color:#fff">
-
-      SEOKY CAMPAIGN
-
-    </div>
-
-
-    <h3>
-      SIMPLE.<br>
-      BOLD.<br>
-      EVERYDAY.
-    </h3>
-
-
-    <a
-      href="#shop"
-      class="cta">
-
-      SHOP NOW →
-
-    </a>
-
-  </div>
-
-</section>
-
-
-
-<!-- ================= ABOUT ================= -->
-
-<section
-  class="section about"
-  id="about">
-
-
-  <div class="kicker">
-    ABOUT SEOKY
-  </div>
-
-
-  <h2>
-    KEEP IT SIMPLE.<br>
-    WEAR IT YOUR WAY.
-  </h2>
-
-
-  <p>
-
-    SEOKY is a clean streetwear concept
-    focused on everyday T-shirts,
-    simple silhouettes and an easy
-    shopping experience.
-
-  </p>
-
-</section>
-
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer class="footer">
-
-
-  <div class="footer-grid">
-
-
-    <div>
-
-      <div class="logo">
-        SEOKY
-      </div>
-
-      <p>
-        Simple streetwear.
-        Everyday confidence.
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        SHOP
-      </h4>
-
-      <p>
-        Black Tee<br>
-        White Tee<br>
-        New Drop
-      </p>
-
-    </div>
-
-
-    <div>
-
-      <h4>
-        INFO
-      </h4>
-
-      <p>
-        About<br>
-        Contact<br>
-        WhatsApp Orders
-      </p>
-
-    </div>
-
-
-  </div>
-
-</footer>
-
-
-
-<!-- ================= MOBILE NAV ================= -->
-
-<nav class="bottom-nav">
-
-
-  <a
-    href="#home"
-    class="nav-item active">
-
-    <span>
-      ⌂
-    </span>
-
-    <small>
-      Home
-    </small>
-
-  </a>
-
-
-  <a
-    href="#shop"
-    class="nav-item">
-
-    <span>
-      ⌕
-    </span>
-
-    <small>
-      Shop
-    </small>
-
-  </a>
-
-
-  <button
-    class="nav-item"
-    onclick="openCart()">
-
-    <span>
-
-      🛍
-
-      <sup id="bottomCount">
-        0
-      </sup>
-
-    </span>
-
-    <small>
-      Cart
-    </small>
-
-  </button>
-
-
-  <button
-    class="nav-item"
-    onclick="toggleMenu()">
-
-    <span>
-      ☰
-    </span>
-
-    <small>
-      Menu
-    </small>
-
-  </button>
-
-</nav>
-
-
-
-<!-- ================= CART ================= -->
-
-<div
-  class="drawer"
-  id="cartDrawer"
-  onclick="
-    if(event.target===this)
-    closeCart()
-  ">
-
-
-  <div class="drawer-card">
-
-
-    <div class="drawer-head">
-
-      <h2>
-        Your Cart
-      </h2>
-
-
-      <button
-        class="close"
-        onclick="closeCart()">
-
-        ×
-
+      <button class="icon-btn cart-button" onclick="openCart()" title="Cart">
+        🛒
+        <span class="cart-count" id="cartCount">0</span>
       </button>
 
     </div>
 
+  </header>
 
-    <div id="cartItems"></div>
 
+  <!-- ================= HERO ================= -->
 
-    <div id="cartBottom"></div>
+  <section class="hero">
 
-  </div>
+    <img
+      src="seoky-campaign.png"
+      alt="SEOKY Campaign"
+      onerror="this.onerror=null;this.src='campaign.png';"
+    >
 
-</div>
+    <div class="hero-overlay">
 
+      <div class="hero-content">
 
-
-<!-- ================= SEARCH ================= -->
-
-<div
-  class="search-panel"
-  id="searchPanel"
-  onclick="
-    if(event.target===this)
-    closeSearch()
-  ">
-
-
-  <div class="search-card">
-
-
-    <div class="drawer-head">
-
-      <h2>
-        Search SEOKY
-      </h2>
-
-
-      <button
-        class="close"
-        onclick="closeSearch()">
-
-        ×
-
-      </button>
-
-    </div>
-
-
-    <div class="search-row">
-
-      <input
-        id="searchInput"
-        type="text"
-        placeholder="Search products..."
-        oninput="searchProducts()">
-
-    </div>
-
-
-    <div
-      id="searchResults"
-      style="padding-top:20px">
-
-    </div>
-
-  </div>
-
-</div>
-
-
-
-<!-- ================= TOAST ================= -->
-
-<div
-  class="toast"
-  id="toast">
-
-  Added to cart ✓
-
-</div>
-
-
-
-<!-- ================= JAVASCRIPT ================= -->
-
-<script>
-
-const WHATSAPP_NUMBER = "94762240238";
-
-
-let cart = JSON.parse(
-  localStorage.getItem("seokyCart") || "[]"
-);
-
-
-/* ================= SAVE ================= */
-
-function saveCart(){
-
-  localStorage.setItem(
-    "seokyCart",
-    JSON.stringify(cart)
-  );
-
-  updateCartCount();
-
-}
-
-
-/* ================= COUNT ================= */
-
-function updateCartCount(){
-
-  const total = cart.reduce(
-    (sum,item) => sum + item.qty,
-    0
-  );
-
-
-  document.getElementById(
-    "cartCount"
-  ).textContent = total;
-
-
-  document.getElementById(
-    "bottomCount"
-  ).textContent = total;
-
-}
-
-
-/* ================= ADD ================= */
-
-function addToCart(
-  name,
-  price,
-  image
-){
-
-  const existing = cart.find(
-    item => item.name === name
-  );
-
-
-  if(existing){
-
-    existing.qty++;
-
-  }else{
-
-    cart.push({
-
-      name:name,
-      price:price,
-      image:image,
-      qty:1
-
-    });
-
-  }
-
-
-  saveCart();
-
-  showToast(
-    name + " added to cart ✓"
-  );
-
-}
-
-
-/* ================= QUANTITY ================= */
-
-function changeQty(
-  name,
-  amount
-){
-
-  const item = cart.find(
-    item => item.name === name
-  );
-
-
-  if(!item) return;
-
-
-  item.qty += amount;
-
-
-  if(item.qty <= 0){
-
-    cart = cart.filter(
-      item => item.name !== name
-    );
-
-  }
-
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-/* ================= REMOVE ================= */
-
-function removeItem(name){
-
-  cart = cart.filter(
-    item => item.name !== name
-  );
-
-
-  saveCart();
-
-  renderCart();
-
-}
-
-
-/* ================= CART ================= */
-
-function renderCart(){
-
-  const items =
-    document.getElementById(
-      "cartItems"
-    );
-
-
-  const bottom =
-    document.getElementById(
-      "cartBottom"
-    );
-
-
-  if(cart.length === 0){
-
-    items.innerHTML = `
-
-      <div class="empty">
-
-        Your cart is empty 👕
-
-        <br><br>
-
-        Add a SEOKY tee to get started.
-
-      </div>
-
-    `;
-
-    bottom.innerHTML = "";
-
-    return;
-
-  }
-
-
-  items.innerHTML = cart.map(
-    item => `
-
-      <div class="cart-item">
-
-        <img
-          src="${item.image}"
-          alt="${item.name}">
-
-
-        <div class="cart-meta">
-
-          <h4>
-            ${item.name}
-          </h4>
-
-
-          <div>
-            Rs.
-            ${item.price.toLocaleString()}
-          </div>
-
-
-          <div class="qty">
-
-            <button
-              onclick="
-                changeQty(
-                  '${item.name}',
-                  -1
-                )
-              ">
-
-              −
-
-            </button>
-
-
-            <b>
-              ${item.qty}
-            </b>
-
-
-            <button
-              onclick="
-                changeQty(
-                  '${item.name}',
-                  1
-                )
-              ">
-
-              +
-
-            </button>
-
-
-            <button
-              onclick="
-                removeItem(
-                  '${item.name}'
-                )
-              "
-              style="
-                margin-left:auto;
-                width:auto;
-                padding:0 8px;
-                border:0;
-                color:#777;
-              ">
-
-              Remove
-
-            </button>
-
-          </div>
-
+        <div class="hero-small">
+          NEW DROP / 2026
         </div>
 
+        <h1>SEOKY</h1>
+
+        <p>
+          Minimal streetwear.<br>
+          Made for everyday.
+        </p>
+
+        <a href="#shop" class="shop-btn">
+          SHOP NOW →
+        </a>
+
       </div>
 
-    `
-  ).join("");
+    </div>
+
+  </section>
 
 
-  const total = cart.reduce(
-    (sum,item) =>
-      sum + item.price * item.qty,
-    0
-  );
+  <!-- ================= SHIPPING ================= -->
+
+  <div class="shipping">
+    ISLANDWIDE DELIVERY • EASY WHATSAPP ORDERING • SEOKY
+  </div>
 
 
-  bottom.innerHTML = `
+  <!-- ================= PRODUCTS ================= -->
 
-    <div
-      style="
-        display:flex;
-        justify-content:space-between;
-        padding-top:20px;
-        font-weight:800;
-      ">
+  <section id="shop">
 
-      <span>
-        Total
-      </span>
+    <div class="section-head">
 
-      <span>
-        Rs. ${total.toLocaleString()}
-      </span>
+      <h2>LATEST DROP</h2>
+
+      <span>01 — 02</span>
 
     </div>
 
 
-    <button
-      class="checkout"
-      onclick="whatsappOrder()">
+    <div class="products">
 
-      ORDER ON WHATSAPP
 
-    </button>
+      <!-- BLACK TEE -->
 
-  `;
+      <article class="product">
 
-}
-
-
-/* ================= CART OPEN ================= */
-
-function openCart(){
-
-  renderCart();
-
-  document
-    .getElementById("cartDrawer")
-    .classList.add("open");
-
-}
-
-
-/* ================= CART CLOSE ================= */
-
-function closeCart(){
-
-  document
-    .getElementById("cartDrawer")
-    .classList.remove("open");
-
-}
-
-
-/* ================= WHATSAPP ================= */
-
-function whatsappOrder(){
-
-  if(cart.length === 0){
-
-    showToast(
-      "Your cart is empty"
-    );
-
-    return;
-
-  }
-
-
-  const products = cart.map(
-    item =>
-      `• ${item.name} x${item.qty} — Rs. ${
-        (
-          item.price * item.qty
-        ).toLocaleString()
-      }`
-  ).join("\n");
-
-
-  const total = cart.reduce(
-    (sum,item) =>
-      sum + item.price * item.qty,
-    0
-  );
-
-
-  const message =
-
-`Hi SEOKY! 👋
-
-I would like to place an order.
-
-${products}
-
-Total: Rs. ${total.toLocaleString()}
-
-Name:
-Phone:
-Address:
-Size:`;
-
-
-  const url =
-    "https://wa.me/" +
-    WHATSAPP_NUMBER +
-    "?text=" +
-    encodeURIComponent(message);
-
-
-  window.open(
-    url,
-    "_blank"
-  );
-
-}
-
-
-/* ================= SEARCH OPEN ================= */
-
-function openSearch(){
-
-  document
-    .getElementById("searchPanel")
-    .classList.add("open");
-
-
-  setTimeout(
-    () => {
-
-      document
-        .getElementById("searchInput")
-        .focus();
-
-    },
-    100
-  );
-
-}
-
-
-/* ================= SEARCH CLOSE ================= */
-
-function closeSearch(){
-
-  document
-    .getElementById("searchPanel")
-    .classList.remove("open");
-
-}
-
-
-/* ================= SEARCH ================= */
-
-function searchProducts(){
-
-  const query =
-    document
-      .getElementById("searchInput")
-      .value
-      .toLowerCase()
-      .trim();
-
-
-  const products = [
-
-    {
-      name:"Black Tee",
-      price:1500,
-      image:"black-tee.png"
-    },
-
-    {
-      name:"White Tee",
-      price:1500,
-      image:"white-tee.png"
-    }
-
-  ];
-
-
-  const results =
-    products.filter(
-      product =>
-        product.name
-          .toLowerCase()
-          .includes(query)
-    );
-
-
-  const box =
-    document.getElementById(
-      "searchResults"
-    );
-
-
-  if(results.length === 0){
-
-    box.innerHTML = `
-
-      <div
-        style="
-          color:#777;
-          padding:20px 0;
-        ">
-
-        No products found.
-
-      </div>
-
-    `;
-
-    return;
-
-  }
-
-
-  box.innerHTML =
-    results.map(
-      product => `
-
-        <div
-          style="
-            display:flex;
-            align-items:center;
-            gap:15px;
-            padding:12px 0;
-            border-bottom:1px solid #eee;
-          ">
-
+        <div class="product-image">
 
           <img
-            src="${product.image}"
-            style="
-              width:65px;
-              height:70px;
-              object-fit:cover;
-              border-radius:7px;
-              background:#eee;
-            ">
+            src="black-tee.png"
+            alt="SEOKY Black Tee"
+          >
 
-
-          <div style="flex:1">
-
-            <b>
-              ${product.name}
-            </b>
-
-
-            <div
-              style="
-                color:#777;
-                margin-top:5px;
-              ">
-
-              Rs.
-              ${product.price.toLocaleString()}
-
-            </div>
-
-          </div>
-
-
-          <button
-            class="add"
-            style="
-              width:auto;
-              margin:0;
-            "
-            onclick="
-              addToCart(
-                '${product.name}',
-                ${product.price},
-                '${product.image}'
-              );
-
-              closeSearch();
-            ">
-
-            ADD
-
+          <button class="heart" onclick="toggleHeart(this)">
+            ♡
           </button>
 
         </div>
 
-      `
-    ).join("");
+        <div class="product-info">
 
-}
+          <h3>SEOKY BLACK TEE</h3>
 
+          <div class="price">
+            Rs. 1,500
+          </div>
 
-/* ================= MENU ================= */
+          <button
+            class="add-btn"
+            onclick="addToCart('SEOKY Black Tee', 1500, 'black-tee.png')"
+          >
+            ADD TO CART
+          </button>
 
-function toggleMenu(){
+        </div>
 
-  document
-    .getElementById("menuCard")
-    .classList.toggle("open");
-
-}
-
-
-/* ================= LIKE ================= */
-
-function like(button){
-
-  if(button.textContent.trim() === "♡"){
-
-    button.textContent = "♥";
-
-  }else{
-
-    button.textContent = "♡";
-
-  }
-
-}
+      </article>
 
 
-/* ================= TOAST ================= */
+      <!-- WHITE TEE -->
 
-function showToast(message){
+      <article class="product">
 
-  const toast =
-    document.getElementById(
-      "toast"
-    );
+        <div class="product-image">
+
+          <img
+            src="white-tee.png"
+            alt="SEOKY White Tee"
+          >
+
+          <button class="heart" onclick="toggleHeart(this)">
+            ♡
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <h3>SEOKY WHITE TEE</h3>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add-btn"
+            onclick="addToCart('SEOKY White Tee', 1500, 'white-tee.png')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
 
 
-  toast.textContent = message;
+  <!-- ================= CAMPAIGN ================= -->
 
-  toast.classList.add("show");
+  <section style="padding-top:0;">
+
+    <div class="campaign">
+
+      <img
+        src="campaign.png"
+        alt="SEOKY Campaign"
+        onerror="this.onerror=null;this.src='seoky-campaign.png';"
+      >
+
+      <div class="campaign-overlay">
+
+        <div class="campaign-content">
+
+          <p>THE NEW</p>
+
+          <h2>SEOKY</h2>
+
+          <p>STREETWEAR COLLECTION</p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
 
 
-  setTimeout(
-    () => {
+  <!-- ================= ABOUT ================= -->
 
-      toast.classList.remove("show");
+  <section>
 
-    },
-    1700
-  );
+    <div class="about">
 
-}
+      <h2>ABOUT SEOKY</h2>
+
+      <p>
+        SEOKY is a modern streetwear concept built around
+        clean design, simple colours and everyday comfort.
+        Black. White. Nothing unnecessary.
+      </p>
+
+    </div>
+
+  </section>
 
 
-/* ================= START ================= */
+  <!-- ================= FOOTER ================= -->
 
-updateCartCount();
+  <footer>
 
-</script>
+    <div class="footer-logo">
+      SEOKY
+    </div>
+
+    <p>
+      © 2026 SEOKY. All rights reserved.
+    </p>
+
+  </footer>
+
+
+  <!-- ================= CART ================= -->
+
+  <aside class="cart-panel" id="cartPanel">
+
+    <div class="cart-top">
+
+      <h2>YOUR CART</h2>
+
+      <button
+        class="close-cart"
+        onclick="closeCart()"
+      >
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="cart-items" id="cartItems">
+
+      <p style="color:#777;">
+        Your cart is empty.
+      </p>
+
+    </div>
+
+
+    <div class="cart-bottom">
+
+      <div class="total">
+
+        <span>TOTAL</span>
+
+        <span id="cartTotal">
+          Rs. 0
+        </span>
+
+      </div>
+
+      <button
+        class="checkout"
+        onclick="checkoutWhatsApp()"
+      >
+        ORDER ON WHATSAPP →
+      </button>
+
+    </div>
+
+  </aside>
+
+
+  <!-- ================= MOBILE NAV ================= -->
+
+  <nav class="mobile-nav">
+
+    <button onclick="window.scrollTo({top:0, behavior:'smooth'})">
+      🏠
+      <span>HOME</span>
+    </button>
+
+    <button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+      ◼
+      <span>SHOP</span>
+    </button>
+
+    <button onclick="openCart()">
+      🛒
+      <span>CART</span>
+    </button>
+
+    <button onclick="toggleDark()">
+      ◐
+      <span>MODE</span>
+    </button>
+
+  </nav>
+
+
+  <!-- ================= JAVASCRIPT ================= -->
+
+  <script>
+
+    /* ================= CART DATA ================= */
+
+    let cart = JSON.parse(localStorage.getItem("seokyCart")) || [];
+
+
+    /* ================= SAVE CART ================= */
+
+    function saveCart() {
+      localStorage.setItem(
+        "seokyCart",
+        JSON.stringify(cart)
+      );
+    }
+
+
+    /* ================= ADD TO CART ================= */
+
+    function addToCart(name, price, image) {
+
+      const existing = cart.find(
+        item => item.name === name
+      );
+
+      if (existing) {
+
+        existing.quantity++;
+
+      } else {
+
+        cart.push({
+          name: name,
+          price: price,
+          image: image,
+          quantity: 1
+        });
+
+      }
+
+      saveCart();
+      renderCart();
+      openCart();
+
+    }
+
+
+    /* ================= CHANGE QUANTITY ================= */
+
+    function changeQuantity(index, amount) {
+
+      cart[index].quantity += amount;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      saveCart();
+      renderCart();
+
+    }
+
+
+    /* ================= REMOVE ================= */
+
+    function removeItem(index) {
+
+      cart.splice(index, 1);
+
+      saveCart();
+      renderCart();
+
+    }
+
+
+    /* ================= RENDER CART ================= */
+
+    function renderCart() {
+
+      const container =
+        document.getElementById("cartItems");
+
+      const count =
+        document.getElementById("cartCount");
+
+      const totalElement =
+        document.getElementById("cartTotal");
+
+
+      let total = 0;
+      let itemCount = 0;
+
+
+      if (cart.length === 0) {
+
+        container.innerHTML =
+          '<p style="color:#777;">Your cart is empty.</p>';
+
+      } else {
+
+        container.innerHTML = cart.map(
+          (item, index) => {
+
+            total +=
+              item.price * item.quantity;
+
+            itemCount +=
+              item.quantity;
+
+
+            return `
+
+              <div class="cart-item">
+
+                <img
+                  src="${item.image}"
+                  alt="${item.name}"
+                >
+
+                <div class="cart-item-info">
+
+                  <h4>${item.name}</h4>
+
+                  <div>
+                    Rs. ${item.price.toLocaleString()}
+                  </div>
+
+                  <div class="quantity">
+
+                    <button
+                      onclick="changeQuantity(${index}, -1)"
+                    >
+                      −
+                    </button>
+
+                    <span>
+                      ${item.quantity}
+                    </span>
+
+                    <button
+                      onclick="changeQuantity(${index}, 1)"
+                    >
+                      +
+                    </button>
+
+                  </div>
+
+                  <button
+                    class="remove"
+                    onclick="removeItem(${index})"
+                  >
+                    REMOVE
+                  </button>
+
+                </div>
+
+              </div>
+
+            `;
+
+          }
+        ).join("");
+
+      }
+
+
+      count.textContent =
+        itemCount;
+
+      totalElement.textContent =
+        "Rs. " + total.toLocaleString();
+
+    }
+
+
+    /* ================= OPEN CART ================= */
+
+    function openCart() {
+
+      document
+        .getElementById("cartPanel")
+        .classList.add("open");
+
+    }
+
+
+    /* ================= CLOSE CART ================= */
+
+    function closeCart() {
+
+      document
+        .getElementById("cartPanel")
+        .classList.remove("open");
+
+    }
+
+
+    /* ================= WHATSAPP ================= */
+
+    function checkoutWhatsApp() {
+
+      if (cart.length === 0) {
+
+        alert("Your cart is empty!");
+
+        return;
+
+      }
+
+
+      let message =
+        "Hello SEOKY! 👋%0A%0A";
+
+      message +=
+        "I want to order:%0A%0A";
+
+
+      let total = 0;
+
+
+      cart.forEach(item => {
+
+        const itemTotal =
+          item.price * item.quantity;
+
+        total += itemTotal;
+
+
+        message +=
+          "• " +
+          item.name +
+          " x" +
+          item.quantity +
+          " — Rs. " +
+          itemTotal.toLocaleString() +
+          "%0A";
+
+      });
+
+
+      message +=
+        "%0A*Total: Rs. " +
+        total.toLocaleString() +
+        "*";
+
+
+      const whatsappNumber =
+        "94762240238";
+
+
+      const url =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        message;
+
+
+      window.open(
+        url,
+        "_blank"
+      );
+
+    }
+
+
+    /* ================= DARK MODE ================= */
+
+    function toggleDark() {
+
+      document.body.classList.toggle("dark");
+
+      localStorage.setItem(
+        "seokyDark",
+        document.body.classList.contains("dark")
+      );
+
+    }
+
+
+    /* ================= HEART ================= */
+
+    function toggleHeart(button) {
+
+      if (button.textContent.trim() === "♡") {
+
+        button.textContent = "♥";
+
+      } else {
+
+        button.textContent = "♡";
+
+      }
+
+    }
+
+
+    /* ================= LOAD ================= */
+
+    if (
+      localStorage.getItem("seokyDark") === "true"
+    ) {
+
+      document.body.classList.add("dark");
+
+    }
+
+
+    renderCart();
+
+  </script>
 
 </body>
 </html>
