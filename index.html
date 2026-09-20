@@ -1,13 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0"
+>
+
 <meta name="theme-color" content="#080808">
 
 <title>SEOKY — Streetwear</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+  href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&display=swap"
+  rel="stylesheet"
+>
+
+
 <style>
+
+/* =========================================================
+   RESET
+========================================================= */
+
 *{
   box-sizing:border-box;
   margin:0;
@@ -19,14 +40,25 @@ html{
 }
 
 body{
-  font-family:Arial,Helvetica,sans-serif;
+  font-family:'Inter',Arial,Helvetica,sans-serif;
   background:#fff;
   color:#090909;
   overflow-x:hidden;
 }
 
-button{
+body.dark{
+  background:#0b0b0b;
+  color:#f5f5f5;
+}
+
+button,
+input,
+textarea,
+select{
   font:inherit;
+}
+
+button{
   border:0;
   cursor:pointer;
 }
@@ -36,13 +68,49 @@ a{
   color:inherit;
 }
 
-/* ================= HEADER ================= */
+img{
+  display:block;
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+========================================================= */
+
+.logo,
+.hero h1,
+.section h2,
+.campaign-content h3,
+.seoky-modal-info h2,
+.checkout-title{
+  font-family:'Bebas Neue',Impact,sans-serif;
+  font-weight:400;
+}
+
+.logo{
+  letter-spacing:7px;
+}
+
+.hero h1{
+  letter-spacing:1px;
+}
+
+.section h2{
+  letter-spacing:.5px;
+}
+
+
+/* =========================================================
+   HEADER
+========================================================= */
 
 .header{
   position:sticky;
   top:0;
-  z-index:50;
+  z-index:500;
+
   height:72px;
+
   background:#080808;
   color:#fff;
 
@@ -54,27 +122,30 @@ a{
 }
 
 .logo{
-  font-weight:900;
-  letter-spacing:8px;
-  font-size:24px;
+  font-size:29px;
 }
 
 .header-actions{
   display:flex;
   align-items:center;
-  gap:18px;
+  gap:10px;
 }
 
 .icon-btn{
-  width:40px;
-  height:40px;
+  width:42px;
+  height:42px;
+
   display:grid;
   place-items:center;
 
   background:transparent;
   color:#fff;
 
-  font-size:25px;
+  font-size:23px;
+}
+
+.icon-btn:hover{
+  transform:translateY(-2px);
 }
 
 .cart-wrap{
@@ -83,6 +154,7 @@ a{
 
 .badge{
   position:absolute;
+
   right:-3px;
   top:-4px;
 
@@ -101,7 +173,58 @@ a{
   place-items:center;
 }
 
-/* ================= HERO ================= */
+
+/* =========================================================
+   MENU
+========================================================= */
+
+.menu-card{
+  position:absolute;
+
+  top:72px;
+  right:15px;
+
+  width:230px;
+
+  background:#fff;
+  color:#111;
+
+  padding:18px;
+
+  box-shadow:0 14px 40px rgba(0,0,0,.2);
+
+  display:none;
+
+  animation:menuIn .2s ease;
+}
+
+.menu-card.open{
+  display:block;
+}
+
+.menu-card a{
+  display:block;
+
+  padding:13px 0;
+
+  border-bottom:1px solid #eee;
+
+  font-weight:700;
+}
+
+body.dark .menu-card{
+  background:#151515;
+  color:#fff;
+}
+
+body.dark .menu-card a{
+  border-color:#333;
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
 
 .hero{
   position:relative;
@@ -110,6 +233,7 @@ a{
   min-height:530px;
 
   overflow:hidden;
+
   background:#111;
 }
 
@@ -120,6 +244,8 @@ a{
   object-fit:cover;
 
   filter:brightness(.78);
+
+  animation:heroZoom 1.2s ease both;
 }
 
 .hero:after{
@@ -143,16 +269,20 @@ a{
 
 .hero-content{
   position:absolute;
+
   z-index:2;
 
   left:7%;
   bottom:11%;
 
   color:#fff;
+
+  animation:fadeUp .8s .15s ease both;
 }
 
 .eyebrow{
   font-size:12px;
+
   letter-spacing:5px;
 
   margin-bottom:12px;
@@ -161,11 +291,9 @@ a{
 }
 
 .hero h1{
-  font-size:clamp(48px,10vw,92px);
+  font-size:clamp(55px,10vw,100px);
 
-  line-height:.86;
-
-  letter-spacing:-4px;
+  line-height:.82;
 
   margin-bottom:26px;
 }
@@ -181,8 +309,16 @@ a{
   font-weight:800;
 
   display:inline-flex;
+
   gap:20px;
+
   align-items:center;
+
+  transition:.2s ease;
+}
+
+.cta:hover{
+  transform:translateY(-2px);
 }
 
 .dots{
@@ -196,6 +332,7 @@ a{
   transform:translateX(-50%);
 
   display:flex;
+
   gap:9px;
 }
 
@@ -212,29 +349,37 @@ a{
   background:#fff;
 }
 
-/* ================= SHIPPING BAR ================= */
+
+/* =========================================================
+   TICKER
+========================================================= */
 
 .ticker{
-  height:64px;
+  min-height:64px;
 
   background:#090909;
   color:#fff;
 
   display:flex;
+
   align-items:center;
   justify-content:center;
 
   gap:18px;
 
   font-size:12px;
+
   letter-spacing:3px;
 
   text-align:center;
 
-  padding:0 18px;
+  padding:15px 18px;
 }
 
-/* ================= SECTIONS ================= */
+
+/* =========================================================
+   SECTIONS
+========================================================= */
 
 .section{
   padding:52px 6%;
@@ -262,11 +407,9 @@ a{
 }
 
 .section h2{
-  font-size:42px;
+  font-size:48px;
 
-  line-height:.95;
-
-  letter-spacing:-2px;
+  line-height:.9;
 }
 
 .view{
@@ -277,7 +420,10 @@ a{
   white-space:nowrap;
 }
 
-/* ================= PRODUCTS ================= */
+
+/* =========================================================
+   PRODUCTS
+========================================================= */
 
 .products{
   display:grid;
@@ -290,6 +436,8 @@ a{
 
 .product{
   position:relative;
+
+  cursor:pointer;
 }
 
 .product-img{
@@ -328,12 +476,19 @@ a{
 
   border-radius:50%;
 
-  background:rgba(255,255,255,.88);
+  background:rgba(255,255,255,.9);
 
   display:grid;
   place-items:center;
 
   font-size:19px;
+
+  z-index:2;
+}
+
+.heart.liked{
+  color:#000;
+  animation:heartPop .45s ease;
 }
 
 .product-info{
@@ -342,6 +497,7 @@ a{
 
 .product-title{
   font-size:16px;
+
   font-weight:800;
 }
 
@@ -370,9 +526,18 @@ a{
   font-size:12px;
 
   letter-spacing:.7px;
+
+  transition:.2s ease;
 }
 
-/* ================= CAMPAIGN ================= */
+.add:hover{
+  transform:translateY(-2px);
+}
+
+
+/* =========================================================
+   CAMPAIGN
+========================================================= */
 
 .campaign{
   margin:20px 6% 10px;
@@ -405,12 +570,14 @@ a{
   inset:auto 7% 9%;
 
   color:#fff;
+
+  animation:fadeUp .8s ease both;
 }
 
 .campaign-content h3{
-  font-size:40px;
+  font-size:52px;
 
-  line-height:.95;
+  line-height:.9;
 
   margin:5px 0 15px;
 }
@@ -423,10 +590,14 @@ a{
   border:1px solid #fff;
 }
 
-/* ================= ABOUT ================= */
+
+/* =========================================================
+   ABOUT
+========================================================= */
 
 .about{
   background:#080808;
+
   color:#fff;
 }
 
@@ -440,7 +611,10 @@ a{
   margin-top:18px;
 }
 
-/* ================= FOOTER ================= */
+
+/* =========================================================
+   FOOTER
+========================================================= */
 
 .footer{
   padding:55px 6% 100px;
@@ -473,12 +647,48 @@ a{
   margin-bottom:13px;
 }
 
-/* ================= MOBILE NAV ================= */
+.whatsapp-contact-btn{
+  display:inline-flex;
+
+  align-items:center;
+  justify-content:center;
+
+  gap:8px;
+
+  margin-top:15px;
+
+  padding:13px 18px;
+
+  background:#25D366;
+  color:#fff;
+
+  border-radius:8px;
+
+  font-size:13px;
+
+  font-weight:800;
+
+  transition:.2s ease;
+}
+
+.whatsapp-contact-btn:hover{
+  background:#1ebe5d;
+
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 8px 20px rgba(0,0,0,.25);
+}
+
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
 
 .bottom-nav{
   position:fixed;
 
-  z-index:60;
+  z-index:600;
 
   bottom:0;
   left:0;
@@ -523,13 +733,20 @@ a{
   color:#fff;
 }
 
-/* ================= CART ================= */
+.nav-item sup{
+  font-size:10px;
+}
+
+
+/* =========================================================
+   CART DRAWER
+========================================================= */
 
 .drawer,
 .search-panel{
   position:fixed;
 
-  z-index:80;
+  z-index:900;
 
   inset:0;
 
@@ -555,21 +772,18 @@ a{
 
   background:#fff;
 
+  color:#111;
+
   padding:25px;
 
   overflow:auto;
 
-  animation:slide .25s ease;
+  animation:drawerIn .25s ease;
 }
 
-@keyframes slide{
-  from{
-    transform:translateX(100%);
-  }
-
-  to{
-    transform:none;
-  }
+body.dark .drawer-card{
+  background:#151515;
+  color:#fff;
 }
 
 .drawer-head{
@@ -586,6 +800,8 @@ a{
   font-size:26px;
 
   background:none;
+
+  color:inherit;
 }
 
 .cart-item{
@@ -596,6 +812,10 @@ a{
   padding:14px 0;
 
   border-bottom:1px solid #e8e8e8;
+}
+
+body.dark .cart-item{
+  border-color:#333;
 }
 
 .cart-item img{
@@ -636,6 +856,22 @@ a{
   background:#fff;
 }
 
+body.dark .qty button{
+  background:#111;
+  color:#fff;
+  border-color:#444;
+}
+
+.remove-btn{
+  margin-left:auto;
+
+  background:none;
+
+  color:#777;
+
+  font-size:12px;
+}
+
 .checkout{
   margin-top:24px;
 
@@ -660,7 +896,10 @@ a{
   padding:50px 10px;
 }
 
-/* ================= SEARCH ================= */
+
+/* =========================================================
+   SEARCH
+========================================================= */
 
 .search-card{
   position:absolute;
@@ -671,11 +910,21 @@ a{
 
   background:#fff;
 
+  color:#111;
+
   padding:25px;
+
+  animation:searchIn .2s ease;
+}
+
+body.dark .search-card{
+  background:#151515;
+  color:#fff;
 }
 
 .search-row{
   display:flex;
+
   gap:10px;
 }
 
@@ -691,47 +940,349 @@ a{
   font-size:16px;
 }
 
-/* ================= MENU ================= */
+body.dark .search-row input{
+  background:#101010;
+  color:#fff;
+  border-color:#333;
+}
 
-.menu-card{
-  position:absolute;
 
-  top:72px;
-  right:15px;
+/* =========================================================
+   MODALS
+========================================================= */
+
+.modal-backdrop,
+.seoky-modal-backdrop{
+  position:fixed;
+
+  inset:0;
+
+  background:rgba(0,0,0,.68);
+
+  z-index:1000;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:18px;
+}
+
+.modal-backdrop.open,
+.seoky-modal-backdrop.open{
+  display:flex;
+}
+
+.modal{
+  width:min(720px,100%);
+
+  max-height:90vh;
+
+  overflow:auto;
 
   background:#fff;
 
   color:#111;
 
-  width:230px;
+  border-radius:16px;
 
-  padding:20px;
+  padding:24px;
 
-  box-shadow:0 14px 40px rgba(0,0,0,.15);
-
-  display:none;
+  position:relative;
 }
 
-.menu-card.open{
-  display:block;
+body.dark .modal{
+  background:#151515;
+  color:#fff;
 }
 
-.menu-card a{
-  display:block;
+.modal-close{
+  position:absolute;
 
-  padding:13px 0;
+  right:14px;
+  top:12px;
 
-  border-bottom:1px solid #eee;
+  border:0;
 
-  font-weight:700;
+  background:none;
+
+  font-size:24px;
+
+  cursor:pointer;
+
+  color:inherit;
 }
 
-/* ================= TOAST ================= */
+
+/* =========================================================
+   PRODUCT DETAILS POPUP
+========================================================= */
+
+.seoky-product-modal{
+  width:min(760px,100%);
+
+  max-height:92vh;
+
+  overflow:auto;
+
+  background:#fff;
+
+  color:#0a0a0a;
+
+  border-radius:16px;
+
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  position:relative;
+
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.25);
+}
+
+.seoky-modal-close{
+  position:absolute;
+
+  right:12px;
+  top:8px;
+
+  width:38px;
+  height:38px;
+
+  border:0;
+
+  border-radius:50%;
+
+  background:#fff;
+
+  color:#111;
+
+  font-size:28px;
+
+  line-height:1;
+
+  cursor:pointer;
+
+  z-index:2;
+}
+
+.seoky-modal-image{
+  padding:16px;
+}
+
+.seoky-modal-image img{
+  width:100%;
+  height:100%;
+
+  min-height:360px;
+
+  object-fit:cover;
+
+  border-radius:10px;
+}
+
+.seoky-modal-info{
+  padding:42px 28px 28px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+}
+
+.seoky-modal-label{
+  font-size:11px;
+
+  letter-spacing:.18em;
+
+  font-weight:800;
+
+  margin:0 0 8px;
+}
+
+.seoky-modal-info h2{
+  font-size:42px;
+
+  letter-spacing:.03em;
+
+  margin:0 0 8px;
+}
+
+.seoky-modal-price{
+  font-size:20px;
+
+  font-weight:800;
+
+  margin-bottom:22px;
+}
+
+.seoky-details-list{
+  border-top:1px solid #e8e8e8;
+
+  margin-bottom:22px;
+}
+
+.seoky-details-list div{
+  display:flex;
+
+  justify-content:space-between;
+
+  gap:20px;
+
+  padding:12px 0;
+
+  border-bottom:1px solid #e8e8e8;
+
+  font-size:14px;
+}
+
+.seoky-details-list span{
+  color:#777;
+}
+
+.seoky-details-list strong{
+  text-align:right;
+}
+
+.seoky-modal-cart{
+  width:100%;
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+.checkout-grid{
+  display:grid;
+
+  grid-template-columns:1fr 1fr;
+
+  gap:20px;
+
+  margin-top:20px;
+}
+
+.checkout-grid input,
+.checkout-grid textarea{
+  width:100%;
+
+  padding:12px;
+
+  border:1px solid #ddd;
+
+  border-radius:8px;
+
+  margin:6px 0 12px;
+}
+
+body.dark .checkout-grid input,
+body.dark .checkout-grid textarea{
+  background:#101010;
+  color:#fff;
+  border-color:#333;
+}
+
+.checkout-summary{
+  border:1px solid #ddd;
+
+  border-radius:12px;
+
+  padding:18px;
+
+  height:max-content;
+}
+
+body.dark .checkout-summary{
+  border-color:#333;
+}
+
+.checkout-summary p{
+  margin:9px 0;
+  color:#666;
+}
+
+body.dark .checkout-summary p{
+  color:#aaa;
+}
+
+
+/* =========================================================
+   SHOP DETAILS
+========================================================= */
+
+.seoky-shop-details{
+  padding:70px 6%;
+
+  border-top:1px solid #e9e9e9;
+
+  background:#fff;
+}
+
+body.dark .seoky-shop-details{
+  background:#0b0b0b;
+  border-color:#222;
+}
+
+.seoky-shop-details-inner{
+  max-width:1100px;
+
+  margin:auto;
+}
+
+.seoky-info-grid{
+  display:grid;
+
+  grid-template-columns:
+    repeat(4,1fr);
+
+  gap:18px;
+
+  margin-top:28px;
+}
+
+.seoky-info-grid > div{
+  border:1px solid #e8e8e8;
+
+  border-radius:12px;
+
+  padding:22px;
+}
+
+body.dark .seoky-info-grid > div{
+  border-color:#333;
+}
+
+.seoky-info-grid span{
+  font-size:22px;
+}
+
+.seoky-info-grid h3{
+  margin:12px 0 6px;
+}
+
+.seoky-info-grid p{
+  margin:0;
+
+  color:#777;
+
+  line-height:1.5;
+
+  font-size:14px;
+}
+
+
+/* =========================================================
+   TOAST
+========================================================= */
 
 .toast{
   position:fixed;
 
-  z-index:100;
+  z-index:2000;
 
   left:50%;
   bottom:88px;
@@ -761,7 +1312,130 @@ a{
   transform:translate(-50%,0);
 }
 
-/* ================= MOBILE ================= */
+
+/* =========================================================
+   ANIMATIONS
+========================================================= */
+
+@keyframes heroZoom{
+
+  from{
+    transform:scale(1.04);
+  }
+
+  to{
+    transform:scale(1);
+  }
+
+}
+
+@keyframes fadeUp{
+
+  from{
+    opacity:0;
+    transform:translateY(28px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+@keyframes drawerIn{
+
+  from{
+    transform:translateX(100%);
+  }
+
+  to{
+    transform:none;
+  }
+
+}
+
+@keyframes menuIn{
+
+  from{
+    opacity:0;
+    transform:translateY(-8px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+@keyframes searchIn{
+
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+
+  to{
+    opacity:1;
+    transform:none;
+  }
+
+}
+
+@keyframes heartPop{
+
+  0%{
+    transform:scale(1);
+  }
+
+  35%{
+    transform:scale(1.35);
+  }
+
+  70%{
+    transform:scale(.92);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+
+}
+
+
+/* =========================================================
+   DESKTOP
+========================================================= */
+
+@media(min-width:900px){
+
+  .bottom-nav{
+    display:none;
+  }
+
+  .header{
+    padding:0 5%;
+  }
+
+  .hero-content{
+    left:9%;
+  }
+
+  .campaign{
+    min-height:460px;
+  }
+
+  .campaign img{
+    min-height:460px;
+  }
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
 
 @media(max-width:700px){
 
@@ -772,7 +1446,7 @@ a{
   }
 
   .logo{
-    font-size:19px;
+    font-size:25px;
 
     letter-spacing:6px;
   }
@@ -790,7 +1464,7 @@ a{
   }
 
   .hero h1{
-    font-size:55px;
+    font-size:62px;
   }
 
   .ticker{
@@ -804,7 +1478,7 @@ a{
   }
 
   .section h2{
-    font-size:34px;
+    font-size:40px;
   }
 
   .products{
@@ -827,53 +1501,81 @@ a{
   }
 
   .campaign-content h3{
-    font-size:34px;
+    font-size:42px;
   }
 
   .footer-grid{
     grid-template-columns:1fr 1fr;
   }
 
-  .footer-grid>div:first-child{
+  .footer-grid > div:first-child{
     grid-column:1/-1;
   }
+
+  .seoky-product-modal{
+    grid-template-columns:1fr;
+  }
+
+  .seoky-modal-image img{
+    min-height:240px;
+    max-height:330px;
+  }
+
+  .seoky-modal-info{
+    padding:8px 22px 24px;
+  }
+
+  .seoky-modal-info h2{
+    font-size:36px;
+  }
+
+  .seoky-info-grid{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .checkout-grid{
+    grid-template-columns:1fr;
+  }
+
 }
 
-/* ================= DESKTOP ================= */
+@media(max-width:430px){
 
-@media(min-width:900px){
-
-  .bottom-nav{
-    display:none;
+  .seoky-info-grid{
+    grid-template-columns:1fr;
   }
 
-  .header{
-    padding:0 5%;
-  }
-
-  .hero-content{
-    left:9%;
-  }
-
-  .products{
-    grid-template-columns:
-      repeat(2,1fr);
-  }
-
-  .campaign{
-    min-height:460px;
-  }
-
-  .campaign img{
-    min-height:460px;
-  }
 }
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.001ms!important;
+  }
+
+}
+
 </style>
+
 </head>
+
 
 <body>
 
-<!-- ================= HEADER ================= -->
+
+<!-- =======================================================
+     HEADER
+======================================================= -->
 
 <header class="header">
 
@@ -886,20 +1588,23 @@ a{
     <button
       class="icon-btn"
       onclick="openSearch()"
-      aria-label="Search">
+      aria-label="Search"
+    >
       ⌕
     </button>
 
     <button
       class="icon-btn cart-wrap"
       onclick="openCart()"
-      aria-label="Cart">
+      aria-label="Cart"
+    >
 
       🛍
 
       <span
         class="badge"
-        id="cartCount">
+        id="cartCount"
+      >
         0
       </span>
 
@@ -908,17 +1613,18 @@ a{
     <button
       class="icon-btn"
       onclick="toggleMenu()"
-      aria-label="Menu">
+      aria-label="Menu"
+    >
       ☰
     </button>
 
   </div>
 
-  <!-- MENU -->
 
   <div
     class="menu-card"
-    id="menuCard">
+    id="menuCard"
+  >
 
     <a href="#home" onclick="toggleMenu()">
       Home
@@ -936,12 +1642,26 @@ a{
       About SEOKY
     </a>
 
+    <a href="#shop-details" onclick="toggleMenu()">
+      Shop Details
+    </a>
+
+    <a href="#contact" onclick="toggleMenu()">
+      Contact
+    </a>
+
+    <a href="#" onclick="toggleTheme();toggleMenu();return false;">
+      🌙 Dark Mode
+    </a>
+
   </div>
 
 </header>
 
 
-<!-- ================= MAIN ================= -->
+<!-- =======================================================
+     MAIN
+======================================================= -->
 
 <main id="home">
 
@@ -952,7 +1672,8 @@ a{
 
   <img
     src="seoky-campaign.png"
-    alt="SEOKY Collection">
+    alt="SEOKY Collection"
+  >
 
   <div class="hero-content">
 
@@ -967,14 +1688,14 @@ a{
 
     <a
       class="cta"
-      href="#shop">
-
+      href="#shop"
+    >
       SHOP NOW
       <span>→</span>
-
     </a>
 
   </div>
+
 
   <div class="dots">
 
@@ -987,24 +1708,21 @@ a{
 </section>
 
 
-<!-- SHIPPING -->
+<!-- TICKER -->
 
 <div class="ticker">
 
-  🚚
-
-  FREE SHIPPING ON ORDERS OVER RS. 3,000
-
-  →
+  🚚 FREE SHIPPING ON ORDERS OVER RS. 3,000 →
 
 </div>
 
 
-<!-- PRODUCTS -->
+<!-- SHOP -->
 
 <section
   class="section"
-  id="shop">
+  id="shop"
+>
 
   <div class="section-head">
 
@@ -1022,10 +1740,9 @@ a{
 
     <a
       class="view"
-      href="#shop">
-
+      href="#shop"
+    >
       VIEW ALL →
-
     </a>
 
   </div>
@@ -1036,20 +1753,24 @@ a{
 
     <!-- BLACK TEE -->
 
-    <article class="product">
+    <article
+      class="product"
+      onclick="openSeokyProductModal('black-tee')"
+    >
 
       <div class="product-img">
 
         <img
           src="black-tee.png"
-          alt="Black Tee">
+          alt="SEOKY Black Tee"
+        >
 
         <button
           class="heart"
-          onclick="like(this)">
-
+          onclick="event.stopPropagation();like(this)"
+          aria-label="Like"
+        >
           ♡
-
         </button>
 
       </div>
@@ -1058,7 +1779,7 @@ a{
       <div class="product-info">
 
         <div class="product-title">
-          Black Tee
+          SEOKY Black Tee
         </div>
 
         <div class="price">
@@ -1067,14 +1788,17 @@ a{
 
         <button
           class="add"
-          onclick="addToCart(
-            'Black Tee',
-            1500,
-            'black-tee.png'
-          )">
-
+          onclick="
+            event.stopPropagation();
+            addToCart(
+              'black-tee',
+              'SEOKY Black Tee',
+              1500,
+              'black-tee.png'
+            );
+          "
+        >
           ADD TO CART
-
         </button>
 
       </div>
@@ -1084,20 +1808,24 @@ a{
 
     <!-- WHITE TEE -->
 
-    <article class="product">
+    <article
+      class="product"
+      onclick="openSeokyProductModal('white-tee')"
+    >
 
       <div class="product-img">
 
         <img
           src="white-tee.png"
-          alt="White Tee">
+          alt="SEOKY White Tee"
+        >
 
         <button
           class="heart"
-          onclick="like(this)">
-
+          onclick="event.stopPropagation();like(this)"
+          aria-label="Like"
+        >
           ♡
-
         </button>
 
       </div>
@@ -1106,7 +1834,7 @@ a{
       <div class="product-info">
 
         <div class="product-title">
-          White Tee
+          SEOKY White Tee
         </div>
 
         <div class="price">
@@ -1115,14 +1843,17 @@ a{
 
         <button
           class="add"
-          onclick="addToCart(
-            'White Tee',
-            1500,
-            'white-tee.png'
-          )">
-
+          onclick="
+            event.stopPropagation();
+            addToCart(
+              'white-tee',
+              'SEOKY White Tee',
+              1500,
+              'white-tee.png'
+            );
+          "
+        >
           ADD TO CART
-
         </button>
 
       </div>
@@ -1138,20 +1869,21 @@ a{
 
 <section
   class="campaign"
-  id="campaign">
+  id="campaign"
+>
 
   <img
     src="seoky-campaign.png"
-    alt="SEOKY Campaign">
+    alt="SEOKY Campaign"
+  >
 
   <div class="campaign-content">
 
     <div
       class="kicker"
-      style="color:#fff">
-
+      style="color:#fff"
+    >
       SEOKY CAMPAIGN
-
     </div>
 
     <h3>
@@ -1161,10 +1893,9 @@ a{
 
     <a
       class="cta outline"
-      href="#shop">
-
+      href="#shop"
+    >
       EXPLORE →
-
     </a>
 
   </div>
@@ -1176,7 +1907,8 @@ a{
 
 <section
   class="section about"
-  id="about">
+  id="about"
+>
 
   <div class="kicker">
     ABOUT SEOKY
@@ -1199,11 +1931,109 @@ a{
 </main>
 
 
-<!-- ================= FOOTER ================= -->
+<!-- =======================================================
+     SHOP DETAILS
+======================================================= -->
 
-<footer class="footer">
+<section
+  class="seoky-shop-details"
+  id="shop-details"
+>
+
+  <div class="seoky-shop-details-inner">
+
+    <p class="seoky-modal-label">
+      SEOKY
+    </p>
+
+    <h2>
+      SHOP DETAILS
+    </h2>
+
+
+    <div class="seoky-info-grid">
+
+      <div>
+
+        <span>📍</span>
+
+        <h3>
+          Location
+        </h3>
+
+        <p>
+          Ambalangoda,<br>
+          Sri Lanka
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <span>🚚</span>
+
+        <h3>
+          Delivery
+        </h3>
+
+        <p>
+          Island-wide Delivery
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <span>💬</span>
+
+        <h3>
+          WhatsApp
+        </h3>
+
+        <p>
+          +94 76 224 0238
+        </p>
+
+      </div>
+
+
+      <div>
+
+        <span>📦</span>
+
+        <h3>
+          Orders
+        </h3>
+
+        <p>
+          Order directly through
+          WhatsApp.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer
+  class="footer"
+  id="contact"
+>
 
   <div class="footer-grid">
+
+
+    <!-- BRAND -->
 
     <div>
 
@@ -1212,12 +2042,22 @@ a{
       </div>
 
       <p>
-        Simple streetwear.
+        Simple streetwear.<br>
         Everyday confidence.
+      </p>
+
+      <p>
+        📍 Ambalangoda, Sri Lanka
+      </p>
+
+      <p>
+        🚚 Island-wide Delivery
       </p>
 
     </div>
 
+
+    <!-- SHOP -->
 
     <div>
 
@@ -1226,40 +2066,82 @@ a{
       </h4>
 
       <p>
-        Black Tee<br>
-        White Tee<br>
-        New Drop
+
+        <a href="#shop">
+          Black Tee
+        </a>
+
+        <br>
+
+        <a href="#shop">
+          White Tee
+        </a>
+
+        <br>
+
+        <a href="#campaign">
+          New Drop
+        </a>
+
       </p>
 
     </div>
 
 
+    <!-- CONTACT -->
+
     <div>
 
       <h4>
-        INFO
+        CONTACT
       </h4>
 
       <p>
-        About<br>
-        Contact<br>
-        WhatsApp Orders
+        WhatsApp<br>
+        +94 76 224 0238
       </p>
+
+
+      <a
+        class="whatsapp-contact-btn"
+        href="https://wa.me/94762240238?text=Hi%20SEOKY!%20%F0%9F%91%8B%20I%27d%20like%20to%20know%20more%20about%20your%20products."
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        💬 Chat on WhatsApp
+      </a>
 
     </div>
 
   </div>
 
+
+  <div
+    style="
+      margin-top:40px;
+      padding-top:20px;
+      border-top:1px solid #222;
+      text-align:center;
+      color:#666;
+      font-size:13px;
+    "
+  >
+    SEOKY © 2026 · All Rights Reserved.
+  </div>
+
 </footer>
 
 
-<!-- ================= MOBILE NAV ================= -->
+<!-- =======================================================
+     MOBILE NAV
+======================================================= -->
 
 <nav class="bottom-nav">
 
   <a
     class="nav-item active"
-    href="#home">
+    href="#home"
+  >
 
     <span>⌂</span>
 
@@ -1272,7 +2154,8 @@ a{
 
   <a
     class="nav-item"
-    href="#shop">
+    href="#shop"
+  >
 
     <span>⌕</span>
 
@@ -1285,13 +2168,12 @@ a{
 
   <button
     class="nav-item"
-    onclick="openCart()">
+    onclick="openCart()"
+  >
 
     <span>
       🛍
-      <sup id="bottomCount">
-        0
-      </sup>
+      <sup id="bottomCount">0</sup>
     </span>
 
     <small>
@@ -1303,11 +2185,10 @@ a{
 
   <button
     class="nav-item"
-    onclick="toggleMenu()">
+    onclick="toggleMenu()"
+  >
 
-    <span>
-      ☰
-    </span>
+    <span>☰</span>
 
     <small>
       Menu
@@ -1318,12 +2199,15 @@ a{
 </nav>
 
 
-<!-- ================= CART DRAWER ================= -->
+<!-- =======================================================
+     CART
+======================================================= -->
 
 <div
   class="drawer"
   id="cartDrawer"
-  onclick="if(event.target===this)closeCart()">
+  onclick="if(event.target===this)closeCart()"
+>
 
   <div class="drawer-card">
 
@@ -1335,10 +2219,9 @@ a{
 
       <button
         class="close"
-        onclick="closeCart()">
-
+        onclick="closeCart()"
+      >
         ×
-
       </button>
 
     </div>
@@ -1353,12 +2236,15 @@ a{
 </div>
 
 
-<!-- ================= SEARCH ================= -->
+<!-- =======================================================
+     SEARCH
+======================================================= -->
 
 <div
   class="search-panel"
   id="searchPanel"
-  onclick="if(event.target===this)closeSearch()">
+  onclick="if(event.target===this)closeSearch()"
+>
 
   <div class="search-card">
 
@@ -1370,10 +2256,9 @@ a{
 
       <button
         class="close"
-        onclick="closeSearch()">
-
+        onclick="closeSearch()"
+      >
         ×
-
       </button>
 
     </div>
@@ -1384,14 +2269,113 @@ a{
       <input
         id="searchInput"
         placeholder="Search products..."
-        oninput="searchProducts">
+        oninput="searchProducts()"
+      >
 
     </div>
 
 
     <div
       id="searchResults"
-      style="padding-top:20px">
+      style="padding-top:20px"
+    ></div>
+
+  </div>
+
+</div>
+
+
+<!-- =======================================================
+     PRODUCT DETAILS MODAL
+======================================================= -->
+
+<div
+  class="seoky-modal-backdrop"
+  id="seokyProductModal"
+  onclick="if(event.target===this)closeSeokyProductModal()"
+>
+
+  <div class="seoky-product-modal">
+
+    <button
+      class="seoky-modal-close"
+      onclick="closeSeokyProductModal()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+
+    <div class="seoky-modal-image">
+
+      <img
+        id="seokyModalImage"
+        src=""
+        alt=""
+      >
+
+    </div>
+
+
+    <div class="seoky-modal-info">
+
+      <p class="seoky-modal-label">
+        SEOKY ESSENTIAL
+      </p>
+
+
+      <h2 id="seokyModalName">
+      </h2>
+
+
+      <div
+        class="seoky-modal-price"
+        id="seokyModalPrice"
+      >
+      </div>
+
+
+      <div class="seoky-details-list">
+
+        <div>
+          <span>Material</span>
+          <strong>Cotton</strong>
+        </div>
+
+        <div>
+          <span>Fit</span>
+          <strong>Regular / Oversized</strong>
+        </div>
+
+        <div>
+          <span>Sizes</span>
+          <strong>S / M / L / XL</strong>
+        </div>
+
+        <div>
+          <span>Color</span>
+          <strong id="seokyModalColor"></strong>
+        </div>
+
+        <div>
+          <span>Price</span>
+          <strong id="seokyModalDetailPrice"></strong>
+        </div>
+
+        <div>
+          <span>Availability</span>
+          <strong>In stock</strong>
+        </div>
+
+      </div>
+
+
+      <button
+        class="add seoky-modal-cart"
+        id="seokyModalCart"
+      >
+        ADD TO CART
+      </button>
 
     </div>
 
@@ -1400,23 +2384,181 @@ a{
 </div>
 
 
-<!-- TOAST -->
+<!-- =======================================================
+     CHECKOUT MODAL
+======================================================= -->
 
 <div
-  class="toast"
-  id="toast">
+  class="modal-backdrop"
+  id="checkoutModal"
+  onclick="if(event.target===this)closeCheckout()"
+>
 
-  Added to cart ✓
+  <div class="modal">
+
+    <button
+      class="modal-close"
+      onclick="closeCheckout()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+
+    <h2 class="checkout-title">
+      CHECKOUT
+    </h2>
+
+    <p style="color:#777;margin-top:8px">
+      Enter your details, then send your order through WhatsApp.
+    </p>
+
+
+    <div class="checkout-grid">
+
+
+      <form
+        id="checkoutForm"
+        onsubmit="submitCheckout(event)"
+      >
+
+        <label>
+          Name
+        </label>
+
+        <input
+          id="checkoutName"
+          required
+          placeholder="Your name"
+        >
+
+
+        <label>
+          Phone
+        </label>
+
+        <input
+          id="checkoutPhone"
+          required
+          placeholder="07X XXX XXXX"
+        >
+
+
+        <label>
+          Address
+        </label>
+
+        <textarea
+          id="checkoutAddress"
+          rows="4"
+          required
+          placeholder="Delivery address"
+        ></textarea>
+
+
+        <button
+          class="add"
+          type="submit"
+        >
+          PLACE ORDER VIA WHATSAPP
+        </button>
+
+      </form>
+
+
+      <div class="checkout-summary">
+
+        <h3>
+          YOUR ORDER
+        </h3>
+
+        <div
+          id="checkoutItems"
+          style="margin-top:15px"
+        ></div>
+
+        <hr
+          style="margin:15px 0"
+        >
+
+        <strong id="checkoutTotal">
+        </strong>
+
+      </div>
+
+    </div>
+
+  </div>
 
 </div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =======================================================
+     TOAST
+======================================================= -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  Added to cart ✓
+</div>
+
+
+<!-- =======================================================
+     JAVASCRIPT
+======================================================= -->
 
 <script>
 
-const WA = "94762240238";
+/* =========================================================
+   PRODUCT DATA
+========================================================= */
 
+const PRODUCTS = {
+
+  "black-tee": {
+
+    id:"black-tee",
+
+    name:"SEOKY Black Tee",
+
+    price:1500,
+
+    image:"black-tee.png",
+
+    color:"Black"
+
+  },
+
+
+  "white-tee": {
+
+    id:"white-tee",
+
+    name:"SEOKY White Tee",
+
+    price:1500,
+
+    image:"white-tee.png",
+
+    color:"White"
+
+  }
+
+};
+
+
+/* =========================================================
+   WHATSAPP
+========================================================= */
+
+const WHATSAPP_NUMBER = "94762240238";
+
+
+/* =========================================================
+   CART
+========================================================= */
 
 let cart =
   JSON.parse(
@@ -1424,9 +2566,7 @@ let cart =
   );
 
 
-/* SAVE CART */
-
-function save(){
+function saveCart(){
 
   localStorage.setItem(
     "seokyCart",
@@ -1434,129 +2574,149 @@ function save(){
   );
 
   updateCartCount();
+
 }
 
-
-/* CART COUNT */
 
 function updateCartCount(){
 
-  const n =
+  const total =
     cart.reduce(
-      (s,i) => s + i.qty,
+      (sum,item) =>
+        sum + item.qty,
       0
     );
 
-  document.getElementById(
-    "cartCount"
-  ).textContent = n;
 
-  document.getElementById(
-    "bottomCount"
-  ).textContent = n;
+  document.getElementById("cartCount")
+    .textContent = total;
+
+
+  document.getElementById("bottomCount")
+    .textContent = total;
+
 }
 
 
-/* ADD TO CART */
-
 function addToCart(
+  id,
   name,
   price,
-  img
+  image
 ){
 
-  const found =
+  const existing =
     cart.find(
-      i => i.name === name
+      item => item.id === id
     );
 
-  if(found){
 
-    found.qty++;
+  if(existing){
+
+    existing.qty++;
 
   }else{
 
     cart.push({
+
+      id:id,
+
       name:name,
-      price:price,
-      img:img,
+
+      price:Number(price),
+
+      image:image,
+
       qty:1
+
     });
 
   }
 
-  save();
 
-  toast(
+  saveCart();
+
+  showToast(
     "Added to cart ✓"
   );
+
 }
 
 
-/* CHANGE QUANTITY */
-
 function changeQty(
-  name,
-  d
+  id,
+  amount
 ){
 
   const item =
     cart.find(
-      i => i.name === name
+      product => product.id === id
     );
 
-  if(!item) return;
 
-  item.qty += d;
+  if(!item){
+    return;
+  }
+
+
+  item.qty += amount;
+
 
   if(item.qty <= 0){
 
     cart =
       cart.filter(
-        i => i.name !== name
+        product =>
+          product.id !== id
       );
 
   }
 
-  save();
+
+  saveCart();
 
   renderCart();
+
 }
 
 
-/* REMOVE ITEM */
-
-function removeItem(name){
+function removeItem(id){
 
   cart =
     cart.filter(
-      i => i.name !== name
+      item => item.id !== id
     );
 
-  save();
+
+  saveCart();
 
   renderCart();
+
 }
 
 
-/* RENDER CART */
+/* =========================================================
+   CART RENDER
+========================================================= */
 
 function renderCart(){
 
-  const box =
+  const cartItems =
     document.getElementById(
       "cartItems"
     );
 
-  const bottom =
+
+  const cartBottom =
     document.getElementById(
       "cartBottom"
     );
 
 
-  if(!cart.length){
+  if(cart.length === 0){
 
-    box.innerHTML = `
+    cartItems.innerHTML = `
+
       <div class="empty">
 
         Your cart is empty.
@@ -1566,77 +2726,65 @@ function renderCart(){
         Pick a tee and come back here 👕
 
       </div>
+
     `;
 
-    bottom.innerHTML = "";
+    cartBottom.innerHTML = "";
 
     return;
+
   }
 
 
-  box.innerHTML =
-    cart.map(
-      i => `
+  cartItems.innerHTML =
+
+    cart.map(item => `
 
       <div class="cart-item">
 
         <img
-          src="${i.img}"
-          alt="${i.name}">
+          src="${item.image}"
+          alt="${item.name}"
+        >
+
 
         <div class="cart-meta">
 
           <h4>
-            ${i.name}
+            ${item.name}
           </h4>
 
           <div>
-            Rs.
-            ${i.price.toLocaleString()}
+            Rs. ${item.price.toLocaleString("en-LK")}
           </div>
 
 
           <div class="qty">
 
             <button
-              onclick="changeQty(
-                '${i.name}',
-                -1
-              )">
-
+              onclick="changeQty('${item.id}',-1)"
+            >
               −
-
             </button>
 
 
             <b>
-              ${i.qty}
+              ${item.qty}
             </b>
 
 
             <button
-              onclick="changeQty(
-                '${i.name}',
-                1
-              )">
-
+              onclick="changeQty('${item.id}',1)"
+            >
               +
-
             </button>
 
 
             <button
-              style="
-                margin-left:auto;
-                background:none;
-                color:#777;
-              "
-              onclick="removeItem(
-                '${i.name}'
-              )">
-
+              class="remove-btn"
+              onclick="removeItem('${item.id}')"
+            >
               Remove
-
             </button>
 
           </div>
@@ -1645,19 +2793,22 @@ function renderCart(){
 
       </div>
 
-    `
-    ).join("");
+    `).join("");
 
 
   const total =
     cart.reduce(
-      (s,i) =>
-        s + i.price * i.qty,
+      (sum,item) =>
+        sum +
+        (
+          item.price *
+          item.qty
+        ),
       0
     );
 
 
-  bottom.innerHTML = `
+  cartBottom.innerHTML = `
 
     <div
       style="
@@ -1665,15 +2816,15 @@ function renderCart(){
         justify-content:space-between;
         padding-top:22px;
         font-weight:800;
-      ">
+      "
+    >
 
       <span>
         Total
       </span>
 
       <span>
-        Rs.
-        ${total.toLocaleString()}
+        Rs. ${total.toLocaleString("en-LK")}
       </span>
 
     </div>
@@ -1681,69 +2832,19 @@ function renderCart(){
 
     <button
       class="checkout"
-      onclick="whatsappOrder()">
-
+      onclick="openCheckout()"
+    >
       ORDER ON WHATSAPP
-
     </button>
 
   `;
+
 }
 
 
-/* WHATSAPP ORDER */
-
-function whatsappOrder(){
-
-  if(!cart.length)
-    return;
-
-
-  const lines =
-    cart.map(
-      i =>
-        `• ${i.name} x${i.qty} — Rs. ${
-          (
-            i.price * i.qty
-          ).toLocaleString()
-        }`
-    ).join("\n");
-
-
-  const total =
-    cart.reduce(
-      (s,i) =>
-        s + i.price * i.qty,
-      0
-    );
-
-
-  const msg =
-
-`Hi SEOKY! 👋
-
-I'd like to order:
-
-${lines}
-
-Total: Rs. ${total.toLocaleString()}
-
-Name:
-Phone:
-Address:
-Size:`;
-
-
-  window.open(
-    `https://wa.me/${WA}?text=${
-      encodeURIComponent(msg)
-    }`,
-    "_blank"
-  );
-}
-
-
-/* OPEN CART */
+/* =========================================================
+   OPEN / CLOSE CART
+========================================================= */
 
 function openCart(){
 
@@ -1752,20 +2853,22 @@ function openCart(){
   document
     .getElementById("cartDrawer")
     .classList.add("open");
+
 }
 
-
-/* CLOSE CART */
 
 function closeCart(){
 
   document
     .getElementById("cartDrawer")
     .classList.remove("open");
+
 }
 
 
-/* OPEN SEARCH */
+/* =========================================================
+   SEARCH
+========================================================= */
 
 function openSearch(){
 
@@ -1778,152 +2881,153 @@ function openSearch(){
     () => {
 
       document
-        .getElementById(
-          "searchInput"
-        )
+        .getElementById("searchInput")
         .focus();
 
     },
-    80
+    100
   );
+
+
+  searchProducts();
+
 }
 
-
-/* CLOSE SEARCH */
 
 function closeSearch(){
 
   document
     .getElementById("searchPanel")
     .classList.remove("open");
+
 }
 
 
-/* SEARCH */
-
 function searchProducts(){
 
-  const q =
-    document
-      .getElementById(
-        "searchInput"
-      )
-      .value
+  const input =
+    document.getElementById(
+      "searchInput"
+    );
+
+
+  const resultsBox =
+    document.getElementById(
+      "searchResults"
+    );
+
+
+  const query =
+    input.value
       .toLowerCase()
       .trim();
 
 
-  const products = [
-
-    [
-      "Black Tee",
-      1500,
-      "black-tee.png"
-    ],
-
-    [
-      "White Tee",
-      1500,
-      "white-tee.png"
-    ]
-
-  ];
-
-
   const results =
-    products.filter(
-      p =>
-        p[0]
-          .toLowerCase()
-          .includes(q)
-    );
+    Object.values(PRODUCTS)
+      .filter(
+        product =>
+          product.name
+            .toLowerCase()
+            .includes(query)
+      );
 
 
-  document.getElementById(
-    "searchResults"
-  ).innerHTML =
+  if(results.length === 0){
 
-    results.length
+    resultsBox.innerHTML = `
 
-    ?
+      <div
+        style="
+          color:#777;
+          padding:20px 0;
+        "
+      >
+        No products found.
+      </div>
 
-    results.map(
-      p => `
+    `;
 
-        <div
+    return;
+
+  }
+
+
+  resultsBox.innerHTML =
+
+    results.map(product => `
+
+      <div
+        style="
+          display:flex;
+          gap:15px;
+          align-items:center;
+          padding:12px 0;
+          border-bottom:1px solid #eee;
+        "
+      >
+
+        <img
+          src="${product.image}"
+          alt="${product.name}"
           style="
-            display:flex;
-            gap:15px;
-            align-items:center;
-            padding:12px 0;
-            border-bottom:1px solid #eee;
-          ">
+            width:65px;
+            height:70px;
+            object-fit:cover;
+            background:#eee;
+            border-radius:7px;
+          "
+        >
 
-          <img
-            src="${p[2]}"
-            style="
-              width:65px;
-              height:70px;
-              object-fit:cover;
-              background:#eee;
-              border-radius:7px;
-            ">
 
+        <div style="flex:1">
+
+          <b>
+            ${product.name}
+          </b>
 
           <div
-            style="flex:1">
-
-            <b>
-              ${p[0]}
-            </b>
-
-            <div
-              style="
-                color:#777;
-                margin-top:5px;
-              ">
-
-              Rs.
-              ${p[1].toLocaleString()}
-
-            </div>
-
-          </div>
-
-
-          <button
-            class="add"
             style="
-              width:auto;
-              margin:0;
+              color:#777;
+              margin-top:5px;
             "
-            onclick="
-              addToCart(
-                '${p[0]}',
-                ${p[1]},
-                '${p[2]}'
-              );
-
-              closeSearch();
-            ">
-
-            ADD
-
-          </button>
+          >
+            Rs.
+            ${product.price.toLocaleString("en-LK")}
+          </div>
 
         </div>
 
-      `
-    ).join("")
 
-    :
+        <button
+          class="add"
+          style="
+            width:auto;
+            margin:0;
+          "
+          onclick="
+            addToCart(
+              '${product.id}',
+              '${product.name}',
+              ${product.price},
+              '${product.image}'
+            );
+            closeSearch();
+          "
+        >
+          ADD
+        </button>
 
-    "<div style='color:#777'>No products found.</div>";
+      </div>
+
+    `).join("");
 
 }
 
 
-/* MENU */
+/* =========================================================
+   MENU
+========================================================= */
 
 function toggleMenu(){
 
@@ -1934,45 +3038,410 @@ function toggleMenu(){
 }
 
 
-/* HEART */
+/* =========================================================
+   LIKE
+========================================================= */
 
-function like(btn){
+function like(button){
 
-  btn.textContent =
-    btn.textContent === "♡"
-      ? "♥"
-      : "♡";
+  if(button.textContent.trim() === "♡"){
+
+    button.textContent = "♥";
+
+    button.classList.add("liked");
+
+  }else{
+
+    button.textContent = "♡";
+
+    button.classList.remove("liked");
+
+  }
 
 }
 
 
-/* TOAST */
+/* =========================================================
+   TOAST
+========================================================= */
 
-function toast(msg){
+function showToast(message){
 
-  const t =
+  const toast =
     document.getElementById(
       "toast"
     );
 
-  t.textContent = msg;
 
-  t.classList.add("show");
+  toast.textContent =
+    message;
+
+
+  toast.classList.add(
+    "show"
+  );
 
 
   setTimeout(
-    () =>
-      t.classList.remove("show"),
+    () => {
+
+      toast.classList.remove(
+        "show"
+      );
+
+    },
     1600
   );
+
 }
 
 
-/* START */
+/* =========================================================
+   PRODUCT DETAILS POPUP
+========================================================= */
+
+function openSeokyProductModal(id){
+
+  const product =
+    PRODUCTS[id];
+
+
+  if(!product){
+    return;
+  }
+
+
+  document.getElementById(
+    "seokyModalImage"
+  ).src =
+    product.image;
+
+
+  document.getElementById(
+    "seokyModalImage"
+  ).alt =
+    product.name;
+
+
+  document.getElementById(
+    "seokyModalName"
+  ).textContent =
+    product.name;
+
+
+  document.getElementById(
+    "seokyModalPrice"
+  ).textContent =
+    "Rs. " +
+    product.price.toLocaleString("en-LK");
+
+
+  document.getElementById(
+    "seokyModalDetailPrice"
+  ).textContent =
+    "Rs. " +
+    product.price.toLocaleString("en-LK");
+
+
+  document.getElementById(
+    "seokyModalColor"
+  ).textContent =
+    product.color;
+
+
+  document.getElementById(
+    "seokyModalCart"
+  ).onclick = function(){
+
+    addToCart(
+      product.id,
+      product.name,
+      product.price,
+      product.image
+    );
+
+    closeSeokyProductModal();
+
+  };
+
+
+  document
+    .getElementById(
+      "seokyProductModal"
+    )
+    .classList.add("open");
+
+}
+
+
+function closeSeokyProductModal(){
+
+  document
+    .getElementById(
+      "seokyProductModal"
+    )
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   CHECKOUT
+========================================================= */
+
+function openCheckout(){
+
+  if(cart.length === 0){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return;
+
+  }
+
+
+  const itemsBox =
+    document.getElementById(
+      "checkoutItems"
+    );
+
+
+  itemsBox.innerHTML =
+
+    cart.map(item => `
+
+      <p>
+        ${item.name}
+        × ${item.qty}
+        —
+        Rs.
+        ${(item.price * item.qty)
+          .toLocaleString("en-LK")}
+      </p>
+
+    `).join("");
+
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum +
+        (
+          item.price *
+          item.qty
+        ),
+      0
+    );
+
+
+  document.getElementById(
+    "checkoutTotal"
+  ).textContent =
+    "Total: Rs. " +
+    total.toLocaleString("en-LK");
+
+
+  document
+    .getElementById(
+      "checkoutModal"
+    )
+    .classList.add("open");
+
+
+  closeCart();
+
+}
+
+
+function closeCheckout(){
+
+  document
+    .getElementById(
+      "checkoutModal"
+    )
+    .classList.remove("open");
+
+}
+
+
+/* =========================================================
+   WHATSAPP ORDER
+========================================================= */
+
+function submitCheckout(event){
+
+  event.preventDefault();
+
+
+  if(cart.length === 0){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return;
+
+  }
+
+
+  const name =
+    document
+      .getElementById(
+        "checkoutName"
+      )
+      .value
+      .trim();
+
+
+  const phone =
+    document
+      .getElementById(
+        "checkoutPhone"
+      )
+      .value
+      .trim();
+
+
+  const address =
+    document
+      .getElementById(
+        "checkoutAddress"
+      )
+      .value
+      .trim();
+
+
+  const orderLines =
+    cart.map(
+      item =>
+        `• ${item.name} x${item.qty} — Rs. ${
+          (
+            item.price *
+            item.qty
+          ).toLocaleString("en-LK")
+        }`
+    ).join("\n");
+
+
+  const total =
+    cart.reduce(
+      (sum,item) =>
+        sum +
+        (
+          item.price *
+          item.qty
+        ),
+      0
+    );
+
+
+  const message =
+`Hi SEOKY! 👋
+
+I'd like to place an order.
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+ORDER:
+${orderLines}
+
+Total: Rs. ${total.toLocaleString("en-LK")}
+
+Thank you!`;
+
+
+  const whatsappURL =
+    "https://wa.me/" +
+    WHATSAPP_NUMBER +
+    "?text=" +
+    encodeURIComponent(
+      message
+    );
+
+
+  window.open(
+    whatsappURL,
+    "_blank"
+  );
+
+
+  closeCheckout();
+
+}
+
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+function toggleTheme(){
+
+  document.body
+    .classList
+    .toggle("dark");
+
+
+  localStorage.setItem(
+    "seokyTheme",
+    document.body.classList.contains("dark")
+      ? "dark"
+      : "light"
+  );
+
+}
+
+
+if(
+  localStorage.getItem(
+    "seokyTheme"
+  ) === "dark"
+){
+
+  document.body
+    .classList
+    .add("dark");
+
+}
+
+
+/* =========================================================
+   ESC KEY
+========================================================= */
+
+document.addEventListener(
+  "keydown",
+  function(event){
+
+    if(event.key !== "Escape"){
+      return;
+    }
+
+
+    closeCart();
+
+    closeSearch();
+
+    closeCheckout();
+
+    closeSeokyProductModal();
+
+  }
+);
+
+
+/* =========================================================
+   INITIAL LOAD
+========================================================= */
 
 updateCartCount();
 
 </script>
 
+
 </body>
+
 </html>
