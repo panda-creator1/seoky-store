@@ -22,7 +22,6 @@
   rel="stylesheet"
 >
 
-
 <style>
 
 /* =========================================================
@@ -488,6 +487,7 @@ body.dark .menu-card a{
 
 .heart.liked{
   color:#000;
+
   animation:heartPop .45s ease;
 }
 
@@ -536,7 +536,7 @@ body.dark .menu-card a{
 
 
 /* =========================================================
-   CAMPAIGN
+   CAMPAIGN SLIDER
 ========================================================= */
 
 .campaign{
@@ -553,7 +553,28 @@ body.dark .menu-card a{
   min-height:330px;
 }
 
-.campaign img{
+.campaign-slider{
+  display:flex;
+
+  width:100%;
+  height:100%;
+
+  transition:transform .6s ease;
+
+  touch-action:pan-y;
+}
+
+.campaign-slide{
+  position:relative;
+
+  min-width:100%;
+
+  min-height:330px;
+
+  overflow:hidden;
+}
+
+.campaign-slide img{
   width:100%;
   height:100%;
 
@@ -564,12 +585,18 @@ body.dark .menu-card a{
   filter:brightness(.72);
 }
 
+.campaign-slide.active img{
+  animation:campaignZoom .8s ease both;
+}
+
 .campaign-content{
   position:absolute;
 
   inset:auto 7% 9%;
 
   color:#fff;
+
+  z-index:2;
 
   animation:fadeUp .8s ease both;
 }
@@ -588,6 +615,43 @@ body.dark .menu-card a{
   color:#fff;
 
   border:1px solid #fff;
+}
+
+.campaign-dots{
+  position:absolute;
+
+  z-index:10;
+
+  bottom:18px;
+
+  left:50%;
+
+  transform:translateX(-50%);
+
+  display:flex;
+
+  gap:8px;
+}
+
+.campaign-dot{
+  width:8px;
+  height:8px;
+
+  padding:0;
+
+  border-radius:50%;
+
+  background:#777;
+
+  opacity:.8;
+}
+
+.campaign-dot.active{
+  background:#fff;
+
+  opacity:1;
+
+  transform:scale(1.15);
 }
 
 
@@ -783,6 +847,7 @@ body.dark .menu-card a{
 
 body.dark .drawer-card{
   background:#151515;
+
   color:#fff;
 }
 
@@ -858,7 +923,9 @@ body.dark .cart-item{
 
 body.dark .qty button{
   background:#111;
+
   color:#fff;
+
   border-color:#444;
 }
 
@@ -919,6 +986,7 @@ body.dark .qty button{
 
 body.dark .search-card{
   background:#151515;
+
   color:#fff;
 }
 
@@ -942,7 +1010,9 @@ body.dark .search-card{
 
 body.dark .search-row input{
   background:#101010;
+
   color:#fff;
+
   border-color:#333;
 }
 
@@ -964,6 +1034,7 @@ body.dark .search-row input{
   display:none;
 
   align-items:center;
+
   justify-content:center;
 
   padding:18px;
@@ -994,6 +1065,7 @@ body.dark .search-row input{
 
 body.dark .modal{
   background:#151515;
+
   color:#fff;
 }
 
@@ -1182,7 +1254,9 @@ body.dark .modal{
 body.dark .checkout-grid input,
 body.dark .checkout-grid textarea{
   background:#101010;
+
   color:#fff;
+
   border-color:#333;
 }
 
@@ -1202,6 +1276,7 @@ body.dark .checkout-summary{
 
 .checkout-summary p{
   margin:9px 0;
+
   color:#666;
 }
 
@@ -1224,6 +1299,7 @@ body.dark .checkout-summary p{
 
 body.dark .seoky-shop-details{
   background:#0b0b0b;
+
   border-color:#222;
 }
 
@@ -1333,11 +1409,13 @@ body.dark .seoky-info-grid > div{
 
   from{
     opacity:0;
+
     transform:translateY(28px);
   }
 
   to{
     opacity:1;
+
     transform:none;
   }
 
@@ -1359,11 +1437,13 @@ body.dark .seoky-info-grid > div{
 
   from{
     opacity:0;
+
     transform:translateY(-8px);
   }
 
   to{
     opacity:1;
+
     transform:none;
   }
 
@@ -1373,11 +1453,13 @@ body.dark .seoky-info-grid > div{
 
   from{
     opacity:0;
+
     transform:translateY(-10px);
   }
 
   to{
     opacity:1;
+
     transform:none;
   }
 
@@ -1398,6 +1480,18 @@ body.dark .seoky-info-grid > div{
   }
 
   100%{
+    transform:scale(1);
+  }
+
+}
+
+@keyframes campaignZoom{
+
+  from{
+    transform:scale(1.035);
+  }
+
+  to{
     transform:scale(1);
   }
 
@@ -1426,7 +1520,11 @@ body.dark .seoky-info-grid > div{
     min-height:460px;
   }
 
-  .campaign img{
+  .campaign-slide{
+    min-height:460px;
+  }
+
+  .campaign-slide img{
     min-height:460px;
   }
 
@@ -1497,6 +1595,7 @@ body.dark .seoky-info-grid > div{
 
   .campaign{
     margin-left:5%;
+
     margin-right:5%;
   }
 
@@ -1518,6 +1617,7 @@ body.dark .seoky-info-grid > div{
 
   .seoky-modal-image img{
     min-height:240px;
+
     max-height:330px;
   }
 
@@ -1558,8 +1658,11 @@ body.dark .seoky-info-grid > div{
   *::before,
   *::after{
     animation-duration:.001ms!important;
+
     animation-iteration-count:1!important;
+
     scroll-behavior:auto!important;
+
     transition-duration:.001ms!important;
   }
 
@@ -1650,7 +1753,10 @@ body.dark .seoky-info-grid > div{
       Contact
     </a>
 
-    <a href="#" onclick="toggleTheme();toggleMenu();return false;">
+    <a
+      href="#"
+      onclick="toggleTheme();toggleMenu();return false;"
+    >
       🌙 Dark Mode
     </a>
 
@@ -1666,7 +1772,9 @@ body.dark .seoky-info-grid > div{
 <main id="home">
 
 
-<!-- HERO -->
+<!-- =======================================================
+     HERO
+======================================================= -->
 
 <section class="hero">
 
@@ -1691,7 +1799,11 @@ body.dark .seoky-info-grid > div{
       href="#shop"
     >
       SHOP NOW
-      <span>→</span>
+
+      <span>
+        →
+      </span>
+
     </a>
 
   </div>
@@ -1700,7 +1812,9 @@ body.dark .seoky-info-grid > div{
   <div class="dots">
 
     <i class="dot active"></i>
+
     <i class="dot"></i>
+
     <i class="dot"></i>
 
   </div>
@@ -1708,7 +1822,9 @@ body.dark .seoky-info-grid > div{
 </section>
 
 
-<!-- TICKER -->
+<!-- =======================================================
+     TICKER
+======================================================= -->
 
 <div class="ticker">
 
@@ -1717,7 +1833,9 @@ body.dark .seoky-info-grid > div{
 </div>
 
 
-<!-- SHOP -->
+<!-- =======================================================
+     SHOP
+======================================================= -->
 
 <section
   class="section"
@@ -1806,6 +1924,61 @@ body.dark .seoky-info-grid > div{
     </article>
 
 
+    <!-- GRAY TEE -->
+
+    <article
+      class="product"
+      onclick="openSeokyProductModal('gray-tee')"
+    >
+
+      <div class="product-img">
+
+        <img
+          src="gray-tee.png"
+          alt="SEOKY Gray Tee"
+        >
+
+        <button
+          class="heart"
+          onclick="event.stopPropagation();like(this)"
+          aria-label="Like"
+        >
+          ♡
+        </button>
+
+      </div>
+
+
+      <div class="product-info">
+
+        <div class="product-title">
+          SEOKY Gray Tee
+        </div>
+
+        <div class="price">
+          Rs. 1,500
+        </div>
+
+        <button
+          class="add"
+          onclick="
+            event.stopPropagation();
+            addToCart(
+              'gray-tee',
+              'SEOKY Gray Tee',
+              1500,
+              'gray-tee.png'
+            );
+          "
+        >
+          ADD TO CART
+        </button>
+
+      </div>
+
+    </article>
+
+
     <!-- WHITE TEE -->
 
     <article
@@ -1865,45 +2038,158 @@ body.dark .seoky-info-grid > div{
 </section>
 
 
-<!-- CAMPAIGN -->
+<!-- =======================================================
+     CAMPAIGN SLIDER
+======================================================= -->
 
 <section
   class="campaign"
   id="campaign"
 >
 
-  <img
-    src="seoky-campaign.png"
-    alt="SEOKY Campaign"
+  <div
+    class="campaign-slider"
+    id="campaignSlider"
   >
 
-  <div class="campaign-content">
 
-    <div
-      class="kicker"
-      style="color:#fff"
-    >
-      SEOKY CAMPAIGN
+    <!-- SLIDE 1 -->
+
+    <div class="campaign-slide active">
+
+      <img
+        src="seoky-campaign.png"
+        alt="SEOKY Campaign"
+      >
+
+      <div class="campaign-content">
+
+        <div
+          class="kicker"
+          style="color:#fff"
+        >
+          SEOKY CAMPAIGN
+        </div>
+
+        <h3>
+          MADE FOR<br>
+          EVERYONE.
+        </h3>
+
+        <a
+          class="cta outline"
+          href="#shop"
+        >
+          EXPLORE →
+        </a>
+
+      </div>
+
     </div>
 
-    <h3>
-      MADE FOR<br>
-      EVERYONE.
-    </h3>
 
-    <a
-      class="cta outline"
-      href="#shop"
-    >
-      EXPLORE →
-    </a>
+    <!-- SLIDE 2 -->
+
+    <div class="campaign-slide">
+
+      <img
+        src="seoky-campaign2.png"
+        alt="SEOKY Campaign 2"
+      >
+
+      <div class="campaign-content">
+
+        <div
+          class="kicker"
+          style="color:#fff"
+        >
+          SEOKY CAMPAIGN
+        </div>
+
+        <h3>
+          MADE FOR<br>
+          EVERYONE.
+        </h3>
+
+        <a
+          class="cta outline"
+          href="#shop"
+        >
+          EXPLORE →
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- SLIDE 3 -->
+
+    <div class="campaign-slide">
+
+      <img
+        src="seoky-campaign3.png"
+        alt="SEOKY Campaign 3"
+      >
+
+      <div class="campaign-content">
+
+        <div
+          class="kicker"
+          style="color:#fff"
+        >
+          SEOKY CAMPAIGN
+        </div>
+
+        <h3>
+          MADE FOR<br>
+          EVERYONE.
+        </h3>
+
+        <a
+          class="cta outline"
+          href="#shop"
+        >
+          EXPLORE →
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- CAMPAIGN DOTS -->
+
+  <div class="campaign-dots">
+
+    <button
+      class="campaign-dot active"
+      onclick="goCampaignSlide(0)"
+      aria-label="Campaign slide 1"
+    ></button>
+
+    <button
+      class="campaign-dot"
+      onclick="goCampaignSlide(1)"
+      aria-label="Campaign slide 2"
+    ></button>
+
+    <button
+      class="campaign-dot"
+      onclick="goCampaignSlide(2)"
+      aria-label="Campaign slide 3"
+    ></button>
 
   </div>
 
 </section>
 
 
-<!-- ABOUT -->
+<!-- =======================================================
+     ABOUT
+======================================================= -->
 
 <section
   class="section about"
@@ -2033,8 +2319,6 @@ body.dark .seoky-info-grid > div{
   <div class="footer-grid">
 
 
-    <!-- BRAND -->
-
     <div>
 
       <div class="logo">
@@ -2057,8 +2341,6 @@ body.dark .seoky-info-grid > div{
     </div>
 
 
-    <!-- SHOP -->
-
     <div>
 
       <h4>
@@ -2069,6 +2351,12 @@ body.dark .seoky-info-grid > div{
 
         <a href="#shop">
           Black Tee
+        </a>
+
+        <br>
+
+        <a href="#shop">
+          Gray Tee
         </a>
 
         <br>
@@ -2087,8 +2375,6 @@ body.dark .seoky-info-grid > div{
 
     </div>
 
-
-    <!-- CONTACT -->
 
     <div>
 
@@ -2532,6 +2818,21 @@ const PRODUCTS = {
   },
 
 
+  "gray-tee": {
+
+    id:"gray-tee",
+
+    name:"SEOKY Gray Tee",
+
+    price:1500,
+
+    image:"gray-tee.png",
+
+    color:"Gray"
+
+  },
+
+
   "white-tee": {
 
     id:"white-tee",
@@ -2553,7 +2854,8 @@ const PRODUCTS = {
    WHATSAPP
 ========================================================= */
 
-const WHATSAPP_NUMBER = "94762240238";
+const WHATSAPP_NUMBER =
+  "94762240238";
 
 
 /* =========================================================
@@ -2588,12 +2890,14 @@ function updateCartCount(){
     );
 
 
-  document.getElementById("cartCount")
-    .textContent = total;
+  document.getElementById(
+    "cartCount"
+  ).textContent = total;
 
 
-  document.getElementById("bottomCount")
-    .textContent = total;
+  document.getElementById(
+    "bottomCount"
+  ).textContent = total;
 
 }
 
@@ -2684,7 +2988,8 @@ function removeItem(id){
 
   cart =
     cart.filter(
-      item => item.id !== id
+      item =>
+        item.id !== id
     );
 
 
@@ -2755,7 +3060,8 @@ function renderCart(){
           </h4>
 
           <div>
-            Rs. ${item.price.toLocaleString("en-LK")}
+            Rs.
+            ${item.price.toLocaleString("en-LK")}
           </div>
 
 
@@ -2824,7 +3130,8 @@ function renderCart(){
       </span>
 
       <span>
-        Rs. ${total.toLocaleString("en-LK")}
+        Rs.
+        ${total.toLocaleString("en-LK")}
       </span>
 
     </div>
@@ -3434,13 +3741,177 @@ document.addEventListener(
 
 
 /* =========================================================
+   CAMPAIGN SLIDER
+========================================================= */
+
+let campaignIndex = 0;
+
+let campaignTimer;
+
+
+const campaignSlider =
+  document.getElementById(
+    "campaignSlider"
+  );
+
+
+const campaignSlides =
+  document.querySelectorAll(
+    ".campaign-slide"
+  );
+
+
+const campaignDots =
+  document.querySelectorAll(
+    ".campaign-dot"
+  );
+
+
+function goCampaignSlide(index){
+
+  if(
+    !campaignSlider ||
+    !campaignSlides.length
+  ){
+    return;
+  }
+
+
+  campaignIndex =
+    (index + campaignSlides.length) %
+    campaignSlides.length;
+
+
+  campaignSlider.style.transform =
+    `translateX(-${campaignIndex * 100}%)`;
+
+
+  campaignSlides.forEach(
+    slide =>
+      slide.classList.remove("active")
+  );
+
+
+  campaignDots.forEach(
+    dot =>
+      dot.classList.remove("active")
+  );
+
+
+  campaignSlides[
+    campaignIndex
+  ].classList.add("active");
+
+
+  if(campaignDots[campaignIndex]){
+
+    campaignDots[
+      campaignIndex
+    ].classList.add("active");
+
+  }
+
+}
+
+
+function startCampaignSlider(){
+
+  clearInterval(
+    campaignTimer
+  );
+
+
+  campaignTimer =
+    setInterval(
+      () => {
+
+        goCampaignSlide(
+          campaignIndex + 1
+        );
+
+      },
+      4500
+    );
+
+}
+
+
+/* =========================================================
+   CAMPAIGN TOUCH SWIPE
+========================================================= */
+
+let campaignTouchStartX = 0;
+
+
+if(campaignSlider){
+
+  campaignSlider.addEventListener(
+    "touchstart",
+    function(event){
+
+      campaignTouchStartX =
+        event.touches[0].clientX;
+
+    },
+    {
+      passive:true
+    }
+  );
+
+
+  campaignSlider.addEventListener(
+    "touchend",
+    function(event){
+
+      const campaignTouchEndX =
+        event.changedTouches[0].clientX;
+
+
+      const distance =
+        campaignTouchStartX -
+        campaignTouchEndX;
+
+
+      if(Math.abs(distance) >= 50){
+
+        if(distance > 0){
+
+          goCampaignSlide(
+            campaignIndex + 1
+          );
+
+        }else{
+
+          goCampaignSlide(
+            campaignIndex - 1
+          );
+
+        }
+
+      }
+
+
+      startCampaignSlider();
+
+    },
+    {
+      passive:true
+    }
+  );
+
+}
+
+
+startCampaignSlider();
+
+
+/* =========================================================
    INITIAL LOAD
 ========================================================= */
 
 updateCartCount();
 
 </script>
-
 
 </body>
 
