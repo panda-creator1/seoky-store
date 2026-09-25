@@ -1,0 +1,7003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<meta name="color-scheme" content="dark">
+<title>SEOKY — Streetwear</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800;900&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+html{
+  scroll-behavior:smooth;
+  background:#080808
+}
+
+body{
+  font-family:'Inter',Arial,Helvetica,sans-serif;
+  background:#0b0b0b;
+  color:#f5f5f5;
+  overflow-x:hidden
+}
+
+button,
+input,
+textarea,
+select{
+  font:inherit
+}
+
+button{
+  border:0;
+  cursor:pointer
+}
+
+a{
+  text-decoration:none;
+  color:inherit
+}
+
+img{
+  display:block
+}
+
+::selection{
+  background:#fff;
+  color:#000
+}
+
+.logo,
+.hero h1,
+.section h2,
+.campaign-content h3,
+.seoky-modal-info h2,
+.checkout-title,
+.auth-title{
+  font-family:'Bebas Neue',Impact,sans-serif;
+  font-weight:400
+}
+
+.logo{
+  letter-spacing:7px
+}
+
+.hero h1{
+  letter-spacing:1px
+}
+
+.section h2{
+  letter-spacing:.5px
+}
+
+/* =====================================================
+   GLOBAL PREMIUM EFFECTS
+===================================================== */
+
+.section,
+.campaign,
+.seoky-shop-details,
+.footer-brand,
+.footer-links,
+.footer-contact{
+  opacity:0;
+  transform:translateY(28px);
+  transition:
+    opacity .8s ease,
+    transform .8s cubic-bezier(.2,.8,.2,1)
+}
+
+.section.revealed,
+.campaign.revealed,
+.seoky-shop-details.revealed,
+.footer-brand.revealed,
+.footer-links.revealed,
+.footer-contact.revealed{
+  opacity:1;
+  transform:none
+}
+
+.product{
+  opacity:0;
+  transform:translateY(24px);
+  transition:
+    opacity .65s ease,
+    transform .65s cubic-bezier(.2,.8,.2,1)
+}
+
+.product.revealed{
+  opacity:1;
+  transform:none
+}
+
+.product:nth-child(2){
+  transition-delay:.08s
+}
+
+.product:nth-child(3){
+  transition-delay:.16s
+}
+
+.cta,
+.add,
+.checkout,
+.auth-submit{
+  position:relative;
+  overflow:hidden
+}
+
+.cta::after,
+.add::after,
+.checkout::after,
+.auth-submit::after{
+  content:"";
+  position:absolute;
+  top:-100%;
+  left:-120%;
+  width:70%;
+  height:300%;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.22),
+    transparent
+  );
+  transform:rotate(18deg);
+  transition:left .65s ease;
+  pointer-events:none
+}
+
+.cta:hover::after,
+.add:hover::after,
+.checkout:hover::after,
+.auth-submit:hover::after{
+  left:140%
+}
+
+
+/* =====================================================
+   SEOKY LANGUAGE SWITCHER — EN / සිං
+===================================================== */
+.language-wrap{position:relative;z-index:520}
+.language-btn{height:42px;min-width:58px;padding:0 12px;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:rgba(255,255,255,.045);color:#eee;font:700 11px/1 Arial,sans-serif;letter-spacing:1.2px;cursor:pointer;transition:transform .22s ease,background .22s ease,border-color .22s ease,box-shadow .22s ease}
+.language-btn:hover{transform:translateY(-2px);background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.24);box-shadow:0 8px 22px rgba(0,0,0,.22)}
+.language-btn:active{transform:scale(.96)}
+.language-panel{position:absolute;top:50px;right:0;width:138px;padding:7px;border:1px solid rgba(255,255,255,.12);border-radius:15px;background:rgba(12,12,12,.92);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);box-shadow:0 18px 45px rgba(0,0,0,.4);opacity:0;visibility:hidden;transform:translateY(-7px) scale(.97);transform-origin:top right;transition:opacity .2s ease,transform .25s cubic-bezier(.2,.8,.2,1),visibility .2s ease}
+.language-wrap.open .language-panel{opacity:1;visibility:visible;transform:translateY(0) scale(1)}
+.language-option{width:100%;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 11px;border:0;border-radius:10px;background:transparent;color:#aaa;font:700 11px/1 Arial,sans-serif;letter-spacing:.8px;text-align:left;cursor:pointer;transition:background .2s ease,color .2s ease,transform .2s ease}
+.language-option:hover{background:rgba(255,255,255,.07);color:#fff;transform:translateX(2px)}
+.language-option.active{background:rgba(255,255,255,.09);color:#fff}
+.language-check{opacity:0;transform:scale(.7);transition:.2s ease}
+.language-option.active .language-check{opacity:1;transform:scale(1)}
+@media(max-width:700px){.language-btn{min-width:56px;height:40px}.language-panel{top:48px;width:132px}.language-option{padding:11px}}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.header{
+  position:sticky;
+  top:0;
+  z-index:500;
+  height:72px;
+  background:rgba(8,8,8,.94);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 22px;
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px)
+}
+
+.logo{
+  font-size:29px;
+  transition:letter-spacing .3s ease
+}
+
+.logo:hover{
+  letter-spacing:9px
+}
+
+.header-actions{
+  display:flex;
+  align-items:center;
+  gap:10px
+}
+
+.icon-btn{
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  background:transparent;
+  color:#fff;
+  font-size:23px;
+  border-radius:10px;
+  transition:
+    transform .25s ease,
+    background .25s ease
+}
+
+.icon-btn:hover{
+  transform:translateY(-2px);
+  background:rgba(255,255,255,.07)
+}
+
+.cart-wrap{
+  position:relative
+}
+
+.badge{
+  position:absolute;
+  right:-3px;
+  top:-4px;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  background:#fff;
+  color:#000;
+  font-size:10px;
+  font-weight:800;
+  display:grid;
+  place-items:center;
+  transition:transform .25s ease
+}
+
+.badge.bump{
+  animation:badgeBump .35s ease
+}
+
+/* =====================================================
+   PROFESSIONAL MENU — CLEAN PREMIUM TYPE + MICRO MOTION
+===================================================== */
+
+.menu-card{
+  position:absolute;
+  top:82px;
+  right:15px;
+  width:285px;
+  padding:12px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(29,29,29,.97),
+      rgba(12,12,12,.97)
+    );
+  color:#fff;
+  border:1px solid rgba(255,255,255,.11);
+  box-shadow:
+    0 25px 80px rgba(0,0,0,.7),
+    inset 0 1px rgba(255,255,255,.05);
+  backdrop-filter:blur(24px);
+  -webkit-backdrop-filter:blur(24px);
+  display:none;
+  z-index:550;
+  overflow:hidden
+}
+
+.menu-card.open{
+  display:block;
+  animation:menuIn .32s cubic-bezier(.2,.8,.2,1)
+}
+
+.menu-card::before{
+  content:"";
+  position:absolute;
+  width:160px;
+  height:160px;
+  top:-90px;
+  right:-70px;
+  background:rgba(255,255,255,.05);
+  border-radius:50%;
+  filter:blur(20px);
+  pointer-events:none
+}
+
+.menu-card::after{
+  content:"";
+  position:absolute;
+  left:-35%;
+  top:0;
+  width:35%;
+  height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.035),transparent);
+  transform:skewX(-16deg) translateX(0);
+  pointer-events:none;
+  opacity:0
+}
+
+.menu-card.open::after{
+  animation:menuSheen .75s ease .08s 1 forwards
+}
+
+@keyframes menuSheen{
+  0%{opacity:0;transform:skewX(-16deg) translateX(0)}
+  15%{opacity:1}
+  100%{opacity:0;transform:skewX(-16deg) translateX(430%)}
+}
+
+.menu-head{
+  padding:12px 12px 14px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  margin-bottom:7px
+}
+
+.menu-head-title{
+  font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:25px;
+  font-weight:400;
+  letter-spacing:4.5px;
+  line-height:1;
+  color:#f1f1f1;
+  text-shadow:none
+}
+
+.menu-head-sub{
+  color:#5f5f5f;
+  font-size:8px;
+  letter-spacing:2.4px;
+  margin-top:6px;
+  font-weight:700
+}
+
+.menu-card a{
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  min-height:47px;
+  padding:10px 11px;
+  border-radius:11px;
+  color:#b8b8b8;
+  font-family:'Manrope',Inter,Arial,sans-serif;
+  font-size:13px;
+  font-weight:650;
+  letter-spacing:.1px;
+  line-height:1.2;
+  border:1px solid transparent;
+  opacity:0;
+  transform:translate3d(10px,0,0);
+  transition:
+    color .22s ease,
+    background .22s ease,
+    border-color .22s ease,
+    transform .28s cubic-bezier(.2,.8,.2,1);
+}
+
+.menu-card.open a{
+  opacity:1;
+  transform:translate3d(0,0,0);
+}
+
+.menu-card.open a:nth-of-type(1){transition-delay:.02s}
+.menu-card.open a:nth-of-type(2){transition-delay:.045s}
+.menu-card.open a:nth-of-type(3){transition-delay:.07s}
+.menu-card.open a:nth-of-type(4){transition-delay:.095s}
+.menu-card.open a:nth-of-type(5){transition-delay:.12s}
+.menu-card.open a:nth-of-type(6){transition-delay:.145s}
+.menu-card.open a:nth-of-type(7){transition-delay:.17s}
+.menu-card.open a:nth-of-type(8){transition-delay:.195s}
+.menu-card.open a:nth-of-type(9){transition-delay:.22s}
+
+.menu-card a:hover{
+  background:rgba(255,255,255,.045);
+  border-color:rgba(255,255,255,.06);
+  color:#f1f1f1;
+  transform:translate3d(3px,0,0)!important;
+}
+
+.menu-icon{
+  width:28px;
+  height:28px;
+  border-radius:8px;
+  display:grid;
+  place-items:center;
+  background:#191919;
+  color:#a9a9a9;
+  font-size:12px;
+  flex-shrink:0;
+  border:1px solid rgba(255,255,255,.035);
+  transition:
+    transform .22s cubic-bezier(.2,.8,.2,1),
+    background .22s ease,
+    color .22s ease,
+    border-color .22s ease;
+}
+
+.menu-card a:hover .menu-icon{
+  background:#242424;
+  color:#fff;
+  border-color:rgba(255,255,255,.09);
+  transform:scale(1.05);
+}
+
+.menu-arrow{
+  margin-left:auto;
+  color:#4b4b4b;
+  font-size:14px;
+  transition:transform .22s cubic-bezier(.2,.8,.2,1),color .22s ease
+}
+
+.menu-card a:hover .menu-arrow{
+  color:#bdbdbd;
+  transform:translateX(4px)
+}
+
+.menu-divider{
+  height:1px;
+  background:rgba(255,255,255,.07);
+  margin:7px 5px
+}
+
+.menu-auth{
+  background:rgba(255,255,255,.018)
+}
+
+.menu-auth.login .menu-icon{
+  background:#e9e9e9;
+  color:#080808;
+  border-color:#e9e9e9
+}
+
+@media(max-width:700px){
+  .menu-head-title{
+    font-size:24px;
+    letter-spacing:4.2px
+  }
+
+  .menu-card a{
+    min-height:48px;
+    font-size:13px;
+    font-weight:650;
+    gap:13px
+  }
+
+  .menu-card a:active{
+    background:rgba(255,255,255,.065);
+    transform:scale(.985)!important;
+    color:#fff
+  }
+
+  .menu-card a:active .menu-icon{
+    transform:scale(.96)
+  }
+
+  .menu-card a:active .menu-arrow{
+    transform:translateX(3px)
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .menu-card.open a{
+    transition:none!important
+  }
+}
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+  position:relative;
+  height:min(78vh,720px);
+  min-height:530px;
+  overflow:hidden;
+  background:#111
+}
+
+.hero-slider{
+  width:100%;
+  height:100%;
+  position:relative
+}
+
+.hero-slide{
+  position:absolute;
+  inset:0;
+  opacity:0;
+  visibility:hidden;
+  transition:
+    opacity .75s ease,
+    visibility .75s ease
+}
+
+.hero-slide.active{
+  opacity:1;
+  visibility:visible
+}
+
+.hero-slide img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  filter:brightness(.78);
+  transform:scale(1.08);
+  transition:transform 6s cubic-bezier(.2,.7,.2,1)
+}
+
+.hero-slide.active img{
+  transform:scale(1)
+}
+
+.hero:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.65),
+      rgba(0,0,0,.05) 75%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(0,0,0,.55),
+      transparent 48%
+    )
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  opacity:.18;
+  background:
+    radial-gradient(
+      circle at 20% 30%,
+      rgba(255,255,255,.15),
+      transparent 18%
+    );
+  animation:heroGlow 6s ease-in-out infinite alternate
+}
+
+.hero-content{
+  position:absolute;
+  z-index:3;
+  left:7%;
+  bottom:11%;
+  color:#fff;
+  animation:fadeUp .9s ease both
+}
+
+.eyebrow{
+  font-size:12px;
+  letter-spacing:5px;
+  margin-bottom:12px;
+  font-weight:700
+}
+
+.hero h1{
+  font-size:clamp(55px,10vw,100px);
+  line-height:.82;
+  margin-bottom:26px
+}
+
+.cta{
+  background:#fff;
+  color:#080808;
+  padding:15px 22px;
+  border-radius:3px;
+  font-weight:800;
+  display:inline-flex;
+  gap:20px;
+  align-items:center;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease
+}
+
+.cta:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 35px rgba(0,0,0,.3)
+}
+
+.dots{
+  position:absolute;
+  z-index:5;
+  bottom:25px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:9px
+}
+
+.dot{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#777;
+  cursor:pointer;
+  transition:.3s ease
+}
+
+.dot.active{
+  background:#fff;
+  transform:scale(1.35);
+  box-shadow:0 0 12px rgba(255,255,255,.6)
+}
+
+/* =====================================================
+   TICKER
+===================================================== */
+
+.ticker{
+  min-height:64px;
+  background:#090909;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:18px;
+  font-size:12px;
+  letter-spacing:3px;
+  text-align:center;
+  padding:15px 18px;
+  border-top:1px solid #1c1c1c;
+  border-bottom:1px solid #1c1c1c;
+  position:relative;
+  overflow:hidden
+}
+
+.ticker::before{
+  content:"";
+  position:absolute;
+  width:180px;
+  height:100%;
+  left:-200px;
+  top:0;
+  background:linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,.06),
+    transparent
+  );
+  transform:skewX(-20deg);
+  animation:tickerShine 5s infinite
+}
+
+/* =====================================================
+   SECTIONS
+===================================================== */
+
+.section{
+  padding:62px 6%;
+  background:#0b0b0b
+}
+
+.section-head{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:28px
+}
+
+.kicker{
+  font-size:11px;
+  letter-spacing:4px;
+  color:#666;
+  margin-bottom:8px;
+  font-weight:800
+}
+
+.section h2{
+  font-size:48px;
+  line-height:.9;
+  color:#fff
+}
+
+.view{
+  font-size:13px;
+  font-weight:700;
+  color:#aaa;
+  transition:.2s ease
+}
+
+.view:hover{
+  color:#fff;
+  transform:translateX(4px)
+}
+
+/* =====================================================
+   PRODUCTS
+===================================================== */
+
+.products{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px
+}
+
+.product{
+  position:relative;
+  cursor:pointer
+}
+
+.product-img{
+  position:relative;
+  background:#f1f1f1;
+  border-radius:12px;
+  overflow:hidden;
+  aspect-ratio:1/1.15;
+  box-shadow:0 10px 35px rgba(0,0,0,.15);
+  transition:
+    transform .35s cubic-bezier(.2,.8,.2,1),
+    box-shadow .35s ease
+}
+
+.product:hover .product-img{
+  transform:translateY(-7px);
+  box-shadow:0 22px 55px rgba(0,0,0,.32)
+}
+
+.product-img img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .6s cubic-bezier(.2,.8,.2,1)
+}
+
+.product:hover .product-img img{
+  transform:scale(1.055)
+}
+
+.heart{
+  position:absolute;
+  right:12px;
+  top:12px;
+  width:38px;
+  height:38px;
+  border-radius:11px;
+  border:1px solid rgba(255,255,255,.24);
+  background:rgba(12,12,12,.72);
+  color:#fff;
+  display:grid;
+  place-items:center;
+  font-size:22px;
+  font-weight:700;
+  line-height:1;
+  z-index:2;
+  cursor:pointer;
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  box-shadow:0 8px 22px rgba(0,0,0,.22);
+  transition:
+    transform .25s cubic-bezier(.2,.8,.2,1),
+    background .25s ease,
+    border-color .25s ease,
+    box-shadow .25s ease
+}
+
+.heart:hover{
+  transform:translateY(-3px) scale(1.08) rotate(3deg);
+  border-color:rgba(255,255,255,.7);
+  box-shadow:0 12px 28px rgba(0,0,0,.35)
+}
+
+.heart:active{
+  transform:scale(.9)
+}
+
+.heart.liked{
+  color:#111;
+  background:#fff;
+  border-color:#fff;
+  animation:savePop .5s cubic-bezier(.2,.8,.2,1)
+}
+
+@keyframes savePop{
+  0%{transform:scale(.82) rotate(-10deg)}
+  45%{transform:scale(1.22) rotate(6deg)}
+  70%{transform:scale(.94) rotate(-2deg)}
+  100%{transform:scale(1) rotate(0)}
+}
+
+.product-info{
+  padding-top:15px
+}
+
+.product-title{
+  font-size:16px;
+  font-weight:800;
+  color:#fff
+}
+
+.price{
+  font-size:14px;
+  color:#777;
+  margin-top:7px
+}
+
+.add{
+  margin-top:13px;
+  background:#fff;
+  color:#080808;
+  border-radius:6px;
+  padding:12px 14px;
+  width:100%;
+  font-weight:800;
+  font-size:12px;
+  letter-spacing:.7px;
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease
+}
+
+.add:hover{
+  transform:translateY(-3px);
+  box-shadow:0 12px 30px rgba(0,0,0,.25)
+}
+
+/* =====================================================
+   CAMPAIGN
+===================================================== */
+
+.campaign{
+  margin:20px 6% 10px;
+  position:relative;
+  overflow:hidden;
+  border-radius:14px;
+  background:#111;
+  min-height:330px
+}
+
+.campaign img{
+  width:100%;
+  height:100%;
+  min-height:330px;
+  object-fit:cover;
+  filter:brightness(.68);
+  transition:transform 1s ease
+}
+
+.campaign:hover img{
+  transform:scale(1.035)
+}
+
+.campaign::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(0,0,0,.6),
+      transparent 75%
+    );
+  pointer-events:none
+}
+
+.campaign-content{
+  position:absolute;
+  z-index:2;
+  inset:auto 7% 9%;
+  color:#fff;
+  animation:fadeUp .8s ease both
+}
+
+.campaign-content h3{
+  font-size:52px;
+  line-height:.9;
+  margin:5px 0 15px
+}
+
+.outline{
+  background:transparent;
+  color:#fff;
+  border:1px solid #fff
+}
+
+.outline:hover{
+  background:#fff;
+  color:#000
+}
+
+/* =====================================================
+   ABOUT
+===================================================== */
+
+.about{
+  background:#080808;
+  color:#fff;
+  border-top:1px solid #171717;
+  border-bottom:1px solid #171717
+}
+
+.about p{
+  max-width:720px;
+  color:#999;
+  line-height:1.8;
+  margin-top:18px
+}
+
+/* =====================================================
+   SHOP DETAILS
+===================================================== */
+
+.seoky-shop-details{
+  padding:75px 6%;
+  border-top:1px solid #222;
+  background:#0b0b0b;
+  font-family:'Manrope',Arial,Helvetica,sans-serif
+}
+
+.seoky-shop-details-inner{
+  max-width:1100px;
+  margin:auto
+}
+
+.seoky-shop-details h2{
+  font-family:'Manrope',Arial,Helvetica,sans-serif;
+  font-size:42px;
+  font-weight:800;
+  letter-spacing:-1px
+}
+
+.seoky-modal-label{
+  font-size:11px;
+  letter-spacing:.18em;
+  font-weight:800;
+  margin:0 0 8px;
+  color:#777
+}
+
+.seoky-info-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:28px
+}
+
+.seoky-info-grid>div{
+  border:1px solid #292929;
+  border-radius:16px;
+  padding:26px;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255,255,255,.025),
+      rgba(255,255,255,.005)
+    );
+  transition:
+    transform .3s ease,
+    border-color .3s ease,
+    background .3s ease
+}
+
+.seoky-info-grid>div:hover{
+  transform:translateY(-6px);
+  border-color:#555;
+  background:rgba(255,255,255,.035)
+}
+
+.seoky-info-grid span{
+  font-size:26px
+}
+
+.seoky-info-grid h3{
+  margin:15px 0 7px;
+  font-family:'Manrope',Arial,sans-serif;
+  font-weight:800;
+  letter-spacing:-.3px
+}
+
+.seoky-info-grid p{
+  margin:0;
+  color:#888;
+  line-height:1.6;
+  font-size:14px
+}
+
+/* =====================================================
+   FOOTER
+===================================================== */
+
+.footer{
+  position:relative;
+  padding:65px 6% 110px;
+  background:#080808;
+  color:#fff;
+  border-top:1px solid #222;
+  font-family:'Manrope',Arial,Helvetica,sans-serif
+}
+
+.footer-grid{
+  display:grid;
+  grid-template-columns:1.5fr 1fr 1fr;
+  gap:50px;
+  max-width:1100px;
+  margin:auto
+}
+
+.footer .logo{
+  font-family:'Bebas Neue',Impact,sans-serif;
+  letter-spacing:7px;
+  font-size:32px
+}
+
+.footer p{
+  color:#888;
+  line-height:1.7;
+  margin-top:12px;
+  font-size:14px
+}
+
+.footer h4{
+  font-family:'Manrope',Arial,sans-serif;
+  font-size:13px;
+  letter-spacing:2px;
+  margin-bottom:16px
+}
+
+.footer a{
+  transition:.2s ease
+}
+
+.footer-brand{
+  max-width:300px
+}
+
+.footer-brand .tagline{
+  margin-top:18px;
+  font-size:16px;
+  line-height:1.7;
+  color:#aaa
+}
+
+.footer-location{
+  margin-top:20px;
+  color:#777;
+  font-size:13px;
+  line-height:1.8
+}
+
+.footer-links a{
+  display:block;
+  color:#888;
+  margin:10px 0;
+  font-size:14px
+}
+
+.footer-links a:hover{
+  transform:translateX(5px);
+  color:#fff
+}
+
+.footer-contact p{
+  color:#888;
+  margin:8px 0
+}
+
+.footer-bottom{
+  max-width:1100px;
+  margin:45px auto 0;
+  padding-top:20px;
+  border-top:1px solid #222;
+  text-align:center;
+  color:#555;
+  font-size:12px;
+  letter-spacing:.5px
+}
+
+/* =====================================================
+   WHATSAPP
+===================================================== */
+
+.whatsapp-float{
+  position:fixed;
+  right:20px;
+  bottom:28px;
+  width:58px;
+  height:58px;
+  border-radius:50%;
+  background:#25D366;
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  z-index:800;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,.45),
+    0 0 0 1px rgba(255,255,255,.08);
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease
+}
+
+.whatsapp-float svg{
+  width:32px;
+  height:32px;
+  fill:#fff;
+  display:block;
+  position:relative;
+  z-index:2
+}
+
+.whatsapp-float:hover{
+  transform:scale(1.09) translateY(-2px);
+  box-shadow:
+    0 14px 35px rgba(0,0,0,.5),
+    0 0 25px rgba(37,211,102,.28)
+}
+
+.whatsapp-float::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:50%;
+  border:2px solid rgba(37,211,102,.5);
+  animation:whatsappPulse 2.2s infinite
+}
+
+.whatsapp-label{
+  position:absolute;
+  right:68px;
+  white-space:nowrap;
+  background:#151515;
+  color:#fff;
+  border:1px solid #292929;
+  padding:8px 11px;
+  border-radius:8px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:.5px;
+  opacity:0;
+  transform:translateX(8px);
+  pointer-events:none;
+  transition:.25s ease
+}
+
+.whatsapp-float:hover .whatsapp-label{
+  opacity:1;
+  transform:none
+}
+
+/* =====================================================
+   BOTTOM NAV
+===================================================== */
+
+.bottom-nav{
+  position:fixed;
+  z-index:600;
+  bottom:0;
+  left:0;
+  right:0;
+  height:72px;
+  background:rgba(8,8,8,.97);
+  color:#666;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  border-top:1px solid #222;
+  backdrop-filter:blur(18px)
+}
+
+.nav-item{
+  background:none;
+  color:#666;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:5px;
+  font-size:11px;
+  transition:.2s ease
+}
+
+.nav-item span:first-child{
+  font-size:22px
+}
+
+.nav-item.active,
+.nav-item:hover{
+  color:#fff
+}
+
+.nav-item sup{
+  font-size:10px
+}
+
+/* =====================================================
+   DRAWER / SEARCH
+===================================================== */
+
+.drawer,
+.search-panel{
+  position:fixed;
+  z-index:900;
+  inset:0;
+  background:rgba(0,0,0,.72);
+  display:none;
+  backdrop-filter:blur(5px)
+}
+
+.drawer.open,
+.search-panel.open{
+  display:block;
+  animation:backdropIn .25s ease
+}
+
+.drawer-card{
+  position:absolute;
+  right:0;
+  top:0;
+  height:100%;
+  width:min(430px,92%);
+  background:#121212;
+  color:#fff;
+  padding:25px;
+  overflow:auto;
+  border-left:1px solid #292929;
+  box-shadow:-20px 0 70px rgba(0,0,0,.5);
+  animation:drawerIn .35s cubic-bezier(.2,.8,.2,1)
+}
+
+.drawer-head{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:24px
+}
+
+.close{
+  font-size:26px;
+  background:none;
+  color:inherit;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  transition:.2s ease
+}
+
+.close:hover{
+  background:#222;
+  transform:rotate(90deg)
+}
+
+.cart-item{
+  display:flex;
+  gap:14px;
+  padding:14px 0;
+  border-bottom:1px solid #292929
+}
+
+.cart-item img{
+  width:80px;
+  height:90px;
+  object-fit:cover;
+  background:#f3f3f3;
+  border-radius:8px
+}
+
+.cart-meta{
+  flex:1
+}
+
+.cart-meta h4{
+  margin-bottom:7px;
+  font-size:13px
+}
+
+.qty{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:10px
+}
+
+.qty button{
+  width:28px;
+  height:28px;
+  border:1px solid #444;
+  background:#111;
+  color:#fff;
+  border-radius:5px;
+  transition:.2s ease
+}
+
+.qty button:hover{
+  border-color:#777
+}
+
+.remove-btn{
+  margin-left:auto;
+  background:none!important;
+  color:#777!important;
+  font-size:12px;
+  border:0!important
+}
+
+.checkout{
+  margin-top:24px;
+  width:100%;
+  background:#fff;
+  color:#080808;
+  padding:15px;
+  border-radius:5px;
+  font-weight:800
+}
+
+.empty{
+  text-align:center;
+  color:#777;
+  padding:50px 10px
+}
+
+.search-card{
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  background:#121212;
+  color:#fff;
+  padding:25px;
+  border-bottom:1px solid #292929;
+  box-shadow:0 20px 60px rgba(0,0,0,.45);
+  animation:searchIn .3s ease
+}
+
+.search-row{
+  display:flex;
+  gap:10px
+}
+
+.search-row input{
+  flex:1;
+  padding:14px;
+  border:1px solid #333;
+  border-radius:7px;
+  font-size:16px;
+  outline:none;
+  background:#090909;
+  color:#fff;
+  transition:.2s ease
+}
+
+.search-row input:focus{
+  border-color:#777;
+  box-shadow:0 0 0 3px rgba(255,255,255,.04)
+}
+
+/* =====================================================
+   MODALS
+===================================================== */
+
+.modal-backdrop,
+.seoky-modal-backdrop{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.76);
+  z-index:1000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:18px;
+  backdrop-filter:blur(7px)
+}
+
+.modal-backdrop.open,
+.seoky-modal-backdrop.open{
+  display:flex;
+  animation:backdropIn .25s ease
+}
+
+.modal{
+  width:min(720px,100%);
+  max-height:90vh;
+  overflow:auto;
+  background:#151515;
+  color:#fff;
+  border:1px solid #2b2b2b;
+  border-radius:16px;
+  padding:24px;
+  position:relative;
+  box-shadow:0 30px 100px rgba(0,0,0,.65);
+  animation:modalIn .35s cubic-bezier(.2,.8,.2,1)
+}
+
+.modal-close{
+  position:absolute;
+  right:14px;
+  top:12px;
+  background:none;
+  font-size:24px;
+  color:inherit;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  transition:.2s ease
+}
+
+.modal-close:hover{
+  background:#222;
+  transform:rotate(90deg)
+}
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+.seoky-product-modal{
+  width:min(760px,100%);
+  max-height:92vh;
+  overflow:auto;
+  background:#151515;
+  color:#fff;
+  border:1px solid #2d2d2d;
+  border-radius:16px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  position:relative;
+  box-shadow:0 30px 100px rgba(0,0,0,.7);
+  animation:modalIn .4s cubic-bezier(.2,.8,.2,1)
+}
+
+.seoky-modal-close{
+  position:absolute;
+  right:12px;
+  top:8px;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  background:#fff;
+  color:#111;
+  font-size:28px;
+  z-index:2;
+  transition:.2s ease
+}
+
+.seoky-modal-close:hover{
+  transform:rotate(90deg) scale(1.05)
+}
+
+.seoky-modal-image{
+  padding:16px 16px 22px;
+  align-self:start;
+}
+
+.seoky-modal-image img{
+  width:100%;
+  height:auto;
+  min-height:0;
+  display:block;
+  object-fit:cover;
+  border-radius:10px
+}
+
+.seoky-modal-info{
+  padding:42px 28px 28px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center
+}
+
+.seoky-modal-info h2{
+  font-size:42px;
+  letter-spacing:.03em;
+  margin:0 0 8px
+}
+
+.seoky-modal-price{
+  font-size:20px;
+  font-weight:800;
+  margin-bottom:22px
+}
+
+.seoky-details-list{
+  border-top:1px solid #2c2c2c;
+  margin-bottom:22px
+}
+
+.seoky-details-list div{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  padding:12px 0;
+  border-bottom:1px solid #2c2c2c;
+  font-size:14px
+}
+
+.seoky-details-list span{
+  color:#777
+}
+
+.seoky-details-list strong{
+  text-align:right
+}
+
+.seoky-modal-cart{
+  width:100%
+}
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+.checkout-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:20px
+}
+
+.checkout-grid input,
+.checkout-grid textarea{
+  width:100%;
+  padding:12px;
+  border:1px solid #333;
+  border-radius:8px;
+  margin:6px 0 12px;
+  background:#0d0d0d;
+  color:#fff;
+  outline:none
+}
+
+.checkout-grid input:focus,
+.checkout-grid textarea:focus{
+  border-color:#777
+}
+
+.checkout-summary{
+  border:1px solid #333;
+  border-radius:12px;
+  padding:18px;
+  height:max-content;
+  background:#101010
+}
+
+.checkout-summary p{
+  margin:9px 0;
+  color:#999
+}
+
+.checkout-discount{
+  color:#4bd477!important;
+  font-weight:700
+}
+
+
+/* =====================================================
+   ADD TO CART FEEDBACK
+===================================================== */
+
+.add.cart-added{
+  position:relative;
+  background:#fff !important;
+  color:#080808 !important;
+  transform:scale(.985);
+  box-shadow:0 0 0 1px rgba(255,255,255,.35),0 8px 28px rgba(255,255,255,.10);
+  animation:seokyAddedPulse .32s ease-out;
+}
+
+.add.cart-added::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:5px;
+  width:22px;
+  height:1px;
+  background:rgba(8,8,8,.28);
+  transform:translateX(-50%) scaleX(0);
+  transform-origin:center;
+  animation:seokyAddedLine .55s .05s ease-out forwards;
+}
+
+@keyframes seokyAddedPulse{
+  0%{transform:scale(1)}
+  55%{transform:scale(.965)}
+  100%{transform:scale(.985)}
+}
+
+@keyframes seokyAddedLine{
+  0%{transform:translateX(-50%) scaleX(0);opacity:0}
+  45%{opacity:1}
+  100%{transform:translateX(-50%) scaleX(1);opacity:.7}
+}
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+.toast{
+  position:fixed;
+  z-index:2000;
+  left:50%;
+  bottom:88px;
+  transform:translate(-50%,20px);
+  background:#fff;
+  color:#080808;
+  padding:13px 18px;
+  border-radius:30px;
+  font-size:13px;
+  font-weight:800;
+  opacity:0;
+  pointer-events:none;
+  transition:
+    opacity .25s ease,
+    transform .25s ease;
+  box-shadow:0 15px 40px rgba(0,0,0,.4)
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0)
+}
+
+/* =====================================================
+   PRODUCT FEATURES
+===================================================== */
+
+.size-row{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin:12px 0 18px
+}
+
+.size-btn{
+  min-width:46px;
+  padding:10px 12px;
+  border:1px solid #444;
+  background:#111;
+  color:#fff;
+  border-radius:6px;
+  font-weight:800;
+  transition:.2s ease
+}
+
+.size-btn:hover{
+  border-color:#888
+}
+
+.size-btn.active{
+  background:#fff;
+  color:#000;
+  border-color:#fff
+}
+
+.size-guide{
+  background:none;
+  color:#aaa;
+  text-decoration:underline;
+  font-size:12px;
+  font-weight:700;
+  margin-bottom:18px
+}
+
+.size-guide:hover{
+  color:#fff
+}
+
+.gallery-thumbs{
+  display:flex;
+  gap:6px;
+  margin-top:8px;
+  margin-bottom:8px;
+  overflow:auto;
+  position:relative;
+  z-index:3;
+}
+
+.gallery-thumbs button{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  border:1px solid #444;
+  background:#111;
+  border-radius:5px;
+  padding:2px;
+  cursor:pointer;
+  opacity:.72;
+  transition:
+    border-color .2s ease,
+    opacity .2s ease,
+    transform .2s ease
+}
+
+.gallery-thumbs button:hover{
+  opacity:1;
+  transform:translateY(-2px)
+}
+
+.gallery-thumbs button.active{
+  border-color:#fff;
+  opacity:1;
+  transform:translateY(-2px)
+}
+
+.gallery-thumbs img{
+  width:100%;
+  height:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:3px;
+  display:block
+}
+
+@keyframes seokyGallerySwap{
+  from{
+    opacity:0;
+    transform:translateX(12px) scale(.985)
+  }
+  to{
+    opacity:1;
+    transform:translateX(0) scale(1)
+  }
+}
+
+#seokyModalImage.gallery-swap{
+  animation:seokyGallerySwap .35s ease both
+}
+
+/* Clean wishlist save feedback — keeps the ＋ button, shows SAVED underneath */
+.wishlist-saved-note{
+  position:absolute;
+  top:56px;
+  right:12px;
+  z-index:3;
+  padding:4px 7px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:999px;
+  background:rgba(8,8,8,.78);
+  color:#fff;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:1.2px;
+  line-height:1;
+  opacity:0;
+  transform:translateY(-5px) scale(.92);
+  pointer-events:none;
+  backdrop-filter:blur(7px);
+  -webkit-backdrop-filter:blur(7px);
+  box-shadow:0 7px 18px rgba(0,0,0,.25);
+  transition:opacity .22s ease,transform .28s cubic-bezier(.2,.8,.2,1),border-color .22s ease;
+}
+.wishlist-saved-note.show{
+  opacity:1;
+  transform:translateY(0) scale(1);
+  border-color:rgba(255,255,255,.42);
+}
+.heart.liked{
+  animation:savePop .5s cubic-bezier(.2,.8,.2,1),saveGlow 1.2s ease-out;
+}
+@keyframes saveGlow{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.34),0 8px 22px rgba(0,0,0,.22)}
+  55%{box-shadow:0 0 0 10px rgba(255,255,255,0),0 10px 28px rgba(255,255,255,.12)}
+  100%{box-shadow:0 8px 22px rgba(0,0,0,.22)}
+}
+@media(max-width:700px){
+  .wishlist-saved-note{top:55px;right:10px;font-size:7px;padding:4px 6px}
+}
+
+.wishlist-btn{
+  position:relative;
+  background:rgba(255,255,255,.035);
+  color:#bdbdbd;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.4px;
+  min-width:78px;
+  height:40px;
+  padding:0 13px;
+  margin-left:auto;
+  border:1px solid #303030;
+  border-radius:8px;
+  overflow:hidden;
+  transition:color .25s ease,background .25s ease,border-color .25s ease,transform .2s ease;
+}
+
+.wishlist-btn::after{
+  content:"";
+  position:absolute;
+  left:12px;
+  right:12px;
+  bottom:6px;
+  height:1px;
+  background:#fff;
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .35s cubic-bezier(.2,.8,.2,1);
+}
+
+.wishlist-btn:active{transform:scale(.94)}
+
+.wishlist-btn.liked{
+  color:#fff;
+  background:#171717;
+  border-color:#666;
+  animation:wishlistSavedPop .45s cubic-bezier(.2,.8,.2,1);
+}
+
+.wishlist-btn.liked::after{
+  transform:scaleX(1);
+}
+
+.wishlist-btn.wishlist-burst{
+  animation:wishlistBurst .55s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes wishlistSavedPop{
+  0%{transform:scale(.9);opacity:.65}
+  45%{transform:scale(1.08)}
+  100%{transform:scale(1);opacity:1}
+}
+
+@keyframes wishlistBurst{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
+  45%{box-shadow:0 0 0 9px rgba(255,255,255,.08)}
+  100%{box-shadow:0 0 0 18px rgba(255,255,255,0)}
+}
+
+.product-actions{
+  display:flex;
+  align-items:center;
+  gap:8px
+}
+
+.stock{
+  font-size:11px;
+  color:#777;
+  margin-top:8px
+}
+
+.shipping-progress{
+  padding:12px;
+  background:#181818;
+  border:1px solid #292929;
+  border-radius:8px;
+  margin-top:15px;
+  font-size:12px
+}
+
+.shipping-bar{
+  height:5px;
+  background:#333;
+  border-radius:5px;
+  overflow:hidden;
+  margin-top:7px
+}
+
+.shipping-bar i{
+  display:block;
+  height:100%;
+  background:#fff;
+  transition:width .45s ease
+}
+
+.recently-viewed{
+  display:flex;
+  gap:12px;
+  overflow:auto
+}
+
+.recent-card{
+  min-width:140px
+}
+
+.recent-card img{
+  width:140px;
+  height:160px;
+  object-fit:cover;
+  border-radius:8px
+}
+
+.review-box{
+  margin-top:20px;
+  padding-top:18px;
+  border-top:1px solid #2c2c2c
+}
+
+.review-stars{
+  letter-spacing:2px
+}
+
+.promo-row{
+  display:flex;
+  gap:8px;
+  margin-top:15px
+}
+
+.promo-row input{
+  flex:1;
+  padding:11px;
+  border:1px solid #333;
+  border-radius:6px;
+  background:#0d0d0d;
+  color:#fff;
+  outline:none
+}
+
+.promo-row button{
+  padding:11px 14px;
+  background:#fff;
+  color:#000;
+  border-radius:6px;
+  font-weight:800
+}
+
+.size-guide-modal{
+  max-width:520px
+}
+
+.size-table{
+  width:100%;
+  border-collapse:collapse;
+  margin-top:15px
+}
+
+.size-table th,
+.size-table td{
+  border:1px solid #333;
+  padding:10px;
+  text-align:center;
+  font-size:13px
+}
+
+.size-table th{
+  background:#0d0d0d
+}
+
+/* =====================================================
+   CINEMATIC AUTH SCENE
+===================================================== */
+
+.auth-scene{
+  position:fixed;
+  inset:0;
+  z-index:1700;
+  display:none;
+  overflow:hidden;
+  background:#020202;
+  color:#fff
+}
+
+.auth-scene.open{
+  display:block;
+  animation:sceneIn .45s ease
+}
+
+.auth-room{
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(
+      circle at 50% 42%,
+      rgba(255,220,130,.035),
+      transparent 24%
+    ),
+    linear-gradient(
+      #010101,
+      #050505 60%,
+      #020202
+    );
+  transition:
+    background 1.8s ease,
+    filter 1.8s ease
+}
+
+.auth-room::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    );
+  background-size:80px 80px;
+  opacity:.18
+}
+
+.auth-room::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-15%;
+  width:900px;
+  height:300px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse,
+    rgba(255,210,110,.0),
+    transparent 70%
+  );
+  opacity:0;
+  transition:opacity 1.5s ease
+}
+
+.auth-scene.lit .auth-room::after{
+  opacity:1
+}
+
+/* Ambient cinematic particles */
+
+.auth-ambient{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  opacity:.3
+}
+
+.auth-ambient::before,
+.auth-ambient::after{
+  content:"";
+  position:absolute;
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:rgba(255,220,150,.35);
+  box-shadow:
+    90px 120px rgba(255,220,150,.18),
+    230px 280px rgba(255,220,150,.22),
+    420px 180px rgba(255,220,150,.16),
+    600px 360px rgba(255,220,150,.2),
+    760px 100px rgba(255,220,150,.14),
+    -180px 300px rgba(255,220,150,.18);
+  animation:dustFloat 9s ease-in-out infinite alternate
+}
+
+.auth-ambient::after{
+  width:3px;
+  height:3px;
+  animation-duration:13s;
+  animation-direction:alternate-reverse
+}
+
+/* =====================================================
+   HANGING LAMP
+===================================================== */
+
+.auth-lamp{
+  position:absolute;
+  left:50%;
+  top:-5px;
+  transform:translateX(-50%);
+  width:180px;
+  height:270px;
+  pointer-events:none;
+  z-index:5;
+  animation:lampSway 5s ease-in-out infinite
+}
+
+.lamp-wire{
+  position:absolute;
+  left:50%;
+  top:0;
+  width:2px;
+  height:125px;
+  transform:translateX(-50%);
+  background:linear-gradient(
+    #333,
+    #151515
+  );
+  box-shadow:0 0 4px rgba(255,255,255,.05)
+}
+
+.lamp-wire::after{
+  content:"";
+  position:absolute;
+  top:30px;
+  left:-1px;
+  width:4px;
+  height:35px;
+  background:rgba(255,255,255,.04);
+  filter:blur(2px)
+}
+
+.lamp-holder{
+  position:absolute;
+  top:120px;
+  left:50%;
+  transform:translateX(-50%);
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  background:#151515;
+  border:1px solid #252525;
+  box-shadow:0 4px 15px rgba(0,0,0,.8)
+}
+
+.lamp-shade{
+  position:absolute;
+  top:132px;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  height:85px;
+  background:linear-gradient(
+    #171717,
+    #090909
+  );
+  clip-path:polygon(
+    15% 0,
+    85% 0,
+    100% 100%,
+    0 100%
+  );
+  border-radius:0 0 80px 80px;
+  box-shadow:
+    0 10px 25px rgba(0,0,0,.8),
+    inset 0 -5px 15px rgba(255,255,255,.02);
+  transition:
+    background .8s ease,
+    box-shadow .8s ease
+}
+
+.lamp-shade::after{
+  content:"";
+  position:absolute;
+  left:10%;
+  right:10%;
+  bottom:5px;
+  height:4px;
+  border-radius:50%;
+  background:#050505
+}
+
+.lamp-bulb{
+  position:absolute;
+  top:190px;
+  left:50%;
+  transform:translateX(-50%);
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  background:#090909;
+  border:1px solid #171717;
+  transition:
+    background .7s ease,
+    box-shadow 1s ease,
+    transform .5s ease
+}
+
+.lamp-halo{
+  position:absolute;
+  top:165px;
+  left:50%;
+  width:90px;
+  height:90px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:rgba(255,220,130,.3);
+  filter:blur(30px);
+  opacity:0;
+  transition:opacity 1s ease
+}
+
+.auth-scene.lit .lamp-halo{
+  opacity:1
+}
+
+/* =====================================================
+   LIGHT BEAM
+===================================================== */
+
+.lamp-light{
+  position:absolute;
+  top:185px;
+  left:50%;
+  width:500px;
+  height:620px;
+  transform:translateX(-50%);
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,220,135,.34),
+      rgba(255,220,135,.12) 25%,
+      rgba(255,220,135,.035) 55%,
+      transparent 80%
+    );
+  clip-path:polygon(
+    42% 0,
+    58% 0,
+    100% 100%,
+    0 100%
+  );
+  opacity:0;
+  filter:blur(2px);
+  transition:opacity 1.5s ease;
+  pointer-events:none;
+  z-index:2
+}
+
+.lamp-light::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  bottom:-30px;
+  width:420px;
+  height:130px;
+  transform:translateX(-50%);
+  background:radial-gradient(
+    ellipse,
+    rgba(255,220,135,.18),
+    transparent 70%
+  );
+  filter:blur(15px)
+}
+
+.auth-scene.lit .lamp-light{
+  opacity:1
+}
+
+/* =====================================================
+   WALL SWITCH
+===================================================== */
+
+.auth-switch-wall{
+  position:absolute;
+  right:9%;
+  top:50%;
+  transform:translateY(-50%);
+  width:110px;
+  height:155px;
+  background:
+    linear-gradient(
+      145deg,
+      #151515,
+      #0a0a0a
+    );
+  border:1px solid #292929;
+  border-radius:8px;
+  box-shadow:
+    0 18px 50px rgba(0,0,0,.7),
+    inset 0 0 20px rgba(255,255,255,.015);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:8
+}
+
+.wall-label{
+  position:absolute;
+  top:16px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:8px;
+  letter-spacing:3px;
+  color:#444;
+  font-weight:800
+}
+
+.wall-switch{
+  position:relative;
+  width:50px;
+  height:82px;
+  border-radius:9px;
+  background:#0b0b0b;
+  border:1px solid #333;
+  box-shadow:
+    inset 0 5px 12px rgba(0,0,0,.8),
+    0 4px 15px rgba(0,0,0,.5);
+  cursor:pointer;
+  transition:.3s ease
+}
+
+.wall-switch:hover{
+  border-color:#555
+}
+
+.wall-switch::before{
+  content:"";
+  position:absolute;
+  left:7px;
+  right:7px;
+  top:7px;
+  bottom:7px;
+  border-radius:6px;
+  background:linear-gradient(#181818,#0a0a0a)
+}
+
+.switch-lever{
+  position:absolute;
+  z-index:2;
+  left:50%;
+  top:12px;
+  width:28px;
+  height:46px;
+  transform:translateX(-50%);
+  border-radius:5px;
+  background:linear-gradient(#555,#222);
+  box-shadow:
+    0 4px 8px rgba(0,0,0,.8),
+    inset 0 1px rgba(255,255,255,.12);
+  transition:.35s cubic-bezier(.2,.8,.2,1)
+}
+
+.wall-switch.on .switch-lever{
+  transform:translateX(-50%) translateY(20px);
+  background:linear-gradient(#aaa,#555)
+}
+
+.switch-status{
+  position:absolute;
+  bottom:15px;
+  left:0;
+  right:0;
+  text-align:center;
+  font-size:8px;
+  letter-spacing:2px;
+  color:#333;
+  font-weight:800;
+  transition:.4s ease
+}
+
+.wall-switch.on .switch-status{
+  color:#e9cf8a;
+  text-shadow:0 0 8px rgba(255,210,120,.4)
+}
+
+/* =====================================================
+   DARKNESS → LIGHT
+===================================================== */
+
+.auth-darkness{
+  position:absolute;
+  inset:0;
+  background:#000;
+  opacity:.95;
+  pointer-events:none;
+  transition:opacity 1.7s ease;
+  z-index:6
+}
+
+.auth-scene.lit .auth-darkness{
+  opacity:.16
+}
+
+.auth-scene.lit .lamp-bulb{
+  background:#fff1b8;
+  box-shadow:
+    0 0 15px #fff0b0,
+    0 0 45px rgba(255,220,130,.9),
+    0 0 100px rgba(255,210,100,.5);
+  transform:translateX(-50%) scale(1.12);
+  animation:bulbFlicker 4s ease-in-out infinite
+}
+
+.auth-scene.lit .lamp-shade{
+  background:linear-gradient(#292929,#101010);
+  box-shadow:
+    0 20px 50px rgba(255,210,100,.15)
+}
+
+/* =====================================================
+   AUTH PANEL
+===================================================== */
+
+.auth-panel{
+  position:absolute;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-42%) scale(.94);
+  width:min(430px,calc(100% - 34px));
+  max-height:90vh;
+  overflow:auto;
+  padding:30px;
+  border-radius:16px;
+  background:rgba(12,12,12,.94);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.8),
+    0 0 80px rgba(255,210,100,.06);
+  opacity:0;
+  pointer-events:none;
+  transition:
+    opacity .8s ease .5s,
+    transform .8s cubic-bezier(.2,.8,.2,1) .5s;
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+  z-index:15
+}
+
+.auth-panel::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:inherit;
+  padding:1px;
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,.18),
+    transparent 35%,
+    rgba(255,210,120,.08)
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite:xor;
+  mask-composite:exclude;
+  pointer-events:none
+}
+
+.auth-scene.lit .auth-panel{
+  opacity:1;
+  pointer-events:auto;
+  transform:translate(-50%,-50%) scale(1)
+}
+
+.auth-panel-close{
+  position:absolute;
+  right:12px;
+  top:10px;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:transparent;
+  color:#aaa;
+  font-size:25px;
+  transition:.2s ease
+}
+
+.auth-panel-close:hover{
+  color:#fff;
+  background:#222;
+  transform:rotate(90deg)
+}
+
+.auth-brand{
+  font-family:'Bebas Neue',Impact,sans-serif;
+  font-size:28px;
+  letter-spacing:7px
+}
+
+.auth-title{
+  font-size:46px;
+  line-height:.9;
+  margin-top:10px
+}
+
+.auth-subtitle{
+  color:#888;
+  font-size:12px;
+  line-height:1.6;
+  margin:12px 0 22px
+}
+
+/* =====================================================
+   LOGIN / SIGN UP SWITCH
+===================================================== */
+
+.auth-tabs{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  background:#080808;
+  border:1px solid #2b2b2b;
+  border-radius:8px;
+  padding:4px;
+  margin-bottom:22px;
+  overflow:hidden
+}
+
+.auth-tab-slider{
+  position:absolute;
+  left:4px;
+  top:4px;
+  width:calc(50% - 4px);
+  height:calc(100% - 8px);
+  background:#fff;
+  border-radius:5px;
+  transition:.3s ease
+}
+
+.auth-tab-slider.signup{
+  transform:translateX(100%)
+}
+
+.auth-tab{
+  position:relative;
+  z-index:2;
+  background:transparent;
+  color:#777;
+  padding:12px 5px;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px
+}
+
+.auth-tab.active{
+  color:#000
+}
+
+.auth-form{
+  display:none
+}
+
+.auth-form.active{
+  display:block;
+  animation:authFormIn .4s ease
+}
+
+.auth-field{
+  margin-bottom:13px
+}
+
+.auth-field label{
+  display:block;
+  margin-bottom:6px;
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.5px;
+  color:#aaa
+}
+
+.auth-field input{
+  width:100%;
+  padding:13px 14px;
+  border:1px solid #303030;
+  border-radius:7px;
+  outline:none;
+  background:#090909;
+  color:#fff;
+  font-size:13px;
+  transition:.2s ease
+}
+
+.auth-field input:focus{
+  border-color:#888;
+  box-shadow:0 0 0 3px rgba(255,255,255,.04)
+}
+
+.auth-submit{
+  width:100%;
+  margin-top:6px;
+  padding:14px;
+  border-radius:7px;
+  background:#fff;
+  color:#080808;
+  font-weight:900;
+  font-size:12px;
+  letter-spacing:1px;
+  transition:.2s ease
+}
+
+.auth-submit:hover{
+  transform:translateY(-2px)
+}
+
+.auth-note{
+  text-align:center;
+  color:#555;
+  font-size:10px;
+  line-height:1.5;
+  margin-top:15px
+}
+
+/* =====================================================
+   AUTH HINT
+===================================================== */
+
+.auth-scene-hint{
+  position:absolute;
+  left:50%;
+  bottom:8%;
+  transform:translateX(-50%);
+  color:#444;
+  font-size:9px;
+  letter-spacing:4px;
+  font-weight:800;
+  transition:
+    opacity .5s ease,
+    letter-spacing .5s ease;
+  z-index:10;
+  animation:hintPulse 2s ease-in-out infinite
+}
+
+.auth-scene.lit .auth-scene-hint{
+  opacity:0;
+  letter-spacing:7px
+}
+
+.auth-scene-close{
+  position:absolute;
+  right:22px;
+  top:18px;
+  z-index:20;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.08);
+  color:#777;
+  font-size:25px;
+  transition:.2s ease
+}
+
+.auth-scene-close:hover{
+  color:#fff;
+  background:rgba(255,255,255,.1);
+  transform:rotate(90deg)
+}
+
+/* =====================================================
+   ANIMATIONS
+===================================================== */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(28px)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+@keyframes drawerIn{
+  from{
+    transform:translateX(100%)
+  }
+  to{
+    transform:none
+  }
+}
+
+@keyframes menuIn{
+  from{
+    opacity:0;
+    transform:translateY(-12px) scale(.97)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+@keyframes searchIn{
+  from{
+    opacity:0;
+    transform:translateY(-14px)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+@keyframes backdropIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes modalIn{
+  from{
+    opacity:0;
+    transform:translateY(18px) scale(.96)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+@keyframes heartPop{
+  0%{transform:scale(1)}
+  35%{transform:scale(1.35)}
+  70%{transform:scale(.92)}
+  100%{transform:scale(1)}
+}
+
+@keyframes whatsappPulse{
+  0%{
+    transform:scale(1);
+    opacity:.75
+  }
+  70%{
+    transform:scale(1.4);
+    opacity:0
+  }
+  100%{
+    transform:scale(1.4);
+    opacity:0
+  }
+}
+
+@keyframes authFormIn{
+  from{
+    opacity:0;
+    transform:translateY(10px)
+  }
+  to{
+    opacity:1;
+    transform:none
+  }
+}
+
+@keyframes heroGlow{
+  from{
+    opacity:.1;
+    transform:scale(1)
+  }
+  to{
+    opacity:.25;
+    transform:scale(1.05)
+  }
+}
+
+@keyframes tickerShine{
+  0%{left:-220px}
+  55%,100%{left:120%}
+}
+
+@keyframes badgeBump{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.35)}
+  100%{transform:scale(1)}
+}
+
+@keyframes sceneIn{
+  from{opacity:0}
+  to{opacity:1}
+}
+
+@keyframes lampSway{
+  0%,100%{
+    transform:translateX(-50%) rotate(-.4deg)
+  }
+  50%{
+    transform:translateX(-50%) rotate(.4deg)
+  }
+}
+
+@keyframes bulbFlicker{
+  0%,100%{
+    opacity:1
+  }
+  45%{
+    opacity:1
+  }
+  47%{
+    opacity:.82
+  }
+  49%{
+    opacity:1
+  }
+}
+
+@keyframes dustFloat{
+  0%{
+    transform:translate(0,0)
+  }
+  50%{
+    transform:translate(12px,-18px)
+  }
+  100%{
+    transform:translate(-10px,-32px)
+  }
+}
+
+@keyframes hintPulse{
+  0%,100%{
+    opacity:.45
+  }
+  50%{
+    opacity:1
+  }
+}
+
+/* =====================================================
+   DESKTOP
+===================================================== */
+
+@media(min-width:900px){
+
+  .bottom-nav{
+    display:none
+  }
+
+  .header{
+    padding:0 5%
+  }
+
+  .hero-content{
+    left:9%
+  }
+
+  .campaign{
+    min-height:460px
+  }
+
+  .campaign img{
+    min-height:460px
+  }
+}
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media(max-width:700px){
+
+  .header{
+    height:64px;
+    padding:0 16px
+  }
+
+  .logo{
+    font-size:25px;
+    letter-spacing:6px
+  }
+
+  .menu-card{
+    top:74px;
+    right:10px;
+    width:calc(100% - 20px);
+    max-width:310px
+  }
+
+  .hero{
+    height:72vh;
+    min-height:510px
+  }
+
+  .hero-content{
+    left:7%;
+    bottom:10%
+  }
+
+  .hero h1{
+    font-size:62px
+  }
+
+  .ticker{
+    font-size:9px;
+    letter-spacing:2px
+  }
+
+  .section{
+    padding:46px 5%
+  }
+
+  .section h2{
+    font-size:40px
+  }
+
+  .products{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px
+  }
+
+  .product-img{
+    border-radius:8px
+  }
+
+  .product-title{
+    font-size:14px
+  }
+
+  .add{
+    padding:11px 8px;
+    font-size:10px
+  }
+
+  .campaign{
+    margin-left:5%;
+    margin-right:5%
+  }
+
+  .campaign-content h3{
+    font-size:42px
+  }
+
+  .seoky-shop-details{
+    padding:55px 6%
+  }
+
+  .seoky-shop-details h2{
+    font-size:36px
+  }
+
+  .seoky-info-grid{
+    grid-template-columns:1fr
+  }
+
+  .footer{
+    padding:55px 6% 105px
+  }
+
+  .footer-grid{
+    grid-template-columns:1fr 1fr;
+    gap:35px 25px
+  }
+
+  .footer-brand{
+    grid-column:1/-1;
+    max-width:100%
+  }
+
+  .footer .logo{
+    font-size:30px
+  }
+
+  .footer-brand .tagline{
+    font-size:15px
+  }
+
+  .footer-links a{
+    font-size:14px
+  }
+
+  .whatsapp-float{
+    right:16px;
+    bottom:88px;
+    width:55px;
+    height:55px
+  }
+
+  .whatsapp-float svg{
+    width:30px;
+    height:30px
+  }
+
+  .whatsapp-label{
+    display:none
+  }
+
+  .seoky-product-modal{
+    grid-template-columns:1fr
+  }
+
+  .seoky-modal-image img{
+    min-height:240px;
+    max-height:330px
+  }
+
+  .seoky-modal-info{
+    padding:8px 22px 24px
+  }
+
+  .seoky-modal-info h2{
+    font-size:36px
+  }
+
+  .checkout-grid{
+    grid-template-columns:1fr
+  }
+
+  .auth-lamp{
+    transform:translateX(-50%) scale(.75);
+    transform-origin:top center
+  }
+
+  .auth-switch-wall{
+    right:7%;
+    top:34%;
+    transform:scale(.78);
+    transform-origin:right center
+  }
+
+  .auth-panel{
+    top:53%;
+    padding:25px 20px;
+    max-height:76vh
+  }
+
+  .auth-title{
+    font-size:40px
+  }
+
+  .auth-scene-hint{
+    bottom:4%;
+    font-size:7px
+  }
+
+  .auth-ambient{
+    opacity:.22
+  }
+}
+
+@media(max-width:430px){
+
+  .products{
+    gap:10px
+  }
+
+  .product-title{
+    font-size:13px
+  }
+
+  .auth-switch-wall{
+    right:4%;
+    transform:scale(.68)
+  }
+
+  .auth-panel{
+    width:calc(100% - 24px);
+    padding:22px 17px
+  }
+
+  .auth-title{
+    font-size:37px
+  }
+}
+
+/* =====================================================
+   REDUCED MOTION
+===================================================== */
+
+@media(prefers-reduced-motion:reduce){
+
+  *,
+  *::before,
+  *::after{
+    animation-duration:.001ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.001ms!important
+  }
+}
+
+/* ===== SEOKY WOW BACKGROUND V2 ===== */
+html{background:#050505}
+body{background:radial-gradient(circle at 50% -10%,rgba(255,255,255,.08),transparent 32%),#050505 !important}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(circle 320px at var(--mx,50%) var(--my,30%),rgba(255,255,255,.13),transparent 68%),radial-gradient(circle 520px at 12% 15%,rgba(255,255,255,.04),transparent 70%),radial-gradient(circle 600px at 88% 82%,rgba(255,255,255,.03),transparent 70%);mix-blend-mode:screen}
+body::after{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.22;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(to bottom,#000,transparent 92%)}
+body > *{position:relative;z-index:1}
+.seoky-cursor-glow{position:fixed;left:0;top:0;width:260px;height:260px;border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(255,255,255,.13),rgba(255,255,255,.035) 25%,transparent 68%);filter:blur(2px);mix-blend-mode:screen;opacity:0;transition:opacity .25s ease}
+body.seoky-ready .seoky-cursor-glow{opacity:1}
+@media(max-width:700px){.seoky-cursor-glow{display:none}body::after{background-size:38px 38px;opacity:.14}}
+
+/* ===== SEOKY MOBILE TOUCH WOW ===== */
+@media (max-width:700px){
+  body::before{
+    background:
+      radial-gradient(circle 220px at var(--touch-x,50%) var(--touch-y,40%),rgba(255,255,255,.16),transparent 68%),
+      radial-gradient(circle 420px at 10% 10%,rgba(255,255,255,.045),transparent 70%),
+      radial-gradient(circle 460px at 90% 85%,rgba(255,255,255,.035),transparent 70%);
+    transition:background .18s ease-out;
+  }
+  .seoky-touch-ripple{
+    position:fixed;
+    width:110px;height:110px;
+    border:1px solid rgba(255,255,255,.42);
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9998;
+    transform:translate(-50%,-50%) scale(.25);
+    opacity:0;
+    box-shadow:0 0 35px rgba(255,255,255,.12),inset 0 0 24px rgba(255,255,255,.05);
+  }
+  .seoky-touch-ripple.active{animation:seokyTouchRipple .65s ease-out forwards}
+  @keyframes seokyTouchRipple{
+    0%{opacity:.75;transform:translate(-50%,-50%) scale(.25)}
+    100%{opacity:0;transform:translate(-50%,-50%) scale(1.65)}
+  }
+  .product:active,.campaign:active,.category-card:active{
+    transform:scale(.985);
+    transition:transform .12s ease;
+  }
+}
+
+/* FINAL SINHALA SHAPING — English typography stays unchanged */
+.seoky-si-text{
+  font-family:'Noto Serif Sinhala',serif !important;
+  font-weight:500;
+  letter-spacing:0 !important;
+  word-spacing:.16em !important;
+  font-kerning:normal;
+  font-feature-settings:'liga' 1,'clig' 1;
+  text-rendering:optimizeLegibility;
+  white-space:normal;
+}
+.seoky-si-text.seoky-si-heading{font-weight:700;line-height:1.18}
+@media(max-width:700px){.seoky-si-text{line-height:1.5}}
+</style>
+<style>
+/* =====================================================
+   SEOKY — SINHALA TYPE ONLY
+   English SEOKY typography is intentionally untouched.
+   Sinhala glyphs are wrapped individually so mixed
+   Sinhala/English text keeps the original English font.
+===================================================== */
+.seoky-si-text{
+  font-family:'Noto Serif Sinhala',serif !important;
+  font-weight:500;
+  letter-spacing:0 !important;
+  word-spacing:.16em !important;
+  font-kerning:normal;
+  font-feature-settings:'kern' 1,'liga' 1,'clig' 1;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  white-space:normal;
+}
+.seoky-si-text.seoky-si-heading{font-weight:700;line-height:1.22}
+@media(max-width:700px){
+  .seoky-si-text{line-height:1.5}
+  .seoky-si-text.seoky-si-heading{line-height:1.2}
+}
+</style>
+
+<style>
+/* FINAL SINHALA READABILITY + SMALL BUG FIXES */
+.seoky-si-text{
+  font-family:'Noto Serif Sinhala',serif !important;
+  font-weight:500;
+  letter-spacing:0 !important;
+  word-spacing:.16em !important;
+  line-height:1.62;
+  font-kerning:normal;
+  font-feature-settings:'kern' 1,'liga' 1,'clig' 1;
+  font-synthesis:none;
+  text-rendering:optimizeLegibility;
+  white-space:normal;
+}
+.seoky-si-text.seoky-si-heading{font-weight:700;line-height:1.3}
+@media(max-width:700px){
+  .seoky-si-text{line-height:1.7;word-spacing:.19em !important}
+  .seoky-si-text.seoky-si-heading{line-height:1.3}
+}
+/* Give mixed Sinhala/English sentences a little breathing room without changing English typography. */
+html[lang="si"] p,html[lang="si"] li,html[lang="si"] label,html[lang="si"] .product-title{line-height:1.65}
+@media(max-width:700px){html[lang="si"] p,html[lang="si"] li,html[lang="si"] label,html[lang="si"] .product-title{line-height:1.72}}
+</style>
+
+<style>
+
+/* SEOKY FINAL — premium cart button */
+.seoky-cart-wow,
+.add-to-cart,
+button.add-to-cart{
+  position:relative;
+  overflow:hidden;
+  background:linear-gradient(135deg,#151515,#242424);
+  color:#fff;
+  border:1px solid #3b3b3b;
+  box-shadow:0 4px 18px rgba(0,0,0,.22);
+  transition:
+    transform .25s cubic-bezier(.2,.8,.2,1),
+    box-shadow .25s ease,
+    border-color .25s ease,
+    background .25s ease;
+}
+
+.seoky-cart-wow::before,
+.add-to-cart::before,
+button.add-to-cart::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:70%;
+  height:100%;
+  background:linear-gradient(
+    100deg,
+    transparent,
+    rgba(255,255,255,.16),
+    transparent
+  );
+  transform:skewX(-18deg);
+  transition:left .55s ease;
+  pointer-events:none;
+}
+
+.seoky-cart-wow:hover,
+.add-to-cart:hover,
+button.add-to-cart:hover{
+  transform:translateY(-2px);
+  border-color:#666;
+  background:linear-gradient(135deg,#1d1d1d,#303030);
+  box-shadow:0 8px 26px rgba(0,0,0,.34);
+}
+
+.seoky-cart-wow:hover::before,
+.add-to-cart:hover::before,
+button.add-to-cart:hover::before{
+  left:140%;
+}
+
+.seoky-cart-wow:active,
+.add-to-cart:active,
+button.add-to-cart:active{
+  transform:scale(.97);
+}
+
+/* SEOKY FINAL — subtle living background */
+body{
+  position:relative;
+  background:#070707;
+  isolation:isolate;
+}
+
+body::before,
+body::after{
+  content:"";
+  position:fixed;
+  inset:-20%;
+  pointer-events:none;
+  z-index:-1;
+}
+
+body::before{
+  background:
+    radial-gradient(circle at 18% 22%,rgba(255,255,255,.055),transparent 24%),
+    radial-gradient(circle at 82% 28%,rgba(130,130,130,.045),transparent 25%),
+    radial-gradient(circle at 52% 86%,rgba(255,255,255,.035),transparent 28%);
+  filter:blur(28px);
+  animation:seokyAmbient 16s ease-in-out infinite alternate;
+}
+
+body::after{
+  opacity:.055;
+  background-image:
+    radial-gradient(rgba(255,255,255,.8) .5px,transparent .6px);
+  background-size:4px 4px;
+  animation:seokyGrain .35s steps(2) infinite;
+}
+
+@keyframes seokyAmbient{
+  0%{
+    transform:translate3d(-2%,0,0) scale(1);
+  }
+  50%{
+    transform:translate3d(2%,-1%,0) scale(1.04);
+  }
+  100%{
+    transform:translate3d(-1%,2%,0) scale(1.02);
+  }
+}
+
+@keyframes seokyGrain{
+  0%{transform:translate(0,0)}
+  25%{transform:translate(1%,-1%)}
+  50%{transform:translate(-1%,1%)}
+  75%{transform:translate(1%,1%)}
+  100%{transform:translate(-1%,-1%)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  body::before,
+  body::after{
+    animation:none;
+  }
+}
+
+/* SEOKY FINAL — compact square gallery thumbnails */
+.gallery-thumbs{
+  display:flex;
+  gap:6px;
+  margin-top:10px;
+  overflow:auto;
+}
+
+.gallery-thumbs button{
+  width:48px;
+  height:48px;
+  flex:0 0 48px;
+  padding:2px;
+  border:1px solid #444;
+  background:#111;
+  border-radius:5px;
+  cursor:pointer;
+  opacity:.72;
+  transition:
+    border-color .2s ease,
+    opacity .2s ease,
+    transform .2s ease;
+}
+
+.gallery-thumbs button:hover,
+.gallery-thumbs button.active{
+  opacity:1;
+  border-color:#fff;
+  transform:translateY(-2px);
+}
+
+.gallery-thumbs img{
+  width:100%;
+  height:100%;
+  aspect-ratio:1 / 1;
+  object-fit:cover;
+  border-radius:3px;
+  display:block;
+}
+
+
+/* =====================================================
+   SEOKY — DARK ATMOSPHERE / INTERACTIVE GLOW
+===================================================== */
+html{background:#050505}
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(255,255,255,.055),transparent 34%),
+    #050505;
+}
+body::before{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,255,255,.075),transparent 22%),
+    radial-gradient(circle at 85% 35%,rgba(110,140,170,.045),transparent 24%),
+    radial-gradient(circle at 48% 90%,rgba(255,255,255,.045),transparent 28%);
+  filter:blur(42px);
+  animation:seokyAmbient 14s ease-in-out infinite alternate;
+}
+.seoky-cursor-glow{
+  position:fixed;
+  width:320px;height:320px;
+  left:0;top:0;
+  pointer-events:none;
+  z-index:0;
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.075) 0%,rgba(255,255,255,.025) 24%,transparent 68%);
+  transform:translate(-50%,-50%);
+  opacity:0;
+  transition:opacity .35s ease;
+  mix-blend-mode:screen;
+}
+body.seoky-pointer-active .seoky-cursor-glow{opacity:1}
+.seoky-bg-grid{
+  position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.16;
+  background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 78%,transparent 100%);
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 18%,#000 78%,transparent 100%);
+}
+.seoky-interactive{transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease}
+.seoky-interactive:hover{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 18px 60px rgba(0,0,0,.35)}
+@media(max-width:700px),(hover:none){
+  .seoky-cursor-glow{display:none}
+  .seoky-bg-grid{opacity:.1;background-size:48px 48px}
+}
+@media(prefers-reduced-motion:reduce){
+  .seoky-bg-grid,.seoky-cursor-glow{display:none}
+}
+
+</style>
+
+<style>
+/* SEOKY — softer premium buttons */
+.seoky-cart-wow,
+.add-to-cart,
+button.add-to-cart{
+  color:#e8e8e8 !important;
+  border-color:#3f3f3f !important;
+  background:linear-gradient(135deg,#151515,#222) !important;
+}
+
+.seoky-cart-wow:hover,
+.add-to-cart:hover,
+button.add-to-cart:hover{
+  color:#f4f4f4 !important;
+  border-color:#555 !important;
+  background:linear-gradient(135deg,#1b1b1b,#2a2a2a) !important;
+}
+
+.seoky-cart-wow:active,
+.add-to-cart:active,
+button.add-to-cart:active{
+  color:#fff !important;
+}
+
+/* Keep selected controls readable without making every button bright */
+.size-btn.active,
+.auth-tab.active{
+  background:#e8e8e8 !important;
+  color:#090909 !important;
+  border-color:#e8e8e8 !important;
+}
+</style>
+
+</head>
+
+<body>
+<div class="seoky-bg-grid" aria-hidden="true"></div>
+<div class="seoky-cursor-glow" id="seokyCursorGlow" aria-hidden="true"></div>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <a class="logo" href="#home">SEOKY</a>
+
+  <div class="header-actions">
+
+    <button
+      class="icon-btn"
+      onclick="openSearch()"
+      aria-label="Search"
+    >
+      ⌕
+    </button>
+
+    <button
+      class="icon-btn cart-wrap"
+      onclick="openCart()"
+      aria-label="Cart"
+    >
+      🛍
+      <span class="badge" id="cartCount">0</span>
+    </button>
+
+    <div class="language-wrap" id="languageWrap">
+      <button class="language-btn" id="languageBtn" type="button" onclick="toggleLanguagePanel(event)" aria-label="Language">EN</button>
+      <div class="language-panel" id="languagePanel" role="menu">
+        <button class="language-option active" data-lang="en" type="button" onclick="setLanguage('en')">
+          <span>ENGLISH</span><span class="language-check">✓</span>
+        </button>
+        <button class="language-option" data-lang="si" type="button" onclick="setLanguage('si')">
+          <span>සිංහල</span><span class="language-check">✓</span>
+        </button>
+      </div>
+    </div>
+
+    <button
+      class="icon-btn"
+      onclick="toggleMenu()"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+  </div>
+
+  <div class="menu-card" id="menuCard">
+
+    <div class="menu-head">
+      <div class="menu-head-title">MENU</div>
+      <div class="menu-head-sub">STREETWEAR · 2026</div>
+    </div>
+
+    <a href="#home" onclick="toggleMenu()">
+      <span class="menu-icon">⌂</span>
+      <span data-lang-key="home">Home</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#shop" onclick="toggleMenu()">
+      <span class="menu-icon">◈</span>
+      <span data-lang-key="shop">Shop</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#campaign" onclick="toggleMenu()">
+      <span class="menu-icon">✦</span>
+      <span data-lang-key="campaign">Campaign</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#about" onclick="toggleMenu()">
+      <span class="menu-icon">◎</span>
+      <span data-lang-key="about">About SEOKY</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#shop-details" onclick="toggleMenu()">
+      <span class="menu-icon">⌖</span>
+      <span data-lang-key="details">Shop Details</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#contact" onclick="toggleMenu()">
+      <span class="menu-icon">↗</span>
+      <span data-lang-key="contact">Contact</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <div class="menu-divider"></div>
+
+    <a
+      href="#"
+      class="menu-auth login"
+      onclick="openAuthScene('login');toggleMenu();return false;"
+    >
+      <span class="menu-icon">◉</span>
+      <span data-lang-key="login">Login</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a
+      href="#"
+      class="menu-auth"
+      onclick="openAuthScene('signup');toggleMenu();return false;"
+    >
+      <span class="menu-icon">＋</span>
+      <span data-lang-key="signup">Sign Up</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a
+      href="#"
+      class="menu-auth"
+      id="signOutMenuItem"
+      style="display:none"
+      onclick="signOut();toggleMenu();return false;"
+    >
+      <span class="menu-icon">↪</span>
+      <span data-lang-key="signout">Sign Out</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+  </div>
+
+</header>
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main id="home">
+
+  <section class="hero" id="heroSlider">
+
+    <div class="hero-slider">
+
+      <div class="hero-slide active">
+        <img src="seoky-campaign.png" alt="SEOKY Collection">
+      </div>
+
+      <div class="hero-slide">
+        <img src="seoky-campaign2.png" alt="SEOKY Campaign 2">
+      </div>
+
+      <div class="hero-slide">
+        <img src="seoky-campaign3.png" alt="SEOKY Campaign 3">
+      </div>
+
+    </div>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        SEOKY / NEW DROP
+      </div>
+
+      <h1>
+        SEOKY<br>
+        COLLECTION
+      </h1>
+
+      <a class="cta" href="#shop">
+        SHOP NOW
+        <span>→</span>
+      </a>
+
+    </div>
+
+    <div class="dots">
+
+      <i class="dot active" onclick="goToSlide(0)"></i>
+      <i class="dot" onclick="goToSlide(1)"></i>
+      <i class="dot" onclick="goToSlide(2)"></i>
+
+    </div>
+
+  </section>
+
+  <div class="ticker">
+    🚚 FREE SHIPPING ON ORDERS OVER RS. 3,000 →
+  </div>
+
+  <section class="section" id="shop">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">LATEST IN STORE</div>
+        <h2>THIS WEEK</h2>
+      </div>
+
+      <a class="view" href="#shop">
+        VIEW ALL →
+      </a>
+
+    </div>
+
+    <div class="products">
+
+      <article
+        class="product"
+        onclick="openSeokyProductModal('black-tee')"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="black-tee.png"
+            alt="SEOKY Black Tee"
+          >
+
+          <button
+            class="heart"
+            data-product-id="black-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('black-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY Black Tee
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('black-tee','SEOKY Black Tee',1500,'black-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        onclick="openSeokyProductModal('gray-tee')"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="gray-tee.png"
+            alt="SEOKY Gray Tee"
+          >
+
+          <button
+            class="heart"
+            data-product-id="gray-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('gray-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY Gray Tee
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('gray-tee','SEOKY Gray Tee',1500,'gray-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        onclick="openSeokyProductModal('white-tee')"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="white-tee.png"
+            alt="SEOKY White Tee"
+          >
+
+          <button
+            class="heart"
+            data-product-id="white-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('white-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY White Tee
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('white-tee','SEOKY White Tee',1500,'white-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="campaign" id="campaign">
+
+    <img
+      src="seoky-campaign.png"
+      alt="SEOKY Campaign"
+    >
+
+    <div class="campaign-content">
+
+      <div
+        class="kicker"
+        style="color:#fff"
+      >
+        SEOKY CAMPAIGN
+      </div>
+
+      <h3>
+        MADE FOR<br>
+        EVERYONE.
+      </h3>
+
+      <a class="cta outline" href="#shop">
+        EXPLORE →
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="section about" id="about">
+
+    <div class="kicker">
+      ABOUT SEOKY
+    </div>
+
+    <h2>
+      KEEP IT SIMPLE.<br>
+      WEAR IT YOUR WAY.
+    </h2>
+
+    <p>
+      SEOKY is a clean streetwear concept focused on
+      everyday T-shirts, simple silhouettes and an easy
+      shopping experience.
+    </p>
+
+  </section>
+
+</main>
+
+<!-- =====================================================
+     SHOP DETAILS
+===================================================== -->
+
+<section
+  class="seoky-shop-details"
+  id="shop-details"
+>
+
+  <div class="seoky-shop-details-inner">
+
+    <h2>SHOP DETAILS</h2>
+
+    <div class="seoky-info-grid">
+
+      <div>
+        <span>📍</span>
+
+        <h3>Location</h3>
+
+        <p>
+          Ambalangoda,<br>
+          Sri Lanka
+        </p>
+      </div>
+
+      <div>
+        <span>🚚</span>
+
+        <h3>Delivery</h3>
+
+        <p>
+          Island-wide Delivery
+        </p>
+      </div>
+
+      <div>
+        <span>📦</span>
+
+        <h3>Orders</h3>
+
+        <p>
+          Order directly through WhatsApp.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<footer class="footer" id="contact">
+
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+
+      <div class="logo">
+        SEOKY
+      </div>
+
+      <p class="tagline">
+        Simple streetwear.<br>
+        Everyday confidence.
+      </p>
+
+      <div class="footer-location">
+        📍 Ambalangoda, Sri Lanka<br>
+        🚚 Island-wide Delivery
+      </div>
+
+    </div>
+
+    <div class="footer-links">
+
+      <h4>SHOP</h4>
+
+      <a href="#shop">Black Tee</a>
+      <a href="#shop">Gray Tee</a>
+      <a href="#shop">White Tee</a>
+      <a href="#campaign">New Drop</a>
+
+    </div>
+
+    <div class="footer-contact">
+
+      <h4>CONTACT</h4>
+
+      <p>WhatsApp</p>
+      <p>+94 76 224 0238</p>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    SEOKY © 2026 · All Rights Reserved.
+  </div>
+
+</footer>
+
+<!-- =====================================================
+     WHATSAPP
+===================================================== -->
+
+<a
+  class="whatsapp-float"
+  href="https://wa.me/94762240238?text=Hi%20SEOKY!%20%F0%9F%91%8B%20I%27d%20like%20to%20know%20more%20about%20your%20products."
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Chat on WhatsApp"
+>
+
+  <span class="whatsapp-label">
+    CHAT WITH SEOKY
+  </span>
+
+  <svg
+    viewBox="0 0 32 32"
+    aria-hidden="true"
+  >
+
+    <path d="M19.11 17.39c-.27-.14-1.58-.78-1.83-.87-.25-.09-.43-.14-.61.14-.18.27-.7.87-.86 1.05-.16.18-.32.2-.59.07-.27-.14-1.12-.41-2.13-1.31-.79-.7-1.32-1.57-1.48-1.83-.16-.27-.02-.41.12-.55.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.02-.22-.53-.45-.46-.61-.47h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.26s.98 2.62 1.11 2.8c.14.18 1.92 2.93 4.66 4.11.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.58-.65 1.8-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/>
+
+    <path d="M16.01 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.59 4.38 1.63 6.22L3.1 28.8l6.72-1.7a12.73 12.73 0 0 0 6.19 1.59h.01c7.07 0 12.8-5.73 12.8-12.8S23.08 3.2 16.01 3.2zm0 23.32h-.01a10.5 10.5 0 0 1-5.35-1.47l-.38-.23-3.99 1.01 1.06-3.89-.25-.4a10.5 10.5 0 1 1 8.92 4.98z"/>
+
+  </svg>
+
+</a>
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+  <a
+    class="nav-item active"
+    href="#home"
+  >
+    <span>⌂</span>
+    <small>Home</small>
+  </a>
+
+  <a
+    class="nav-item"
+    href="#shop"
+  >
+    <span>⌕</span>
+    <small>Shop</small>
+  </a>
+
+  <button
+    class="nav-item"
+    onclick="openCart()"
+  >
+    <span>
+      🛍
+      <sup id="bottomCount">0</sup>
+    </span>
+
+    <small>Cart</small>
+  </button>
+
+
+</nav>
+
+<!-- =====================================================
+     CART DRAWER
+===================================================== -->
+
+<div
+  class="drawer"
+  id="cartDrawer"
+  onclick="if(event.target===this)closeCart()"
+>
+
+  <div class="drawer-card">
+
+    <div class="drawer-head">
+
+      <h2>Your Cart</h2>
+
+      <button
+        class="close"
+        onclick="closeCart()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="cartBottom"></div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div
+  class="search-panel"
+  id="searchPanel"
+  onclick="if(event.target===this)closeSearch()"
+>
+
+  <div class="search-card">
+
+    <div class="drawer-head">
+
+      <h2>Search SEOKY</h2>
+
+      <button
+        class="close"
+        onclick="closeSearch()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="search-row">
+
+      <input
+        id="searchInput"
+        placeholder="Search products..."
+        oninput="searchProducts()"
+      >
+
+    </div>
+
+    <div
+      id="searchResults"
+      style="padding-top:20px"
+    ></div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     PRODUCT MODAL
+===================================================== -->
+
+<div
+  class="seoky-modal-backdrop"
+  id="seokyProductModal"
+  onclick="if(event.target===this)closeSeokyProductModal()"
+>
+
+  <div class="seoky-product-modal">
+
+    <button
+      class="seoky-modal-close"
+      onclick="closeSeokyProductModal()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div class="seoky-modal-image">
+
+      <img
+        id="seokyModalImage"
+        src=""
+        alt=""
+      >
+
+      <div
+        class="gallery-thumbs"
+        id="seokyGalleryThumbs"
+      ></div>
+
+    </div>
+
+    <div class="seoky-modal-info">
+
+      <p class="seoky-modal-label">
+        SEOKY ESSENTIAL
+      </p>
+
+      <h2 id="seokyModalName"></h2>
+
+      <div
+        class="seoky-modal-price"
+        id="seokyModalPrice"
+      ></div>
+
+      <div class="product-actions">
+
+        <button
+          class="wishlist-btn"
+          id="seokyWishlist"
+          aria-label="Save product"
+        >
+          SAVE
+        </button>
+
+      </div>
+
+      <b>SELECT SIZE</b>
+
+      <div
+        class="size-row"
+        id="seokySizes"
+      >
+
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn active" data-size="M">M</button>
+        <button class="size-btn" data-size="L">L</button>
+        <button class="size-btn" data-size="XL">XL</button>
+
+      </div>
+
+      <button
+        class="size-guide"
+        onclick="openSizeGuide()"
+      >
+        View Size Guide
+      </button>
+
+      <div class="seoky-details-list">
+
+        <div>
+          <span>Material</span>
+          <strong>Cotton</strong>
+        </div>
+
+        <div>
+          <span>Fit</span>
+          <strong>Regular / Oversized</strong>
+        </div>
+
+        <div>
+          <span>Sizes</span>
+          <strong>S / M / L / XL</strong>
+        </div>
+
+        <div>
+          <span>Color</span>
+          <strong id="seokyModalColor"></strong>
+        </div>
+
+        <div>
+          <span>Price</span>
+          <strong id="seokyModalDetailPrice"></strong>
+        </div>
+
+        <div>
+          <span>Availability</span>
+          <strong>In stock</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="add seoky-modal-cart"
+        id="seokyModalCart"
+      >
+        ADD TO CART
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     SIZE GUIDE
+===================================================== -->
+
+<div
+  class="modal-backdrop"
+  id="sizeGuideModal"
+  onclick="if(event.target===this)closeSizeGuide()"
+>
+
+  <div class="modal size-guide-modal">
+
+    <button
+      class="modal-close"
+      onclick="closeSizeGuide()"
+    >
+      ×
+    </button>
+
+    <h2 class="checkout-title">
+      SIZE GUIDE
+    </h2>
+
+    <table class="size-table">
+
+      <tr>
+        <th>Size</th>
+        <th>Chest</th>
+        <th>Length</th>
+      </tr>
+
+      <tr>
+        <td>S</td>
+        <td>36–38</td>
+        <td>27</td>
+      </tr>
+
+      <tr>
+        <td>M</td>
+        <td>38–40</td>
+        <td>28</td>
+      </tr>
+
+      <tr>
+        <td>L</td>
+        <td>40–42</td>
+        <td>29</td>
+      </tr>
+
+      <tr>
+        <td>XL</td>
+        <td>42–44</td>
+        <td>30</td>
+      </tr>
+
+    </table>
+
+    <p
+      style="
+        color:#777;
+        margin-top:12px;
+        font-size:12px
+      "
+    >
+      Measurements are approximate.
+      Check your preferred fit before ordering.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<div
+  class="modal-backdrop"
+  id="checkoutModal"
+  onclick="if(event.target===this)closeCheckout()"
+>
+
+  <div class="modal">
+
+    <button
+      class="modal-close"
+      onclick="closeCheckout()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <h2 class="checkout-title">
+      CHECKOUT
+    </h2>
+
+    <p style="color:#777;margin-top:8px">
+      Enter your details, then send your order through WhatsApp.
+    </p>
+
+    <div class="checkout-grid">
+
+      <form
+        id="checkoutForm"
+        onsubmit="submitCheckout(event)"
+      >
+
+        <label>Name</label>
+
+        <input
+          id="checkoutName"
+          required
+          placeholder="Your name"
+        >
+
+        <label>Phone</label>
+
+        <input
+          id="checkoutPhone"
+          required
+          placeholder="07X XXX XXXX"
+        >
+
+        <label>Address</label>
+
+        <textarea
+          id="checkoutAddress"
+          rows="4"
+          required
+          placeholder="Delivery address"
+        ></textarea>
+
+        <button
+          class="add"
+          type="submit"
+        >
+          PLACE ORDER VIA WHATSAPP
+        </button>
+
+      </form>
+
+      <div class="checkout-summary">
+
+        <h3>YOUR ORDER</h3>
+
+        <div
+          id="checkoutItems"
+          style="margin-top:15px"
+        ></div>
+
+        <hr
+          style="
+            margin:15px 0;
+            border:0;
+            border-top:1px solid #333
+          "
+        >
+
+        <div id="checkoutTotals"></div>
+
+        <strong id="checkoutTotal"></strong>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     CINEMATIC AUTH SCENE
+===================================================== -->
+
+<div
+  class="auth-scene"
+  id="authScene"
+>
+
+  <div class="auth-room"></div>
+
+  <div class="auth-ambient"></div>
+
+  <div class="auth-darkness"></div>
+
+  <div class="auth-lamp">
+
+    <div class="lamp-wire"></div>
+    <div class="lamp-holder"></div>
+    <div class="lamp-shade"></div>
+    <div class="lamp-halo"></div>
+    <div class="lamp-bulb"></div>
+
+  </div>
+
+  <div class="lamp-light"></div>
+
+  <div class="auth-switch-wall">
+
+    <div class="wall-label">
+      POWER
+    </div>
+
+    <button
+      class="wall-switch"
+      id="wallSwitch"
+      onclick="toggleAuthLight()"
+      aria-label="Turn light on"
+    >
+
+      <span class="switch-lever"></span>
+
+    </button>
+
+    <div
+      class="switch-status"
+      id="switchStatus"
+    >
+      OFF
+    </div>
+
+  </div>
+
+  <button
+    class="auth-scene-close"
+    onclick="closeAuthScene()"
+    aria-label="Close"
+  >
+    ×
+  </button>
+
+  <div class="auth-scene-hint">
+    TURN ON THE LIGHT
+  </div>
+
+  <div class="auth-panel">
+
+    <button
+      class="auth-panel-close"
+      onclick="closeAuthScene()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div
+      class="auth-title"
+      id="authTitle"
+    >
+      WELCOME BACK.
+    </div>
+
+    <p
+      class="auth-subtitle"
+      id="authSubtitle"
+    >
+      Sign in to your SEOKY account.
+    </p>
+
+    <div class="auth-tabs">
+
+      <span
+        class="auth-tab-slider"
+        id="authTabSlider"
+      ></span>
+
+      <button
+        class="auth-tab active"
+        id="loginTab"
+        onclick="setAuthMode('login')"
+      >
+        LOGIN
+      </button>
+
+      <button
+        class="auth-tab"
+        id="signupTab"
+        onclick="setAuthMode('signup')"
+      >
+        SIGN UP
+      </button>
+
+    </div>
+
+    <form
+      id="loginForm"
+      class="auth-form active"
+      onsubmit="submitLogin(event)"
+    >
+
+      <div class="auth-field">
+
+        <label>EMAIL</label>
+
+        <input
+          id="authLoginEmail"
+          type="email"
+          required
+          placeholder="you@example.com"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>PASSWORD</label>
+
+        <input
+          id="authLoginPassword"
+          type="password"
+          required
+          placeholder="Your password"
+        >
+
+      </div>
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        ENTER SEOKY →
+      </button>
+
+      <p class="auth-note">
+        Frontend demo account system.
+      </p>
+
+    </form>
+
+    <form
+      id="signupForm"
+      class="auth-form"
+      onsubmit="submitSignup(event)"
+    >
+
+      <div class="auth-field">
+
+        <label>NAME</label>
+
+        <input
+          id="authSignupName"
+          type="text"
+          required
+          placeholder="Your name"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>EMAIL</label>
+
+        <input
+          id="authSignupEmail"
+          type="email"
+          required
+          placeholder="you@example.com"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>PASSWORD</label>
+
+        <input
+          id="authSignupPassword"
+          type="password"
+          minlength="6"
+          required
+          placeholder="At least 6 characters"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>CONFIRM PASSWORD</label>
+
+        <input
+          id="authSignupConfirm"
+          type="password"
+          minlength="6"
+          required
+          placeholder="Repeat your password"
+        >
+
+      </div>
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        CREATE ACCOUNT →
+      </button>
+
+      <p class="auth-note">
+        Your demo account is stored only in this browser.
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  Done
+</div>
+
+<script>
+
+/* =====================================================
+   GLOBAL STATE
+===================================================== */
+
+let selectedSize="M";
+let promoDiscount=0;
+let activePromoCode="";
+
+let viewedProducts=
+  JSON.parse(
+    localStorage.getItem("seokyViewed") || "[]"
+  );
+
+const PRODUCTS={
+
+  "black-tee":{
+    id:"black-tee",
+    name:"SEOKY Black Tee",
+    price:1500,
+    image:"black-tee.png",
+    image2:"black-2.png",
+    color:"Black"
+  },
+
+  "gray-tee":{
+    id:"gray-tee",
+    name:"SEOKY Gray Tee",
+    price:1500,
+    image:"gray-tee.png",
+    image2:"gray-2.png",
+    color:"Gray"
+  },
+
+  "white-tee":{
+    id:"white-tee",
+    name:"SEOKY White Tee",
+    price:1500,
+    image:"white-tee.png",
+    image2:"white-2.png",
+    color:"White"
+  }
+
+};
+
+const WHATSAPP_NUMBER="94762240238";
+
+/* =====================================================
+   HELPERS
+===================================================== */
+
+function formatMoney(value){
+
+  return Number(value || 0)
+    .toLocaleString("en-LK");
+
+}
+
+function getCartSubtotal(){
+
+  return cart.reduce(
+    (sum,item)=>
+      sum +
+      Number(item.price || 0) *
+      Number(item.qty || 0),
+    0
+  );
+
+}
+
+function getDiscountAmount(){
+
+  const subtotal=
+    getCartSubtotal();
+
+  return subtotal*
+    (promoDiscount/100);
+
+}
+
+function getCartTotal(){
+
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
+  return Math.max(
+    0,
+    subtotal-discount
+  );
+
+}
+
+function getWishlist(){
+
+  try{
+
+    const list=
+      JSON.parse(
+        localStorage.getItem(
+          "seokyWishlist"
+        ) || "[]"
+      );
+
+    return Array.isArray(list)
+      ? list
+      : [];
+
+  }catch{
+
+    return [];
+
+  }
+
+}
+
+function saveWishlist(list){
+
+  localStorage.setItem(
+    "seokyWishlist",
+    JSON.stringify(list)
+  );
+
+}
+
+function normalizeCart(){
+
+  let changed=false;
+
+  cart=
+    cart.map(item=>{
+
+      const size=
+        item.size ||
+        (
+          typeof item.key==="string" &&
+          item.key.includes("-")
+            ?
+            item.key.split("-").pop()
+            :
+            "M"
+        );
+
+      const key=
+        item.key ||
+        `${item.id}-${size}`;
+
+      if(
+        item.key!==key ||
+        item.size!==size
+      ){
+        changed=true;
+      }
+
+      return{
+        ...item,
+        key,
+        size,
+        price:Number(item.price || 0),
+        qty:Number(item.qty || 1)
+      };
+
+    });
+
+  if(changed){
+
+    localStorage.setItem(
+      "seokyCart",
+      JSON.stringify(cart)
+    );
+
+  }
+
+}
+
+/* =====================================================
+   HERO SLIDER
+===================================================== */
+
+let currentSlide=0;
+let slideTimer;
+
+const slides=
+  document.querySelectorAll(".hero-slide");
+
+const dots=
+  document.querySelectorAll(".dot");
+
+function goToSlide(index){
+
+  if(index<0)
+    index=slides.length-1;
+
+  if(index>=slides.length)
+    index=0;
+
+  slides.forEach((slide,i)=>{
+
+    slide.classList.toggle(
+      "active",
+      i===index
+    );
+
+  });
+
+  dots.forEach((dot,i)=>{
+
+    dot.classList.toggle(
+      "active",
+      i===index
+    );
+
+  });
+
+  currentSlide=index;
+
+}
+
+function nextSlide(){
+
+  goToSlide(
+    currentSlide+1
+  );
+
+}
+
+function startSlider(){
+
+  clearInterval(slideTimer);
+
+  slideTimer=
+    setInterval(
+      nextSlide,
+      5000
+    );
+
+}
+
+startSlider();
+
+/* =====================================================
+   HERO SWIPE
+===================================================== */
+
+const hero=
+  document.getElementById(
+    "heroSlider"
+  );
+
+let touchStartX=0;
+let touchEndX=0;
+
+hero.addEventListener(
+  "touchstart",
+  e=>{
+    touchStartX=
+      e.changedTouches[0].screenX;
+  },
+  {passive:true}
+);
+
+hero.addEventListener(
+  "touchend",
+  e=>{
+
+    touchEndX=
+      e.changedTouches[0].screenX;
+
+    const distance=
+      touchEndX-touchStartX;
+
+    if(Math.abs(distance)<50)
+      return;
+
+    if(distance<0)
+      nextSlide();
+    else
+      goToSlide(
+        currentSlide-1
+      );
+
+    startSlider();
+
+  },
+  {passive:true}
+);
+
+/* =====================================================
+   CART
+===================================================== */
+
+let cart=
+  JSON.parse(
+    localStorage.getItem(
+      "seokyCart"
+    ) || "[]"
+  );
+
+normalizeCart();
+
+function saveCart(){
+
+  localStorage.setItem(
+    "seokyCart",
+    JSON.stringify(cart)
+  );
+
+  updateCartCount();
+
+}
+
+function updateCartCount(){
+
+  const total=
+    cart.reduce(
+      (sum,item)=>
+        sum+
+        Number(item.qty || 0),
+      0
+    );
+
+  const topCount=
+    document.getElementById(
+      "cartCount"
+    );
+
+  const bottomCount=
+    document.getElementById(
+      "bottomCount"
+    );
+
+  if(topCount){
+
+    topCount.textContent=total;
+
+    topCount.classList.remove(
+      "bump"
+    );
+
+    void topCount.offsetWidth;
+
+    if(total>0){
+
+      topCount.classList.add(
+        "bump"
+      );
+
+    }
+
+  }
+
+  if(bottomCount)
+    bottomCount.textContent=total;
+
+}
+
+function addToCart(
+  id,
+  name,
+  price,
+  image,
+  size="M"
+){
+
+  const safeSize=
+    size || "M";
+
+  const key=
+    `${id}-${safeSize}`;
+
+  const existing=
+    cart.find(
+      item=>item.key===key
+    );
+
+  if(existing){
+
+    existing.qty++;
+
+  }else{
+
+    cart.push({
+
+      key:key,
+
+      id:id,
+
+      name:name,
+
+      price:Number(price),
+
+      image:image,
+
+      size:safeSize,
+
+      qty:1
+
+    });
+
+  }
+
+  saveCart();
+
+  const addButton =
+    document.activeElement &&
+    document.activeElement.classList &&
+    document.activeElement.classList.contains("add")
+      ? document.activeElement
+      : null;
+
+  if(addButton){
+    const originalText =
+      addButton.dataset.originalText ||
+      addButton.textContent.trim() ||
+      "ADD TO CART";
+
+    addButton.dataset.originalText = originalText;
+    addButton.classList.remove("cart-added");
+    void addButton.offsetWidth;
+    addButton.classList.add("cart-added");
+    addButton.textContent = "ADDED";
+
+    clearTimeout(addButton._addedTimer);
+    addButton._addedTimer = setTimeout(()=>{
+      addButton.classList.remove("cart-added");
+      addButton.textContent = originalText;
+    },1400);
+  }
+
+}
+
+function changeQty(
+  key,
+  amount
+){
+
+  const item=
+    cart.find(
+      p=>p.key===key
+    );
+
+  if(!item)
+    return;
+
+  item.qty+=amount;
+
+  if(item.qty<=0){
+
+    cart=
+      cart.filter(
+        p=>p.key!==key
+      );
+
+  }
+
+  saveCart();
+
+  renderCart();
+
+}
+
+function removeItem(key){
+
+  cart=
+    cart.filter(
+      item=>item.key!==key
+    );
+
+  saveCart();
+
+  renderCart();
+
+}
+
+/* =====================================================
+   CART RENDER
+===================================================== */
+
+function renderCart(){
+
+  const cartItems=
+    document.getElementById(
+      "cartItems"
+    );
+
+  const cartBottom=
+    document.getElementById(
+      "cartBottom"
+    );
+
+  if(cart.length===0){
+
+    cartItems.innerHTML=
+      `
+      <div class="empty">
+        Your cart is empty.
+        <br><br>
+        Pick a tee and come back here 👕
+      </div>
+      `;
+
+    cartBottom.innerHTML="";
+
+    return;
+
+  }
+
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
+  const total=
+    getCartTotal();
+
+  const remaining=
+    Math.max(
+      0,
+      3000-subtotal
+    );
+
+  const pct=
+    Math.min(
+      100,
+      subtotal/3000*100
+    );
+
+  cartItems.innerHTML=
+    cart.map(item=>`
+
+      <div class="cart-item">
+
+        <img
+          src="${item.image}"
+          alt="${item.name}"
+        >
+
+        <div class="cart-meta">
+
+          <h4>
+            ${item.name} · Size ${item.size || "M"}
+          </h4>
+
+          <div>
+            Rs. ${formatMoney(item.price)}
+          </div>
+
+          <div class="qty">
+
+            <button
+              type="button"
+              onclick="changeQty('${item.key}',-1)"
+            >
+              −
+            </button>
+
+            <b>${item.qty}</b>
+
+            <button
+              type="button"
+              onclick="changeQty('${item.key}',1)"
+            >
+              +
+            </button>
+
+            <button
+              type="button"
+              class="remove-btn"
+              onclick="removeItem('${item.key}')"
+            >
+              Remove
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    `).join("");
+
+  cartBottom.innerHTML=
+    `
+    <div class="shipping-progress">
+
+      ${
+        remaining>0
+        ?
+        `Add Rs. ${formatMoney(remaining)} more for FREE SHIPPING 🚚`
+        :
+        `FREE SHIPPING UNLOCKED 🚚`
+      }
+
+      <div class="shipping-bar">
+        <i style="width:${pct}%"></i>
+      </div>
+
+    </div>
+
+    <div class="promo-row">
+
+      <input
+        id="promoInput"
+        value="${activePromoCode}"
+        placeholder="Promo code"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromo()}"
+      >
+
+      <button
+        type="button"
+        onclick="applyPromo()"
+      >
+        APPLY
+      </button>
+
+    </div>
+
+    <div
+      id="promoMsg"
+      style="
+        font-size:12px;
+        margin-top:7px;
+        color:${promoDiscount>0 ? '#4bd477' : '#777'}
+      "
+    >
+      ${
+        promoDiscount>0
+        ?
+        `${promoDiscount}% discount applied ✓`
+        :
+        ""
+      }
+    </div>
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        padding-top:22px;
+        font-weight:800
+      "
+    >
+
+      <span>Subtotal</span>
+
+      <span>
+        Rs. ${formatMoney(subtotal)}
+      </span>
+
+    </div>
+
+    ${
+      discount>0
+      ?
+      `
+      <div
+        style="
+          display:flex;
+          justify-content:space-between;
+          padding-top:10px;
+          color:#4bd477;
+          font-weight:800
+        "
+      >
+
+        <span>Discount (${promoDiscount}%)</span>
+
+        <span>
+          − Rs. ${formatMoney(discount)}
+        </span>
+
+      </div>
+      `
+      :
+      ""
+    }
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        padding-top:12px;
+        font-size:18px;
+        font-weight:900
+      "
+    >
+
+      <span>Total</span>
+
+      <span>
+        Rs. ${formatMoney(total)}
+      </span>
+
+    </div>
+
+    <button
+      class="checkout"
+      type="button"
+      onclick="openCheckout()"
+    >
+      ORDER ON WHATSAPP
+    </button>
+    `;
+
+}
+
+/* =====================================================
+   CART OPEN / CLOSE
+===================================================== */
+
+function openCart(){
+
+  renderCart();
+
+  document
+    .getElementById(
+      "cartDrawer"
+    )
+    .classList.add("open");
+
+}
+
+function closeCart(){
+
+  document
+    .getElementById(
+      "cartDrawer"
+    )
+    .classList.remove("open");
+
+}
+
+/* =====================================================
+   SEARCH
+===================================================== */
+
+function openSearch(){
+
+  document
+    .getElementById(
+      "searchPanel"
+    )
+    .classList.add("open");
+
+  setTimeout(
+    ()=>{
+      document
+        .getElementById(
+          "searchInput"
+        )
+        .focus();
+    },
+    100
+  );
+
+  searchProducts();
+
+}
+
+function closeSearch(){
+
+  document
+    .getElementById(
+      "searchPanel"
+    )
+    .classList.remove("open");
+
+}
+
+function searchProducts(){
+
+  const input=
+    document.getElementById(
+      "searchInput"
+    );
+
+  const resultsBox=
+    document.getElementById(
+      "searchResults"
+    );
+
+  const query=
+    input.value
+      .toLowerCase()
+      .trim();
+
+  const results=
+    Object.values(PRODUCTS)
+      .filter(
+        p=>
+          p.name
+            .toLowerCase()
+            .includes(query) ||
+          p.color
+            .toLowerCase()
+            .includes(query)
+      );
+
+  if(results.length===0){
+
+    resultsBox.innerHTML=
+      `
+      <div
+        style="
+          color:#777;
+          padding:20px 0
+        "
+      >
+        No products found.
+      </div>
+      `;
+
+    return;
+
+  }
+
+  resultsBox.innerHTML=
+    results.map(p=>`
+
+      <div
+        style="
+          display:flex;
+          gap:15px;
+          align-items:center;
+          padding:12px 0;
+          border-bottom:1px solid #292929
+        "
+      >
+
+        <img
+          src="${p.image}"
+          alt="${p.name}"
+          style="
+            width:65px;
+            height:70px;
+            object-fit:cover;
+            background:#eee;
+            border-radius:7px
+          "
+        >
+
+        <div style="flex:1">
+
+          <b>${p.name}</b>
+
+          <div
+            style="
+              color:#777;
+              margin-top:5px
+            "
+          >
+            Rs. ${formatMoney(p.price)}
+          </div>
+
+        </div>
+
+        <button
+          class="add"
+          style="
+            width:auto;
+            margin:0
+          "
+          onclick="
+            addToCart(
+              '${p.id}',
+              '${p.name}',
+              ${p.price},
+              '${p.image}',
+              'M'
+            );
+            closeSearch()
+          "
+        >
+          ADD
+        </button>
+
+      </div>
+
+    `).join("");
+
+}
+
+/* =====================================================
+   PROMO
+===================================================== */
+
+function applyPromo(){
+
+  const input=
+    document.getElementById(
+      "promoInput"
+    );
+
+  const msg=
+    document.getElementById(
+      "promoMsg"
+    );
+
+  const code=
+    (
+      input?.value || ""
+    )
+    .trim()
+    .toUpperCase();
+
+  if(code==="SEOKY10"){
+
+    promoDiscount=10;
+    activePromoCode="SEOKY10";
+
+    renderCart();
+
+    showToast(
+      "SEOKY10 applied · 10% OFF ✓"
+    );
+
+  }else{
+
+    promoDiscount=0;
+    activePromoCode="";
+
+    renderCart();
+
+    if(code){
+
+      showToast(
+        "Invalid promo code"
+      );
+
+    }
+
+  }
+
+}
+
+/* =====================================================
+   SIZE GUIDE
+===================================================== */
+
+function openSizeGuide(){
+
+  document
+    .getElementById(
+      "sizeGuideModal"
+    )
+    .classList.add("open");
+
+}
+
+function closeSizeGuide(){
+
+  document
+    .getElementById(
+      "sizeGuideModal"
+    )
+    .classList.remove("open");
+
+}
+
+/* =====================================================
+   MENU
+===================================================== */
+
+function toggleMenu(){
+
+  document
+    .getElementById(
+      "menuCard"
+    )
+    .classList.toggle("open");
+
+}
+
+/* =====================================================
+   WISHLIST
+===================================================== */
+
+function updateWishlistCards(){
+
+  const wishlist=
+    getWishlist();
+
+  document
+    .querySelectorAll(
+      ".heart[data-product-id]"
+    )
+    .forEach(button=>{
+
+      const id=
+        button.dataset.productId;
+
+      const liked=
+        wishlist.includes(id);
+
+          button.textContent="＋";
+
+      button.classList.toggle(
+        "liked",
+        liked
+      );
+
+      let note=button.parentElement.querySelector(".wishlist-saved-note");
+      if(!note){
+        note=document.createElement("span");
+        note.className="wishlist-saved-note";
+        note.textContent="SAVED";
+        button.parentElement.appendChild(note);
+      }
+      note.classList.toggle("show",liked);
+
+    });
+
+}
+
+function toggleWishlistCard(
+  id,
+  button
+){
+
+  let wishlist=
+    getWishlist();
+
+  if(wishlist.includes(id)){
+
+    wishlist=
+      wishlist.filter(
+        x=>x!==id
+      );
+
+    button.textContent="＋";
+
+    button.classList.remove(
+      "liked"
+    );
+    const note=button.parentElement.querySelector(".wishlist-saved-note");
+    if(note) note.classList.remove("show");
+
+    showToast(
+      "Removed from wishlist"
+    );
+
+  }else{
+
+    wishlist=[
+      ...wishlist,
+      id
+    ];
+
+    button.textContent="＋";
+
+    button.classList.add(
+      "liked"
+    );
+    let note=button.parentElement.querySelector(".wishlist-saved-note");
+    if(!note){
+      note=document.createElement("span");
+      note.className="wishlist-saved-note";
+      note.textContent="SAVED";
+      button.parentElement.appendChild(note);
+    }
+    note.classList.remove("show");
+    void note.offsetWidth;
+    note.classList.add("show");
+    button.classList.remove("wishlist-burst");
+    void button.offsetWidth;
+    button.classList.add("wishlist-burst");
+
+    showToast(
+      "Saved to wishlist"
+    );
+
+  }
+
+  saveWishlist(wishlist);
+
+  updateWishlistCards();
+
+  updateProductModalWishlist(id);
+
+}
+
+function like(button){
+
+  const id=
+    button.dataset.productId;
+
+  if(id){
+
+    toggleWishlistCard(
+      id,
+      button
+    );
+
+    return;
+
+  }
+
+  if(
+    button.textContent.trim()==="＋"
+  ){
+
+    button.textContent="SAVED";
+
+    button.classList.add(
+      "liked"
+    );
+
+  }else{
+
+    button.textContent="SAVE";
+
+    button.classList.remove(
+      "liked"
+    );
+
+  }
+
+}
+
+function updateProductModalWishlist(id){
+
+  const wb=
+    document.getElementById(
+      "seokyWishlist"
+    );
+
+  if(!wb)
+    return;
+
+  const wishlist=
+    getWishlist();
+
+  wb.textContent=
+    wishlist.includes(id)
+    ?
+    "SAVED"
+    :
+    "SAVE";
+
+}
+
+/* =====================================================
+   TOAST
+===================================================== */
+
+let toastTimer;
+
+function showToast(message){
+
+  const toast=
+    document.getElementById(
+      "toast"
+    );
+
+  toast.textContent=message;
+
+  toast.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer=
+    setTimeout(
+      ()=>{
+        toast.classList.remove("show");
+      },
+      1800
+    );
+
+}
+
+/* =====================================================
+   PRODUCT MODAL
+===================================================== */
+
+let activeProductId=null;
+
+function setSeokyGalleryImage(src,alt,index){
+  const image=document.getElementById("seokyModalImage");
+
+  image.classList.remove("gallery-swap");
+  void image.offsetWidth;
+
+  image.src=src;
+  image.alt=alt;
+  image.classList.add("gallery-swap");
+
+  document
+    .querySelectorAll("#seokyGalleryThumbs button")
+    .forEach((button,i)=>{
+      button.classList.toggle("active",i===index);
+    });
+}
+
+function openSeokyProductModal(id){
+
+  const product=
+    PRODUCTS[id];
+
+  if(!product)
+    return;
+
+  activeProductId=id;
+
+  document.getElementById(
+    "seokyModalImage"
+  ).src=product.image;
+
+  document.getElementById(
+    "seokyModalImage"
+  ).alt=product.name;
+
+  document.getElementById(
+    "seokyModalName"
+  ).textContent=product.name;
+
+  document.getElementById(
+    "seokyModalPrice"
+  ).textContent=
+    "Rs. "+
+    formatMoney(product.price);
+
+  document.getElementById(
+    "seokyModalDetailPrice"
+  ).textContent=
+    "Rs. "+
+    formatMoney(product.price);
+
+  document.getElementById(
+    "seokyModalColor"
+  ).textContent=product.color;
+
+  selectedSize="M";
+
+  document
+    .querySelectorAll(
+      "#seokySizes .size-btn"
+    )
+    .forEach(button=>{
+
+      button.classList.toggle(
+        "active",
+        button.dataset.size===
+        selectedSize
+      );
+
+    });
+
+  document
+    .querySelectorAll(
+      "#seokySizes .size-btn"
+    )
+    .forEach(button=>{
+
+      button.onclick=()=>{
+
+        selectedSize=
+          button.dataset.size;
+
+        document
+          .querySelectorAll(
+            "#seokySizes .size-btn"
+          )
+          .forEach(x=>{
+
+            x.classList.toggle(
+              "active",
+              x===button
+            );
+
+          });
+
+      };
+
+    });
+
+  updateProductModalWishlist(id);
+
+  const wb=
+    document.getElementById(
+      "seokyWishlist"
+    );
+
+  wb.onclick=()=>{
+
+    let wishlist=
+      getWishlist();
+
+    if(wishlist.includes(id)){
+
+      wishlist=
+        wishlist.filter(
+          x=>x!==id
+        );
+
+      wb.textContent="SAVE";
+      wb.classList.remove("liked","wishlist-burst");
+
+      showToast(
+        "Removed from wishlist"
+      );
+
+    }else{
+
+      wishlist=[
+        ...wishlist,
+        id
+      ];
+
+      wb.textContent="SAVED";
+      wb.classList.add("liked");
+      wb.classList.remove("wishlist-burst");
+      void wb.offsetWidth;
+      wb.classList.add("wishlist-burst");
+
+      showToast(
+        "Saved to wishlist"
+      );
+
+    }
+
+    saveWishlist(wishlist);
+
+    updateWishlistCards();
+
+  };
+
+  const galleryImages=[
+    product.image,
+    product.image2
+  ].filter(Boolean);
+
+  galleryImages.forEach(src=>{
+    const preload=new Image();
+    preload.src=src;
+  });
+
+  document.getElementById(
+    "seokyGalleryThumbs"
+  ).innerHTML=
+    galleryImages.map((src,index)=>`
+      <button
+        type="button"
+        class="${index===0 ? "active" : ""}"
+        aria-label="${product.name} image ${index+1}"
+      >
+        <img
+          src="${src}"
+          alt="${product.name} image ${index+1}"
+        >
+      </button>
+    `).join("");
+
+  document
+    .querySelectorAll("#seokyGalleryThumbs button")
+    .forEach((button,index)=>{
+      button.onclick=()=>{
+        setSeokyGalleryImage(
+          galleryImages[index],
+          product.name,
+          index
+        );
+      };
+    });
+
+  document.getElementById(
+    "seokyModalCart"
+  ).onclick=function(){
+
+    addToCart(
+      product.id,
+      product.name,
+      product.price,
+      product.image,
+      selectedSize
+    );
+
+    closeSeokyProductModal();
+
+  };
+
+  viewedProducts=
+    [
+      id,
+      ...viewedProducts.filter(
+        x=>x!==id
+      )
+    ].slice(0,4);
+
+  localStorage.setItem(
+    "seokyViewed",
+    JSON.stringify(
+      viewedProducts
+    )
+  );
+
+  document
+    .getElementById(
+      "seokyProductModal"
+    )
+    .classList.add("open");
+
+}
+
+function closeSeokyProductModal(){
+
+  document
+    .getElementById(
+      "seokyProductModal"
+    )
+    .classList.remove("open");
+
+  activeProductId=null;
+
+}
+
+/* =====================================================
+   CHECKOUT
+===================================================== */
+
+function openCheckout(){
+
+  if(cart.length===0){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return;
+
+  }
+
+  const itemsBox=
+    document.getElementById(
+      "checkoutItems"
+    );
+
+  itemsBox.innerHTML=
+    cart.map(item=>`
+
+      <p>
+        ${item.name}
+        · Size ${item.size || "M"}
+        × ${item.qty}
+        —
+        Rs. ${formatMoney(
+          item.price*item.qty
+        )}
+      </p>
+
+    `).join("");
+
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
+  const total=
+    getCartTotal();
+
+  const totalsBox=
+    document.getElementById(
+      "checkoutTotals"
+    );
+
+  totalsBox.innerHTML=
+    `
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:8px
+      "
+    >
+      <span>Subtotal</span>
+      <span>
+        Rs. ${formatMoney(subtotal)}
+      </span>
+    </div>
+
+    ${
+      discount>0
+      ?
+      `
+      <div
+        class="checkout-discount"
+        style="
+          display:flex;
+          justify-content:space-between;
+          margin-bottom:8px
+        "
+      >
+        <span>
+          Discount (${promoDiscount}%)
+        </span>
+
+        <span>
+          − Rs. ${formatMoney(discount)}
+        </span>
+
+      </div>
+      `
+      :
+      ""
+    }
+    `;
+
+  document.getElementById(
+    "checkoutTotal"
+  ).textContent=
+    "Total: Rs. "+
+    formatMoney(total);
+
+  document
+    .getElementById(
+      "checkoutModal"
+    )
+    .classList.add("open");
+
+  closeCart();
+
+}
+
+function closeCheckout(){
+
+  document
+    .getElementById(
+      "checkoutModal"
+    )
+    .classList.remove("open");
+
+}
+
+function submitCheckout(event){
+
+  event.preventDefault();
+
+  if(cart.length===0){
+
+    showToast(
+      "Your cart is empty"
+    );
+
+    return;
+
+  }
+
+  const name=
+    document
+      .getElementById(
+        "checkoutName"
+      )
+      .value
+      .trim();
+
+  const phone=
+    document
+      .getElementById(
+        "checkoutPhone"
+      )
+      .value
+      .trim();
+
+  const address=
+    document
+      .getElementById(
+        "checkoutAddress"
+      )
+      .value
+      .trim();
+
+  const orderLines=
+    cart.map(item=>
+      `• ${item.name} · Size ${item.size || "M"} x${item.qty} — Rs. ${formatMoney(item.price*item.qty)}`
+    ).join("\n");
+
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
+  const total=
+    getCartTotal();
+
+  const discountLine=
+    discount>0
+    ?
+    `\nDiscount (${promoDiscount}%): - Rs. ${formatMoney(discount)}`
+    :
+    "";
+
+  const message=
+`Hi SEOKY! 👋
+
+I'd like to place an order.
+
+Name: ${name}
+Phone: ${phone}
+Address: ${address}
+
+ORDER:
+${orderLines}
+
+Subtotal: Rs. ${formatMoney(subtotal)}
+${discountLine}
+Total: Rs. ${formatMoney(total)}
+
+Thank you!`;
+
+  window.open(
+    "https://wa.me/"+
+    WHATSAPP_NUMBER+
+    "?text="+
+    encodeURIComponent(message),
+    "_blank"
+  );
+
+  closeCheckout();
+
+}
+
+/* =====================================================
+   CINEMATIC AUTH SYSTEM
+===================================================== */
+
+let authMode="login";
+let authLightOn=false;
+
+function openAuthScene(
+  mode="login"
+){
+
+  authMode=mode;
+  authLightOn=false;
+
+  const scene=
+    document.getElementById(
+      "authScene"
+    );
+
+  const wallSwitch=
+    document.getElementById(
+      "wallSwitch"
+    );
+
+  const status=
+    document.getElementById(
+      "switchStatus"
+    );
+
+  setAuthMode(mode);
+
+  scene.classList.add(
+    "open"
+  );
+
+  scene.classList.remove(
+    "lit"
+  );
+
+  wallSwitch.classList.remove(
+    "on"
+  );
+
+  status.textContent="OFF";
+
+  document.body.style.overflow=
+    "hidden";
+
+}
+
+function toggleAuthLight(){
+
+  authLightOn=
+    !authLightOn;
+
+  const scene=
+    document.getElementById(
+      "authScene"
+    );
+
+  const wallSwitch=
+    document.getElementById(
+      "wallSwitch"
+    );
+
+  const status=
+    document.getElementById(
+      "switchStatus"
+    );
+
+  if(authLightOn){
+
+    wallSwitch.classList.add(
+      "on"
+    );
+
+    status.textContent="ON";
+
+    setTimeout(
+      ()=>{
+        if(authLightOn){
+
+          scene.classList.add(
+            "lit"
+          );
+
+        }
+      },
+      120
+    );
+
+  }else{
+
+    scene.classList.remove(
+      "lit"
+    );
+
+    setTimeout(
+      ()=>{
+
+        if(!authLightOn){
+
+          wallSwitch.classList.remove(
+            "on"
+          );
+
+          status.textContent="OFF";
+
+        }
+
+      },
+      250
+    );
+
+  }
+
+}
+
+function closeAuthScene(){
+
+  const scene=
+    document.getElementById(
+      "authScene"
+    );
+
+  const wallSwitch=
+    document.getElementById(
+      "wallSwitch"
+    );
+
+  const status=
+    document.getElementById(
+      "switchStatus"
+    );
+
+  authLightOn=false;
+
+  scene.classList.remove(
+    "lit"
+  );
+
+  setTimeout(
+    ()=>{
+
+      scene.classList.remove(
+        "open"
+      );
+
+      wallSwitch.classList.remove(
+        "on"
+      );
+
+      status.textContent="OFF";
+
+      document.body.style.overflow="";
+
+    },
+    350
+  );
+
+}
+
+function setAuthMode(mode){
+
+  authMode=mode;
+
+  const signup=
+    mode==="signup";
+
+  document
+    .getElementById(
+      "loginTab"
+    )
+    .classList.toggle(
+      "active",
+      !signup
+    );
+
+  document
+    .getElementById(
+      "signupTab"
+    )
+    .classList.toggle(
+      "active",
+      signup
+    );
+
+  document
+    .getElementById(
+      "authTabSlider"
+    )
+    .classList.toggle(
+      "signup",
+      signup
+    );
+
+  document
+    .getElementById(
+      "loginForm"
+    )
+    .classList.toggle(
+      "active",
+      !signup
+    );
+
+  document
+    .getElementById(
+      "signupForm"
+    )
+    .classList.toggle(
+      "active",
+      signup
+    );
+
+  document.getElementById(
+    "authTitle"
+  ).textContent=
+    signup
+    ?
+    "JOIN SEOKY."
+    :
+    "WELCOME BACK.";
+
+  document.getElementById(
+    "authSubtitle"
+  ).textContent=
+    signup
+    ?
+    "Create your SEOKY account."
+    :
+    "Sign in to your SEOKY account.";
+
+}
+
+/* =====================================================
+   SIGN UP
+===================================================== */
+
+function submitSignup(event){
+
+  event.preventDefault();
+
+  const name=
+    document
+      .getElementById(
+        "authSignupName"
+      )
+      .value
+      .trim();
+
+  const email=
+    document
+      .getElementById(
+        "authSignupEmail"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+  const password=
+    document.getElementById(
+      "authSignupPassword"
+    ).value;
+
+  const confirm=
+    document.getElementById(
+      "authSignupConfirm"
+    ).value;
+
+  if(password!==confirm){
+
+    showToast(
+      "Passwords do not match"
+    );
+
+    return;
+
+  }
+
+  if(password.length<6){
+
+    showToast(
+      "Password must be at least 6 characters"
+    );
+
+    return;
+
+  }
+
+  const user={
+    name:name,
+    email:email,
+    password:password
+  };
+
+  localStorage.setItem(
+    "seokyUser",
+    JSON.stringify(user)
+  );
+
+  localStorage.setItem(
+    "seokyLoggedIn",
+    "true"
+  );
+
+  updateAccountMenu();
+
+  closeAuthScene();
+
+  showToast(
+    "Welcome to SEOKY, "+
+    name+
+    " ✓"
+  );
+
+}
+
+/* =====================================================
+   LOGIN
+===================================================== */
+
+function submitLogin(event){
+
+  event.preventDefault();
+
+  const email=
+    document
+      .getElementById(
+        "authLoginEmail"
+      )
+      .value
+      .trim()
+      .toLowerCase();
+
+  const password=
+    document.getElementById(
+      "authLoginPassword"
+    ).value;
+
+  const saved=
+    JSON.parse(
+      localStorage.getItem(
+        "seokyUser"
+      ) || "null"
+    );
+
+  if(!saved){
+
+    showToast(
+      "No account found — please sign up"
+    );
+
+    setAuthMode(
+      "signup"
+    );
+
+    return;
+
+  }
+
+  if(
+    email!==saved.email ||
+    password!==saved.password
+  ){
+
+    showToast(
+      "Email or password is incorrect"
+    );
+
+    return;
+
+  }
+
+  localStorage.setItem(
+    "seokyLoggedIn",
+    "true"
+  );
+
+  updateAccountMenu();
+
+  closeAuthScene();
+
+  showToast(
+    "Welcome back, "+
+    saved.name+
+    " ✓"
+  );
+
+}
+
+/* =====================================================
+   SIGN OUT
+===================================================== */
+
+function signOut(){
+
+  localStorage.removeItem(
+    "seokyLoggedIn"
+  );
+
+  updateAccountMenu();
+
+  showToast(
+    "Signed out ✓"
+  );
+
+}
+
+/* =====================================================
+   ACCOUNT MENU
+===================================================== */
+
+function updateAccountMenu(){
+
+  const logged=
+    localStorage.getItem(
+      "seokyLoggedIn"
+    )==="true";
+
+  const signOutItem=
+    document.getElementById(
+      "signOutMenuItem"
+    );
+
+  if(signOutItem){
+
+    signOutItem.style.display=
+      logged
+      ?
+      "flex"
+      :
+      "none";
+
+  }
+
+}
+
+/* =====================================================
+   OUTSIDE CLICK
+===================================================== */
+
+document.addEventListener(
+  "click",
+  event=>{
+
+    const menu=
+      document.getElementById(
+        "menuCard"
+      );
+
+    const menuButton=
+      event.target.closest(
+        ".header .icon-btn"
+      );
+
+    if(
+      menu &&
+      menu.classList.contains("open") &&
+      !menu.contains(event.target) &&
+      !menuButton
+    ){
+
+      menu.classList.remove(
+        "open"
+      );
+
+    }
+
+  }
+);
+
+/* =====================================================
+   SCROLL REVEAL
+===================================================== */
+
+function initRevealAnimations(){
+
+  const revealItems=
+    document.querySelectorAll(
+      ".section,.campaign,.seoky-shop-details,.footer-brand,.footer-links,.footer-contact,.product"
+    );
+
+  if(!("IntersectionObserver" in window)){
+
+    revealItems.forEach(
+      el=>el.classList.add("revealed")
+    );
+
+    return;
+
+  }
+
+  const observer=
+    new IntersectionObserver(
+      entries=>{
+
+        entries.forEach(entry=>{
+
+          if(entry.isIntersecting){
+
+            entry.target.classList.add(
+              "revealed"
+            );
+
+            observer.unobserve(
+              entry.target
+            );
+
+          }
+
+        });
+
+      },
+      {
+        threshold:.12,
+        rootMargin:"0px 0px -40px 0px"
+      }
+    );
+
+  revealItems.forEach(
+    el=>observer.observe(el)
+  );
+
+}
+
+/* =====================================================
+   ESCAPE KEY
+===================================================== */
+
+document.addEventListener(
+  "keydown",
+  e=>{
+
+    if(e.key!=="Escape")
+      return;
+
+    closeCart();
+    closeSearch();
+    closeCheckout();
+    closeSeokyProductModal();
+    closeSizeGuide();
+
+    const menu=
+      document.getElementById(
+        "menuCard"
+      );
+
+    if(menu)
+      menu.classList.remove(
+        "open"
+      );
+
+    closeAuthScene();
+
+  }
+);
+
+/* =====================================================
+   INITIALIZE
+===================================================== */
+
+updateCartCount();
+
+updateAccountMenu();
+
+updateWishlistCards();
+
+initRevealAnimations();
+
+</script>
+
+
+<script>
+/* SEOKY interactive background glow */
+(function(){
+  const glow=document.getElementById('seokyCursorGlow');
+  if(!glow || !window.matchMedia('(hover:hover)').matches) return;
+  let x=window.innerWidth/2,y=window.innerHeight/2,tx=x,ty=y;
+  window.addEventListener('pointermove',e=>{tx=e.clientX;ty=e.clientY;document.body.classList.add('seoky-pointer-active')},{passive:true});
+  window.addEventListener('pointerleave',()=>document.body.classList.remove('seoky-pointer-active'));
+  function tick(){
+    x+=(tx-x)*.11; y+=(ty-y)*.11;
+    glow.style.transform=`translate(${x}px,${y}px) translate(-50%,-50%)`;
+    requestAnimationFrame(tick);
+  }
+  tick();
+})();
+</script>
+<script>
+(function(){const g=document.querySelector('.seoky-cursor-glow')||document.getElementById('seokyCursorGlow');if(!g)return;addEventListener('pointermove',e=>{document.body.style.setProperty('--mx',e.clientX+'px');document.body.style.setProperty('--my',e.clientY+'px');g.style.left=e.clientX+'px';g.style.top=e.clientY+'px';document.body.classList.add('seoky-ready')},{passive:true})})();
+</script>
+
+<script>
+/* SEOKY mobile touch spotlight + ripple */
+(function(){
+  if(!window.matchMedia('(max-width:700px)').matches) return;
+  const ripple=document.createElement('div');
+  ripple.className='seoky-touch-ripple';
+  document.body.appendChild(ripple);
+  let timer;
+  function touch(e){
+    const t=e.touches && e.touches[0];
+    if(!t) return;
+    const x=t.clientX, y=t.clientY;
+    document.body.style.setProperty('--touch-x',x+'px');
+    document.body.style.setProperty('--touch-y',y+'px');
+    ripple.style.left=x+'px';
+    ripple.style.top=y+'px';
+    ripple.classList.remove('active');
+    void ripple.offsetWidth;
+    ripple.classList.add('active');
+    clearTimeout(timer);
+    timer=setTimeout(()=>ripple.classList.remove('active'),700);
+  }
+  window.addEventListener('touchstart',touch,{passive:true});
+  window.addEventListener('touchmove',touch,{passive:true});
+})();
+
+
+/* =====================================================
+   SEOKY LANGUAGE SWITCHER — FULL EN / සිං
+===================================================== */
+(function(){
+  const T={"MENU":"පටුන (Menu)","STREETWEAR · 2026":"ස්ට්‍රීට්වෙයාර් · 2026","Home":"මුල් පිටුව","Shop":"සාප්පුව","Campaign":"ප්‍රචාරණය","About SEOKY":"SEOKY ගැන","Shop Details":"සාප්පුවේ තොරතුරු","Contact":"සම්බන්ධ වන්න","Login":"ඇතුළු වන්න (Login)","Sign Up":"ලියාපදිංචි වන්න (Sign Up)","Sign Out":"ඉවත් වන්න (Sign Out)","SEOKY / NEW DROP":"SEOKY / නව නිකුතුව","SEOKY":"SEOKY","COLLECTION":"එකතුව","SHOP NOW":"දැන් මිලදී ගන්න","🚚 FREE SHIPPING ON ORDERS OVER RS. 3,000 →":"🚚 රු. 3,000 ට වැඩි ඇණවුම් සඳහා නොමිලේ බෙදාහැරීම →","LATEST IN STORE":"සාප්පුවේ ඇති නවතම දේ","THIS WEEK":"මේ සතියේ","VIEW ALL →":"සියල්ල බලන්න →","ADD TO CART":"කාට් එකට එකතු කරන්න","SEOKY Black Tee":"SEOKY කළු ටී-ෂර්ට් එක","SEOKY Gray Tee":"SEOKY අළු ටී-ෂර්ට් එක","SEOKY White Tee":"SEOKY සුදු ටී-ෂර්ට් එක","Rs. 1,500":"රු. 1,500","SEOKY CAMPAIGN":"SEOKY ප්‍රචාරණය","MADE FOR":"සාදා ඇත්තේ","EVERYONE.":"සැමටමයි.","EXPLORE →":"ගවේෂණය කරන්න →","ABOUT SEOKY":"SEOKY ගැන","KEEP IT SIMPLE.":"සරලව තබා ගන්න.","WEAR IT YOUR WAY.":"ඔබට කැමති විලාසිතාවෙන් අඳින්න.","SEOKY is a clean streetwear concept focused on everyday T-shirts, simple silhouettes and an easy shopping experience.":"SEOKY යනු එදිනෙදා අඳින ටී-ෂර්ට්, සරල විලාසිතා සහ පහසු මිලදී ගැනීමේ අත්දැකීමක් ලබා දෙන පිරිසිදු ස්ට්‍රීට්වෙයාර් සංකල්පයකි.","SHOP DETAILS":"සාප්පුවේ තොරතුරු","Location":"පිහිටීම","Ambalangoda,":"අම්බලන්ගොඩ,","Sri Lanka":"ශ්‍රී ලංකාව","Delivery":"බෙදාහැරීම","Island-wide Delivery":"දිවයින පුරා බෙදාහැරීම","Orders":"ඇණවුම්","Order directly through WhatsApp.":"WhatsApp හරහා සෘජුවම ඇණවුම් කරන්න.","Simple streetwear.":"සරල ස්ට්‍රීට්වෙයාර්.","Everyday confidence.":"එදිනෙදා විශ්වාසය.","SHOP":"සාප්පුව","Black Tee":"කළු ටී-ෂර්ට් එක","Gray Tee":"අළු ටී-ෂර්ට් එක","White Tee":"සුදු ටී-ෂර්ට් එක","New Drop":"නව නිකුතුව","CONTACT":"සම්බන්ධ වන්න","WhatsApp":"WhatsApp","+94 76 224 0238":"+94 76 224 0238","SEOKY © 2026 · All Rights Reserved.":"SEOKY © 2026 · සියලුම හිමිකම් ඇවිරිණි.","CART":"කාට් එක","Your Cart":"ඔබේ කාට් එක","Empty Cart":"හිස් කාට් එක","Continue Shopping":"තවදුරටත් භාණ්ඩ මිලදී ගන්න","Remove":"ඉවත් කරන්න","Subtotal":"එකතුව (බෙදාහැරීමේ ගාස්තු රහිතව)","Total":"මුළු එකතුව","CHECKOUT":"ගෙවීම් කිරීම (Checkout)","SEOKY ESSENTIAL":"SEOKY අත්‍යවශ්‍ය විලාසිතා","SAVE":"සුරකින්න","SAVED":"සුරකින ලදී","SELECT SIZE":"ප්‍රමාණය තෝරන්න","View Size Guide":"ප්‍රමාණ සටහන බලන්න","Material":"රෙදි වර්ගය","Cotton":"කපු (Cotton)","Fit":"හැඩය (Fit)","Regular / Oversized":"සාමාන්‍ය / ඕවර්සයිස්","Sizes":"ප්‍රමාණයන්","Color":"පාට","Price":"මිල","Availability":"ලබාගත හැකි බව","In stock":"තොග ඇත","SIZE GUIDE":"ප්‍රමාණ සටහන","Size":"ප්‍රමාණය","Chest":"පපුව (වටප්‍රමාණය)","Length":"දිග","Measurements are approximate.":"මිනුම් ආසන්න වශයෙන් ලබා දී ඇත.","Complete your order details below.":"ඔබේ ඇණවුම් විස්තර පහතින් සම්පූර්ණ කරන්න.","Name":"නම","Phone":"දුරකථන අංකය","Address":"ලිපිනය","YOUR ORDER":"ඔබේ ඇණවුම","PLACE ORDER VIA WHATSAPP":"WHATSAPP හරහා ඇණවුම යොමු කරන්න","WELCOME BACK.":"නැවත සාදරයෙන් පිළිගනිමු.","Sign in to your SEOKY account.":"ඔබේ SEOKY ගිණුමට ඇතුළු වන්න.","EMAIL":"ඊමේල්","PASSWORD":"මුරපදය","LOGIN":"ඇතුළු වන්න (Login)","CREATE YOUR ACCOUNT":"ඔබේ ගිණුම සාදන්න","CONFIRM PASSWORD":"මුරපදය තහවුරු කරන්න","CREATE ACCOUNT":"ගිණුම සාදන්න","Don't have an account?":"ගිණුමක් නැද්ද?","Already have an account?":"දැනටමත් ගිණුමක් තිබේද?","Search SEOKY":"SEOKY හි සොයන්න","Added to cart":"කාට් එකට එකතු කරන ලදී","Saved to wishlist":"කැමති ලැයිස්තුවට සුරකින ලදී","Removed from wishlist":"කැමති ලැයිස්තුවෙන් ඉවත් කරන ලදී","No account found.":"ගිණුමක් හමු නොවීය.","Email or password is incorrect.":"ඊමේල් ලිපිනය හෝ මුරපදය වැරදියි.","Passwords do not match.":"මුරපද එකිනෙකට ගැලපෙන්නේ නැත.","Password must be at least 6 characters.":"මුරපදයට අවම වශයෙන් අක්ෂර 6ක් තිබිය යුතුය.","Invalid promo code.":"වලංගු නොවන ප්‍රමෝ කේතයකි.","Done":"ඉවරයි / සම්පූර්ණයි","Cart":"කාට් එක","Search":"සොයන්න","Close":"වසා දමන්න","Open Menu":"පටුන විවෘත කරන්න","Language":"භාෂාව","English":"ඉංග්‍රීසි","Sinhala":"සිංහල","Added to cart ✓":"කාට් එකට එකතු කරන ලදී","No account found — please sign up":"ගිණුමක් හමු නොවීය.","Email or password is incorrect":"ඊමේල් ලිපිනය හෝ මුරපදය වැරදියි.","Passwords do not match":"මුරපද එකිනෙකට ගැලපෙන්නේ නැත.","Password must be at least 6 characters":"මුරපදයට අවම වශයෙන් අක්ෂර 6ක් තිබිය යුතුය.","Invalid promo code":"වලංගු නොවන ප්‍රමෝ කේතයකි.","Sign out ✓":"ඉවත් වන්න (Sign out)"};
+  const reverse={}; Object.keys(T).forEach(k=>{ if(T[k]!==k) reverse[T[k]]=k; });
+  const originals=new WeakMap();
+
+  function translateText(lang){
+    const map=lang==='si'?T:reverse;
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n=>{
+      const parent=n.parentElement;
+      if(!parent || parent.closest('#languageWrap,script,style')) return;
+      if(!originals.has(n)) originals.set(n,n.nodeValue);
+      const original=originals.get(n);
+      const key=original.trim();
+      if(!key) return;
+      const replacement=map[key];
+      if(replacement!==undefined){
+        const lead=original.match(/^\s*/)?.[0]||'';
+        const tail=original.match(/\s*$/)?.[0]||'';
+        n.nodeValue=lead+replacement+tail;
+      }
+    });
+    document.querySelectorAll('[placeholder]').forEach(el=>{
+      if(!el.dataset.enPlaceholder) el.dataset.enPlaceholder=el.getAttribute('placeholder');
+      const en=el.dataset.enPlaceholder;
+      if(lang==='si' && map[en]!==undefined) el.setAttribute('placeholder',map[en]);
+      else el.setAttribute('placeholder',en);
+    });
+    document.querySelectorAll('[aria-label]').forEach(el=>{
+      if(!el.dataset.enAria) el.dataset.enAria=el.getAttribute('aria-label');
+      const en=el.dataset.enAria;
+      if(lang==='si' && map[en]!==undefined) el.setAttribute('aria-label',map[en]);
+      else el.setAttribute('aria-label',en);
+    });
+  }
+
+  function unwrapSinhalaFont(){
+    document.querySelectorAll('.seoky-si-text').forEach(span=>{
+      span.replaceWith(document.createTextNode(span.textContent||''));
+    });
+  }
+
+  function wrapSinhalaFont(root=document.body){
+    const walker=document.createTreeWalker(root,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    const re=/[\u0D80-\u0DFF]+(?:[\u200D\u200C][\u0D80-\u0DFF]+)*/g;
+    nodes.forEach(n=>{
+      const parent=n.parentElement;
+      if(!parent || parent.closest('#languageWrap,script,style,.seoky-si-text')) return;
+      const value=n.nodeValue||'';
+      if(!/[\u0D80-\u0DFF]/.test(value)) return;
+      const frag=document.createDocumentFragment();
+      let last=0,m;
+      re.lastIndex=0;
+      while((m=re.exec(value))){
+        if(m.index>last) frag.appendChild(document.createTextNode(value.slice(last,m.index)));
+        const span=document.createElement('span');
+        span.className='seoky-si-text';
+        if(parent.matches('h1,h2,h3,h4,h5,h6,.logo')) span.classList.add('seoky-si-heading');
+        span.textContent=m[0];
+        frag.appendChild(span);
+        last=re.lastIndex;
+      }
+      if(last<value.length) frag.appendChild(document.createTextNode(value.slice(last)));
+      n.replaceWith(frag);
+    });
+  }
+
+  const DYNAMIC_T={
+    'Added to cart ✓':'කාට් එකට එකතු කරන ලදී ✓',
+    'Saved to wishlist':'කැමති ලැයිස්තුවට සුරකින ලදී',
+    'Removed from wishlist':'කැමති ලැයිස්තුවෙන් ඉවත් කරන ලදී',
+    'Signed out ✓':'ඉවත් වන්න (Sign out) ✓',
+    'Welcome back,':'නැවත සාදරයෙන් පිළිගනිමු,',
+    'Repeat your password':'ඔබේ මුරපදය නැවත ඇතුළත් කරන්න'
+  };
+  Object.assign(T,DYNAMIC_T);
+
+  window.translateSeoky=function(lang){
+    const current=lang==='si'?'si':'en';
+    unwrapSinhalaFont();
+    const map=current==='si'?T:reverse;
+    const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+    const nodes=[];
+    while(walker.nextNode()) nodes.push(walker.currentNode);
+    nodes.forEach(n=>{
+      const parent=n.parentElement;
+      if(!parent || parent.closest('#languageWrap,script,style')) return;
+      if(!originals.has(n)) originals.set(n,n.nodeValue);
+      const original=originals.get(n);
+      const key=original.trim();
+      if(!key) return;
+      const replacement=map[key];
+      if(replacement!==undefined){
+        const lead=original.match(/^\s*/)?.[0]||'';
+        const tail=original.match(/\s*$/)?.[0]||'';
+        n.nodeValue=lead+replacement+tail;
+      }
+    });
+    document.querySelectorAll('[placeholder]').forEach(el=>{
+      if(!el.dataset.enPlaceholder) el.dataset.enPlaceholder=el.getAttribute('placeholder');
+      const en=el.dataset.enPlaceholder;
+      if(current==='si' && map[en]!==undefined) el.setAttribute('placeholder',map[en]);
+      else el.setAttribute('placeholder',en);
+    });
+    document.querySelectorAll('[aria-label]').forEach(el=>{
+      if(!el.dataset.enAria) el.dataset.enAria=el.getAttribute('aria-label');
+      const en=el.dataset.enAria;
+      if(current==='si' && map[en]!==undefined) el.setAttribute('aria-label',map[en]);
+      else el.setAttribute('aria-label',en);
+    });
+    document.documentElement.lang=current;
+    if(current==='si') wrapSinhalaFont();
+    const btn=document.getElementById('languageBtn');
+    if(btn) btn.textContent=current==='si'?'සිං':'EN';
+    document.querySelectorAll('.language-option').forEach(o=>o.classList.toggle('active',o.dataset.lang===current));
+    try{localStorage.setItem('seokyLanguage',current)}catch(e){}
+    const wrap=document.getElementById('languageWrap');
+    if(wrap) wrap.classList.remove('open');
+  };
+  window.setLanguage=window.translateSeoky;
+  window.toggleLanguagePanel=function(e){
+    if(e)e.stopPropagation();
+    const w=document.getElementById('languageWrap');
+    if(w)w.classList.toggle('open');
+  };
+  document.addEventListener('click',e=>{
+    const w=document.getElementById('languageWrap');
+    if(w&&!w.contains(e.target))w.classList.remove('open');
+  });
+  const saved=(()=>{try{return localStorage.getItem('seokyLanguage')}catch(e){return null}})();
+  window.setTimeout(()=>window.translateSeoky(saved==='si'?'si':'en'),30);
+
+  /* Safe dynamic-content support: only process newly-added raw text nodes. */
+  let wrapBusy=false;
+  const siObserver=new MutationObserver(records=>{
+    if(document.documentElement.lang!=='si' || wrapBusy) return;
+    wrapBusy=true;
+    records.forEach(record=>{
+      record.addedNodes.forEach(node=>{
+        if(node.nodeType===1 && node.closest && node.closest('#languageWrap')) return;
+        if(node.nodeType===3){
+          const p=node.parentElement;
+          if(p && !p.closest('#languageWrap,script,style,.seoky-si-text')){
+            const raw=(node.nodeValue||'').trim();
+            if(raw && T[raw]!==undefined) node.nodeValue=node.nodeValue.replace(raw,T[raw]);
+            wrapSinhalaFont(p);
+          }
+        }else if(node.nodeType===1){
+          if(!node.matches('.seoky-si-text') && !node.closest('#languageWrap')){
+            const walker2=document.createTreeWalker(node,NodeFilter.SHOW_TEXT);
+            const added=[]; while(walker2.nextNode()) added.push(walker2.currentNode);
+            added.forEach(t=>{const raw=(t.nodeValue||'').trim(); if(raw&&T[raw]!==undefined)t.nodeValue=t.nodeValue.replace(raw,T[raw]);});
+            wrapSinhalaFont(node);
+          }
+        }
+      });
+    });
+    wrapBusy=false;
+  });
+  siObserver.observe(document.body,{childList:true,subtree:true});
+
+})();
+</script>
+</body>
+</html>
