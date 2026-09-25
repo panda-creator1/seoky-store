@@ -1,26 +1,40 @@
-# 🖤 SEOKY
+SEOKY 🖤
 
-A simple and modern streetwear clothing website.
+Modern Streetwear. Bold Identity.
 
-## ✨ Features
-
-- 👕 Clothing products
-- 🛒 Shopping cart
-- 🔎 Product search
-- 🌙 Dark mode
-- 📱 Mobile responsive
-- 💬 WhatsApp ordering
-
-## 🛠️ Built With
-
-- HTML
-- CSS
-- JavaScript
-
-## 🌐 Live Website
-
-https://panda-creator1.github.io/seoky-store/
+A sleek and minimal streetwear e-commerce experience built with HTML, CSS & JavaScript.
 
 ---
 
-Made with ❤️ by Kesh
+✦ Features
+
+- 🛍️ Product Showcase
+- 🛒 Shopping Cart
+- ❤️ Wishlist
+- 🔎 Product Search
+- 👕 Product Details & Size Selection
+- 💳 Checkout UI
+- 📱 Responsive Design
+- ✨ Smooth Animations
+- 💬 WhatsApp Contact
+
+---
+
+⚡ Tech Stack
+
+HTML5 · CSS3 · JavaScript
+
+---
+
+👑 Creator
+
+Kesh
+Creator & Developer of SEOKY
+
+---
+
+<p align="center">
+  <b>SEOKY</b><br>
+  Streetwear with attitude.<br><br>
+  Made with 🖤 by <b>Kesh</b>
+</p>
