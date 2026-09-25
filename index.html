@@ -26,8 +26,7 @@ a{text-decoration:none;color:inherit}
 img{display:block}
 
 .logo,.hero h1,.section h2,.campaign-content h3,
-.seoky-modal-info h2,.checkout-title,
-.auth-title{
+.seoky-modal-info h2,.checkout-title,.auth-title{
   font-family:'Bebas Neue',Impact,sans-serif;
   font-weight:400
 }
@@ -995,6 +994,11 @@ body.dark .checkout-summary{border-color:#333}
 
 body.dark .checkout-summary p{color:#aaa}
 
+.checkout-discount{
+  color:#16803c!important;
+  font-weight:700
+}
+
 /* =========================
    TOAST
 ========================= */
@@ -1194,7 +1198,6 @@ body.dark .checkout-summary p{color:#aaa}
 
 /* =====================================================
    SEOKY CINEMATIC AUTH SCENE
-   LAMP + WALL SWITCH
 ===================================================== */
 
 .auth-scene{
@@ -1899,8 +1902,6 @@ body.dark .checkout-summary p{color:#aaa}
     grid-template-columns:1fr
   }
 
-  /* AUTH MOBILE */
-
   .auth-lamp{
     transform:translateX(-50%) scale(.75);
     transform-origin:top center
@@ -2003,20 +2004,13 @@ body.dark .checkout-summary p{color:#aaa}
 
   </div>
 
-  <!-- MENU -->
-
   <div class="menu-card" id="menuCard">
 
     <a href="#home" onclick="toggleMenu()">Home</a>
-
     <a href="#shop" onclick="toggleMenu()">Shop</a>
-
     <a href="#campaign" onclick="toggleMenu()">Campaign</a>
-
     <a href="#about" onclick="toggleMenu()">About SEOKY</a>
-
     <a href="#shop-details" onclick="toggleMenu()">Shop Details</a>
-
     <a href="#contact" onclick="toggleMenu()">Contact</a>
 
     <a
@@ -2059,31 +2053,20 @@ body.dark .checkout-summary p{color:#aaa}
 
 <main id="home">
 
-  <!-- HERO -->
-
   <section class="hero" id="heroSlider">
 
     <div class="hero-slider">
 
       <div class="hero-slide active">
-        <img
-          src="seoky-campaign.png"
-          alt="SEOKY Collection"
-        >
+        <img src="seoky-campaign.png" alt="SEOKY Collection">
       </div>
 
       <div class="hero-slide">
-        <img
-          src="seoky-campaign2.png"
-          alt="SEOKY Campaign 2"
-        >
+        <img src="seoky-campaign2.png" alt="SEOKY Campaign 2">
       </div>
 
       <div class="hero-slide">
-        <img
-          src="seoky-campaign3.png"
-          alt="SEOKY Campaign 3"
-        >
+        <img src="seoky-campaign3.png" alt="SEOKY Campaign 3">
       </div>
 
     </div>
@@ -2108,42 +2091,24 @@ body.dark .checkout-summary p{color:#aaa}
 
     <div class="dots">
 
-      <i
-        class="dot active"
-        onclick="goToSlide(0)"
-      ></i>
-
-      <i
-        class="dot"
-        onclick="goToSlide(1)"
-      ></i>
-
-      <i
-        class="dot"
-        onclick="goToSlide(2)"
-      ></i>
+      <i class="dot active" onclick="goToSlide(0)"></i>
+      <i class="dot" onclick="goToSlide(1)"></i>
+      <i class="dot" onclick="goToSlide(2)"></i>
 
     </div>
 
   </section>
 
-  <!-- TICKER -->
-
   <div class="ticker">
     🚚 FREE SHIPPING ON ORDERS OVER RS. 3,000 →
   </div>
-
-  <!-- SHOP -->
 
   <section class="section" id="shop">
 
     <div class="section-head">
 
       <div>
-        <div class="kicker">
-          LATEST IN STORE
-        </div>
-
+        <div class="kicker">LATEST IN STORE</div>
         <h2>THIS WEEK</h2>
       </div>
 
@@ -2171,7 +2136,8 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="heart"
-            onclick="event.stopPropagation();like(this)"
+            data-product-id="black-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('black-tee',this)"
             aria-label="Like"
           >
             ♡
@@ -2191,7 +2157,7 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="add"
-            onclick="event.stopPropagation();addToCart('black-tee','SEOKY Black Tee',1500,'black-tee.png')"
+            onclick="event.stopPropagation();addToCart('black-tee','SEOKY Black Tee',1500,'black-tee.png','M')"
           >
             ADD TO CART
           </button>
@@ -2216,7 +2182,8 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="heart"
-            onclick="event.stopPropagation();like(this)"
+            data-product-id="gray-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('gray-tee',this)"
             aria-label="Like"
           >
             ♡
@@ -2236,7 +2203,7 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="add"
-            onclick="event.stopPropagation();addToCart('gray-tee','SEOKY Gray Tee',1500,'gray-tee.png')"
+            onclick="event.stopPropagation();addToCart('gray-tee','SEOKY Gray Tee',1500,'gray-tee.png','M')"
           >
             ADD TO CART
           </button>
@@ -2261,7 +2228,8 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="heart"
-            onclick="event.stopPropagation();like(this)"
+            data-product-id="white-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('white-tee',this)"
             aria-label="Like"
           >
             ♡
@@ -2281,7 +2249,7 @@ body.dark .checkout-summary p{color:#aaa}
 
           <button
             class="add"
-            onclick="event.stopPropagation();addToCart('white-tee','SEOKY White Tee',1500,'white-tee.png')"
+            onclick="event.stopPropagation();addToCart('white-tee','SEOKY White Tee',1500,'white-tee.png','M')"
           >
             ADD TO CART
           </button>
@@ -2293,8 +2261,6 @@ body.dark .checkout-summary p{color:#aaa}
     </div>
 
   </section>
-
-  <!-- CAMPAIGN -->
 
   <section class="campaign" id="campaign">
 
@@ -2317,18 +2283,13 @@ body.dark .checkout-summary p{color:#aaa}
         EVERYONE.
       </h3>
 
-      <a
-        class="cta outline"
-        href="#shop"
-      >
+      <a class="cta outline" href="#shop">
         EXPLORE →
       </a>
 
     </div>
 
   </section>
-
-  <!-- ABOUT -->
 
   <section class="section about" id="about">
 
@@ -2674,33 +2635,10 @@ body.dark .checkout-summary p{color:#aaa}
         id="seokySizes"
       >
 
-        <button
-          class="size-btn"
-          data-size="S"
-        >
-          S
-        </button>
-
-        <button
-          class="size-btn active"
-          data-size="M"
-        >
-          M
-        </button>
-
-        <button
-          class="size-btn"
-          data-size="L"
-        >
-          L
-        </button>
-
-        <button
-          class="size-btn"
-          data-size="XL"
-        >
-          XL
-        </button>
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn active" data-size="M">M</button>
+        <button class="size-btn" data-size="L">L</button>
+        <button class="size-btn" data-size="XL">XL</button>
 
       </div>
 
@@ -2853,12 +2791,7 @@ body.dark .checkout-summary p{color:#aaa}
       CHECKOUT
     </h2>
 
-    <p
-      style="
-        color:#777;
-        margin-top:8px
-      "
-    >
+    <p style="color:#777;margin-top:8px">
       Enter your details, then send your order through WhatsApp.
     </p>
 
@@ -2914,6 +2847,8 @@ body.dark .checkout-summary p{color:#aaa}
 
         <hr style="margin:15px 0">
 
+        <div id="checkoutTotals"></div>
+
         <strong id="checkoutTotal"></strong>
 
       </div>
@@ -2933,33 +2868,20 @@ body.dark .checkout-summary p{color:#aaa}
   id="authScene"
 >
 
-  <!-- ROOM -->
-
   <div class="auth-room"></div>
 
-  <!-- DARKNESS -->
-
   <div class="auth-darkness"></div>
-
-  <!-- HANGING LAMP -->
 
   <div class="auth-lamp">
 
     <div class="lamp-wire"></div>
-
     <div class="lamp-holder"></div>
-
     <div class="lamp-shade"></div>
-
     <div class="lamp-bulb"></div>
 
   </div>
 
-  <!-- LIGHT BEAM -->
-
   <div class="lamp-light"></div>
-
-  <!-- WALL SWITCH -->
 
   <div class="auth-switch-wall">
 
@@ -2987,8 +2909,6 @@ body.dark .checkout-summary p{color:#aaa}
 
   </div>
 
-  <!-- CLOSE -->
-
   <button
     class="auth-scene-close"
     onclick="closeAuthScene()"
@@ -2997,13 +2917,9 @@ body.dark .checkout-summary p{color:#aaa}
     ×
   </button>
 
-  <!-- HINT -->
-
   <div class="auth-scene-hint">
     TURN ON THE LIGHT
   </div>
-
-  <!-- AUTH PANEL -->
 
   <div class="auth-panel">
 
@@ -3033,8 +2949,6 @@ body.dark .checkout-summary p{color:#aaa}
       Sign in to your SEOKY account.
     </p>
 
-    <!-- LOGIN / SIGN UP SWITCH -->
-
     <div class="auth-tabs">
 
       <span
@@ -3059,8 +2973,6 @@ body.dark .checkout-summary p{color:#aaa}
       </button>
 
     </div>
-
-    <!-- LOGIN FORM -->
 
     <form
       id="loginForm"
@@ -3106,8 +3018,6 @@ body.dark .checkout-summary p{color:#aaa}
       </p>
 
     </form>
-
-    <!-- SIGN UP FORM -->
 
     <form
       id="signupForm"
@@ -3202,8 +3112,8 @@ body.dark .checkout-summary p{color:#aaa}
 ========================================= */
 
 let selectedSize="M";
-
 let promoDiscount=0;
+let activePromoCode="";
 
 let viewedProducts=
   JSON.parse(
@@ -3241,6 +3151,119 @@ const PRODUCTS={
 const WHATSAPP_NUMBER="94762240238";
 
 /* =========================================
+   HELPERS
+========================================= */
+
+function formatMoney(value){
+  return Number(value || 0).toLocaleString("en-LK");
+}
+
+function getCartSubtotal(){
+
+  return cart.reduce(
+    (sum,item)=>
+      sum + Number(item.price || 0) * Number(item.qty || 0),
+    0
+  );
+}
+
+function getDiscountAmount(){
+
+  const subtotal=getCartSubtotal();
+
+  return subtotal * (promoDiscount/100);
+}
+
+function getCartTotal(){
+
+  const subtotal=getCartSubtotal();
+  const discount=getDiscountAmount();
+
+  return Math.max(
+    0,
+    subtotal-discount
+  );
+}
+
+function getWishlist(){
+
+  try{
+
+    const list=
+      JSON.parse(
+        localStorage.getItem("seokyWishlist") || "[]"
+      );
+
+    return Array.isArray(list)
+      ? list
+      : [];
+
+  }catch{
+
+    return [];
+
+  }
+}
+
+function saveWishlist(list){
+
+  localStorage.setItem(
+    "seokyWishlist",
+    JSON.stringify(list)
+  );
+
+}
+
+function normalizeCart(){
+
+  let changed=false;
+
+  cart=
+    cart.map(item=>{
+
+      const size=
+        item.size ||
+        (
+          typeof item.key==="string" &&
+          item.key.includes("-")
+            ?
+            item.key.split("-").pop()
+            :
+            "M"
+        );
+
+      const key=
+        item.key ||
+        `${item.id}-${size}`;
+
+      if(
+        item.key!==key ||
+        item.size!==size
+      ){
+        changed=true;
+      }
+
+      return{
+        ...item,
+        key,
+        size,
+        price:Number(item.price || 0),
+        qty:Number(item.qty || 1)
+      };
+
+    });
+
+  if(changed){
+
+    localStorage.setItem(
+      "seokyCart",
+      JSON.stringify(cart)
+    );
+
+  }
+}
+
+/* =========================================
    HERO SLIDER
 ========================================= */
 
@@ -3262,17 +3285,21 @@ function goToSlide(index){
     index=0;
 
   slides.forEach((slide,i)=>{
+
     slide.classList.toggle(
       "active",
       i===index
     );
+
   });
 
   dots.forEach((dot,i)=>{
+
     dot.classList.toggle(
       "active",
       i===index
     );
+
   });
 
   currentSlide=index;
@@ -3347,6 +3374,8 @@ let cart=
     localStorage.getItem("seokyCart") || "[]"
   );
 
+normalizeCart();
+
 function saveCart(){
 
   localStorage.setItem(
@@ -3361,17 +3390,22 @@ function updateCartCount(){
 
   const total=
     cart.reduce(
-      (sum,item)=>sum+item.qty,
+      (sum,item)=>
+        sum+Number(item.qty || 0),
       0
     );
 
-  document.getElementById(
-    "cartCount"
-  ).textContent=total;
+  const topCount=
+    document.getElementById("cartCount");
 
-  document.getElementById(
-    "bottomCount"
-  ).textContent=total;
+  const bottomCount=
+    document.getElementById("bottomCount");
+
+  if(topCount)
+    topCount.textContent=total;
+
+  if(bottomCount)
+    bottomCount.textContent=total;
 }
 
 function addToCart(
@@ -3382,8 +3416,11 @@ function addToCart(
   size="M"
 ){
 
+  const safeSize=
+    size || "M";
+
   const key=
-    id+"-"+size;
+    `${id}-${safeSize}`;
 
   const existing=
     cart.find(
@@ -3397,13 +3434,21 @@ function addToCart(
   }else{
 
     cart.push({
-      key,
-      id,
-      name,
+
+      key:key,
+
+      id:id,
+
+      name:name,
+
       price:Number(price),
-      image,
-      size,
+
+      image:image,
+
+      size:safeSize,
+
       qty:1
+
     });
 
   }
@@ -3411,15 +3456,27 @@ function addToCart(
   saveCart();
 
   showToast(
-    "Added to cart ✓"
+    `Added to cart · Size ${safeSize} ✓`
   );
 }
 
-function changeQty(id,amount){
+/*
+  IMPORTANT:
+  Cart quantity is changed by item.key,
+  not product id.
+
+  Example:
+  black-tee-M
+  black-tee-L
+
+  These are two separate cart items.
+*/
+
+function changeQty(key,amount){
 
   const item=
     cart.find(
-      p=>p.id===id
+      p=>p.key===key
     );
 
   if(!item)
@@ -3431,7 +3488,7 @@ function changeQty(id,amount){
 
     cart=
       cart.filter(
-        p=>p.id!==id
+        p=>p.key!==key
       );
 
   }
@@ -3441,19 +3498,21 @@ function changeQty(id,amount){
   renderCart();
 }
 
-function removeItem(id){
+function removeItem(key){
 
   cart=
     cart.filter(
-      item=>
-        item.key!==id &&
-        item.id!==id
+      item=>item.key!==key
     );
 
   saveCart();
 
   renderCart();
 }
+
+/* =========================================
+   CART RENDER
+========================================= */
 
 function renderCart(){
 
@@ -3483,6 +3542,27 @@ function renderCart(){
     return;
   }
 
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
+  const total=
+    getCartTotal();
+
+  const remaining=
+    Math.max(
+      0,
+      3000-subtotal
+    );
+
+  const pct=
+    Math.min(
+      100,
+      subtotal/3000*100
+    );
+
   cartItems.innerHTML=
     cart.map(item=>`
 
@@ -3496,17 +3576,18 @@ function renderCart(){
         <div class="cart-meta">
 
           <h4>
-            ${item.name} · Size ${item.size||"M"}
+            ${item.name} · Size ${item.size || "M"}
           </h4>
 
           <div>
-            Rs. ${item.price.toLocaleString("en-LK")}
+            Rs. ${formatMoney(item.price)}
           </div>
 
           <div class="qty">
 
             <button
-              onclick="changeQty('${item.id}',-1)"
+              type="button"
+              onclick="changeQty('${item.key}',-1)"
             >
               −
             </button>
@@ -3514,14 +3595,16 @@ function renderCart(){
             <b>${item.qty}</b>
 
             <button
-              onclick="changeQty('${item.id}',1)"
+              type="button"
+              onclick="changeQty('${item.key}',1)"
             >
               +
             </button>
 
             <button
+              type="button"
               class="remove-btn"
-              onclick="removeItem('${item.id}')"
+              onclick="removeItem('${item.key}')"
             >
               Remove
             </button>
@@ -3534,33 +3617,14 @@ function renderCart(){
 
     `).join("");
 
-  const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+item.price*item.qty,
-      0
-    );
-
-  const remaining=
-    Math.max(
-      0,
-      3000-total
-    );
-
-  const pct=
-    Math.min(
-      100,
-      total/3000*100
-    );
-
   cartBottom.innerHTML=
     `
     <div class="shipping-progress">
 
       ${
-        remaining
+        remaining>0
         ?
-        `Add Rs. ${remaining.toLocaleString("en-LK")} more for FREE SHIPPING 🚚`
+        `Add Rs. ${formatMoney(remaining)} more for FREE SHIPPING 🚚`
         :
         `FREE SHIPPING UNLOCKED 🚚`
       }
@@ -3575,10 +3639,13 @@ function renderCart(){
 
       <input
         id="promoInput"
+        value="${activePromoCode}"
         placeholder="Promo code"
+        onkeydown="if(event.key==='Enter'){event.preventDefault();applyPromo()}"
       >
 
       <button
+        type="button"
         onclick="applyPromo()"
       >
         APPLY
@@ -3591,9 +3658,17 @@ function renderCart(){
       style="
         font-size:12px;
         margin-top:7px;
-        color:#777
+        color:${promoDiscount>0 ? '#16803c' : '#777'}
       "
-    ></div>
+    >
+      ${
+        promoDiscount>0
+        ?
+        `${promoDiscount}% discount applied ✓`
+        :
+        ""
+      }
+    </div>
 
     <div
       style="
@@ -3604,22 +3679,72 @@ function renderCart(){
       "
     >
 
+      <span>Subtotal</span>
+
+      <span>
+        Rs. ${formatMoney(subtotal)}
+      </span>
+
+    </div>
+
+    ${
+      discount>0
+      ?
+      `
+      <div
+        style="
+          display:flex;
+          justify-content:space-between;
+          padding-top:10px;
+          color:#16803c;
+          font-weight:800
+        "
+      >
+
+        <span>Discount (${promoDiscount}%)</span>
+
+        <span>
+          − Rs. ${formatMoney(discount)}
+        </span>
+
+      </div>
+      `
+      :
+      ""
+    }
+
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        padding-top:12px;
+        font-size:18px;
+        font-weight:900
+      "
+    >
+
       <span>Total</span>
 
       <span>
-        Rs. ${total.toLocaleString("en-LK")}
+        Rs. ${formatMoney(total)}
       </span>
 
     </div>
 
     <button
       class="checkout"
+      type="button"
       onclick="openCheckout()"
     >
       ORDER ON WHATSAPP
     </button>
     `;
+
 }
+
+/* =========================================
+   OPEN / CLOSE CART
+========================================= */
 
 function openCart(){
 
@@ -3689,6 +3814,9 @@ function searchProducts(){
         p=>
           p.name
             .toLowerCase()
+            .includes(query) ||
+          p.color
+            .toLowerCase()
             .includes(query)
       );
 
@@ -3744,7 +3872,7 @@ function searchProducts(){
               margin-top:5px
             "
           >
-            Rs. ${p.price.toLocaleString("en-LK")}
+            Rs. ${formatMoney(p.price)}
           </div>
 
         </div>
@@ -3760,7 +3888,8 @@ function searchProducts(){
               '${p.id}',
               '${p.name}',
               ${p.price},
-              '${p.image}'
+              '${p.image}',
+              'M'
             );
             closeSearch()
           "
@@ -3779,33 +3908,71 @@ function searchProducts(){
 
 function applyPromo(){
 
-  const code=
-    (
-      document.getElementById(
-        "promoInput"
-      )?.value || ""
-    )
-    .trim()
-    .toUpperCase();
+  const input=
+    document.getElementById(
+      "promoInput"
+    );
 
   const msg=
     document.getElementById(
       "promoMsg"
     );
 
+  const code=
+    (
+      input?.value || ""
+    )
+    .trim()
+    .toUpperCase();
+
   if(code==="SEOKY10"){
 
     promoDiscount=10;
+    activePromoCode="SEOKY10";
 
-    msg.textContent=
-      "10% discount applied ✓";
+    if(msg){
+
+      msg.style.color="#16803c";
+
+      msg.textContent=
+        "10% discount applied ✓";
+
+    }
+
+    renderCart();
+
+    showToast(
+      "SEOKY10 applied · 10% OFF ✓"
+    );
 
   }else{
 
     promoDiscount=0;
+    activePromoCode="";
 
-    msg.textContent=
-      "Invalid promo code";
+    if(msg){
+
+      msg.style.color="#777";
+
+      msg.textContent=
+        code
+        ?
+        "Invalid promo code"
+        :
+        "Enter a promo code";
+
+    }
+
+    renderCart();
+
+    if(code){
+
+      showToast(
+        "Invalid promo code"
+      );
+
+    }
+
   }
 }
 
@@ -3846,27 +4013,146 @@ function toggleMenu(){
    WISHLIST
 ========================================= */
 
+function updateWishlistCards(){
+
+  const wishlist=
+    getWishlist();
+
+  document
+    .querySelectorAll(
+      ".heart[data-product-id]"
+    )
+    .forEach(button=>{
+
+      const id=
+        button.dataset.productId;
+
+      const liked=
+        wishlist.includes(id);
+
+      button.textContent=
+        liked
+        ?
+        "♥"
+        :
+        "♡";
+
+      button.classList.toggle(
+        "liked",
+        liked
+      );
+
+    });
+}
+
+function toggleWishlistCard(
+  id,
+  button
+){
+
+  let wishlist=
+    getWishlist();
+
+  if(wishlist.includes(id)){
+
+    wishlist=
+      wishlist.filter(
+        x=>x!==id
+      );
+
+    button.textContent="♡";
+    button.classList.remove("liked");
+
+    showToast(
+      "Removed from wishlist"
+    );
+
+  }else{
+
+    wishlist=[
+      ...wishlist,
+      id
+    ];
+
+    button.textContent="♥";
+    button.classList.add("liked");
+
+    showToast(
+      "Added to wishlist ♥"
+    );
+
+  }
+
+  saveWishlist(wishlist);
+
+  updateWishlistCards();
+
+  updateProductModalWishlist(id);
+
+}
+
+/*
+  Kept for compatibility with older
+  inline calls.
+*/
+
 function like(button){
+
+  const id=
+    button.dataset.productId;
+
+  if(id){
+
+    toggleWishlistCard(
+      id,
+      button
+    );
+
+    return;
+  }
 
   if(
     button.textContent.trim()==="♡"
   ){
 
     button.textContent="♥";
-
     button.classList.add("liked");
 
   }else{
 
     button.textContent="♡";
-
     button.classList.remove("liked");
+
   }
+}
+
+function updateProductModalWishlist(id){
+
+  const wb=
+    document.getElementById(
+      "seokyWishlist"
+    );
+
+  if(!wb)
+    return;
+
+  const wishlist=
+    getWishlist();
+
+  wb.textContent=
+    wishlist.includes(id)
+    ?
+    "♥"
+    :
+    "♡";
+
 }
 
 /* =========================================
    TOAST
 ========================================= */
+
+let toastTimer;
 
 function showToast(message){
 
@@ -3879,17 +4165,22 @@ function showToast(message){
 
   toast.classList.add("show");
 
-  setTimeout(
-    ()=>{
-      toast.classList.remove("show");
-    },
-    1600
-  );
+  clearTimeout(toastTimer);
+
+  toastTimer=
+    setTimeout(
+      ()=>{
+        toast.classList.remove("show");
+      },
+      1600
+    );
 }
 
 /* =========================================
    PRODUCT MODAL
 ========================================= */
+
+let activeProductId=null;
 
 function openSeokyProductModal(id){
 
@@ -3898,6 +4189,8 @@ function openSeokyProductModal(id){
 
   if(!product)
     return;
+
+  activeProductId=id;
 
   document.getElementById(
     "seokyModalImage"
@@ -3915,13 +4208,13 @@ function openSeokyProductModal(id){
     "seokyModalPrice"
   ).textContent=
     "Rs. "+
-    product.price.toLocaleString("en-LK");
+    formatMoney(product.price);
 
   document.getElementById(
     "seokyModalDetailPrice"
   ).textContent=
     "Rs. "+
-    product.price.toLocaleString("en-LK");
+    formatMoney(product.price);
 
   document.getElementById(
     "seokyModalColor"
@@ -3933,87 +4226,113 @@ function openSeokyProductModal(id){
     .querySelectorAll(
       "#seokySizes .size-btn"
     )
-    .forEach(b=>{
-      b.classList.toggle(
+    .forEach(button=>{
+
+      button.classList.toggle(
         "active",
-        b.dataset.size===selectedSize
+        button.dataset.size===selectedSize
       );
+
     });
 
   document
     .querySelectorAll(
       "#seokySizes .size-btn"
     )
-    .forEach(b=>{
+    .forEach(button=>{
 
-      b.onclick=()=>{
+      button.onclick=()=>{
 
         selectedSize=
-          b.dataset.size;
+          button.dataset.size;
 
         document
           .querySelectorAll(
             "#seokySizes .size-btn"
           )
           .forEach(x=>{
+
             x.classList.toggle(
               "active",
-              x===b
+              x===button
             );
+
           });
 
       };
 
     });
 
-  const wish=
-    JSON.parse(
-      localStorage.getItem(
-        "seokyWishlist"
-      ) || "[]"
-    );
+  updateProductModalWishlist(id);
 
   const wb=
     document.getElementById(
       "seokyWishlist"
     );
 
-  wb.textContent=
-    wish.includes(id)
-    ?
-    "♥"
-    :
-    "♡";
+  wb.onclick=()=>{
+
+    toggleWishlistCard(
+      id,
+      {
+        dataset:{
+          productId:id
+        },
+        textContent:
+          wb.textContent,
+        classList:{
+          add:()=>{},
+          remove:()=>{}
+        }
+      }
+    );
+
+    updateProductModalWishlist(id);
+
+  };
+
+  /*
+    Use a normal modal wishlist handler.
+    This avoids depending on a real card button.
+  */
 
   wb.onclick=()=>{
 
-    let w=
-      JSON.parse(
-        localStorage.getItem(
-          "seokyWishlist"
-        ) || "[]"
+    let wishlist=
+      getWishlist();
+
+    if(wishlist.includes(id)){
+
+      wishlist=
+        wishlist.filter(
+          x=>x!==id
+        );
+
+      wb.textContent="♡";
+
+      showToast(
+        "Removed from wishlist"
       );
 
-    w=
-      w.includes(id)
-      ?
-      w.filter(
-        x=>x!==id
-      )
-      :
-      [...w,id];
+    }else{
 
-    localStorage.setItem(
-      "seokyWishlist",
-      JSON.stringify(w)
-    );
+      wishlist=[
+        ...wishlist,
+        id
+      ];
 
-    wb.textContent=
-      w.includes(id)
-      ?
-      "♥"
-      :
-      "♡";
+      wb.textContent="♥";
+
+      showToast(
+        "Added to wishlist ♥"
+      );
+
+    }
+
+    saveWishlist(wishlist);
+
+    updateWishlistCards();
+
   };
 
   document.getElementById(
@@ -4021,6 +4340,7 @@ function openSeokyProductModal(id){
   ).innerHTML=
     `
     <button
+      type="button"
       onclick="
         document.getElementById(
           'seokyModalImage'
@@ -4047,6 +4367,7 @@ function openSeokyProductModal(id){
     );
 
     closeSeokyProductModal();
+
   };
 
   viewedProducts=
@@ -4078,6 +4399,8 @@ function closeSeokyProductModal(){
       "seokyProductModal"
     )
     .classList.remove("open");
+
+  activeProductId=null;
 }
 
 /* =========================================
@@ -4105,27 +4428,69 @@ function openCheckout(){
 
       <p>
         ${item.name}
+        · Size ${item.size || "M"}
         × ${item.qty}
         —
-        Rs.
-        ${(item.price*item.qty)
-          .toLocaleString("en-LK")}
+        Rs. ${formatMoney(
+          item.price*item.qty
+        )}
       </p>
 
     `).join("");
 
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
   const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+item.price*item.qty,
-      0
+    getCartTotal();
+
+  const totalsBox=
+    document.getElementById(
+      "checkoutTotals"
     );
+
+  totalsBox.innerHTML=
+    `
+    <div
+      style="
+        display:flex;
+        justify-content:space-between;
+        margin-bottom:8px
+      "
+    >
+      <span>Subtotal</span>
+      <span>Rs. ${formatMoney(subtotal)}</span>
+    </div>
+
+    ${
+      discount>0
+      ?
+      `
+      <div
+        class="checkout-discount"
+        style="
+          display:flex;
+          justify-content:space-between;
+          margin-bottom:8px
+        "
+      >
+        <span>Discount (${promoDiscount}%)</span>
+        <span>− Rs. ${formatMoney(discount)}</span>
+      </div>
+      `
+      :
+      ""
+    }
+    `;
 
   document.getElementById(
     "checkoutTotal"
   ).textContent=
     "Total: Rs. "+
-    total.toLocaleString("en-LK");
+    formatMoney(total);
 
   document
     .getElementById(
@@ -4184,15 +4549,24 @@ function submitCheckout(event){
 
   const orderLines=
     cart.map(item=>
-      `• ${item.name} · Size ${item.size||"M"} x${item.qty} — Rs. ${(item.price*item.qty).toLocaleString("en-LK")}`
+      `• ${item.name} · Size ${item.size || "M"} x${item.qty} — Rs. ${formatMoney(item.price*item.qty)}`
     ).join("\n");
 
+  const subtotal=
+    getCartSubtotal();
+
+  const discount=
+    getDiscountAmount();
+
   const total=
-    cart.reduce(
-      (sum,item)=>
-        sum+item.price*item.qty,
-      0
-    );
+    getCartTotal();
+
+  const discountLine=
+    discount>0
+    ?
+    `\nDiscount (${promoDiscount}%): - Rs. ${formatMoney(discount)}`
+    :
+    "";
 
   const message=
 `Hi SEOKY! 👋
@@ -4206,7 +4580,9 @@ Address: ${address}
 ORDER:
 ${orderLines}
 
-Total: Rs. ${total.toLocaleString("en-LK")}
+Subtotal: Rs. ${formatMoney(subtotal)}
+${discountLine}
+Total: Rs. ${formatMoney(total)}
 
 Thank you!`;
 
@@ -4219,6 +4595,7 @@ Thank you!`;
   );
 
   closeCheckout();
+
 }
 
 /* =========================================
@@ -4250,6 +4627,7 @@ if(
   document.body.classList.add(
     "dark"
   );
+
 }
 
 /* =====================================================
@@ -4257,7 +4635,6 @@ if(
 ===================================================== */
 
 let authMode="login";
-
 let authLightOn=false;
 
 /* =========================
@@ -4269,7 +4646,6 @@ function openAuthScene(
 ){
 
   authMode=mode;
-
   authLightOn=false;
 
   const scene=
@@ -4341,9 +4717,11 @@ function toggleAuthLight(){
 
     setTimeout(
       ()=>{
-        scene.classList.add(
-          "lit"
-        );
+        if(authLightOn){
+          scene.classList.add(
+            "lit"
+          );
+        }
       },
       120
     );
@@ -4356,14 +4734,21 @@ function toggleAuthLight(){
 
     setTimeout(
       ()=>{
-        wallSwitch.classList.remove(
-          "on"
-        );
 
-        status.textContent="OFF";
+        if(!authLightOn){
+
+          wallSwitch.classList.remove(
+            "on"
+          );
+
+          status.textContent="OFF";
+
+        }
+
       },
       250
     );
+
   }
 }
 
@@ -4388,6 +4773,8 @@ function closeAuthScene(){
       "switchStatus"
     );
 
+  authLightOn=false;
+
   scene.classList.remove(
     "lit"
   );
@@ -4404,8 +4791,6 @@ function closeAuthScene(){
       );
 
       status.textContent="OFF";
-
-      authLightOn=false;
 
       document.body.style.overflow="";
 
@@ -4695,12 +5080,18 @@ document.addEventListener(
       return;
 
     closeCart();
-
     closeSearch();
-
     closeCheckout();
-
     closeSeokyProductModal();
+    closeSizeGuide();
+
+    const menu=
+      document.getElementById(
+        "menuCard"
+      );
+
+    if(menu)
+      menu.classList.remove("open");
 
     closeAuthScene();
 
@@ -4714,6 +5105,8 @@ document.addEventListener(
 updateCartCount();
 
 updateAccountMenu();
+
+updateWishlistCards();
 
 </script>
 
