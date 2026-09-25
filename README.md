@@ -1,4 +1,4 @@
-SEOKY 🖤
+#SEOKY 🖤
 
 Modern Streetwear. Bold Identity.
 
