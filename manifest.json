@@ -1,0 +1,10 @@
+{
+  "name": "SEOKY",
+  "short_name": "SEOKY",
+  "description": "SEOKY Streetwear Collection",
+  "start_url": "/seoky-store/",
+  "scope": "/seoky-store/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#111111"
+}
