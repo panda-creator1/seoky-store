@@ -1,0 +1,10 @@
+{
+  "name": "SEOKY — Everyday Streetwear",
+  "short_name": "SEOKY",
+  "description": "Discover SEOKY everyday streetwear T-shirts.",
+  "start_url": "/seoky-store/",
+  "scope": "/seoky-store/",
+  "display": "standalone",
+  "background_color": "#080808",
+  "theme_color": "#080808"
+}
