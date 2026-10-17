@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
-  <title id="title">SEOKY favicon</title>
-  <desc id="desc">A white geometric S emblem inside a white circle on a black background.</desc>
-  <rect width="512" height="512" fill="#000000"/>
-  <circle cx="256" cy="256" r="205" fill="none" stroke="#FFFFFF" stroke-width="10"/>
-  <path fill="#FFFFFF" d="M207 174 H365 L335 205 H220 L199 225 L282 277 H215 L151 230 Z"/>
-  <path fill="#FFFFFF" d="M305 338 H147 L177 307 H292 L313 287 L230 235 H297 L361 282 Z"/>
-</svg>
