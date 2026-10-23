@@ -1,0 +1,1650 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080808">
+<link rel="manifest" href="./manifest.json">
+<meta name="color-scheme" content="dark">
+<title>SEOKY — Everyday Streetwear T-Shirts</title>
+<meta name="description" content="Discover SEOKY everyday streetwear T-shirts in versatile colors. Simple style, easy WhatsApp ordering, and island-wide delivery in Sri Lanka.">
+<meta property="og:title" content="SEOKY — Everyday Streetwear">
+<meta property="og:description" content="Keep it simple. Wear it your way. Explore SEOKY T-shirts.">
+<meta property="og:type" content="website">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Josefin+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- SEOKY FINAL QA: nine product colors, no View All/slider gallery control, safe localStorage parsing -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="style.css">
+
+<meta property="og:url" content="https://panda-creator1.github.io/seoky-store/">
+<meta property="og:site_name" content="SEOKY">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://panda-creator1.github.io/seoky-store/">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+</head>
+
+<body>
+<a class="seoky-skip-link" href="#home">Skip to content</a>
+<div class="seoky-bg-grid" aria-hidden="true"></div>
+<div class="seoky-cursor-glow" id="seokyCursorGlow" aria-hidden="true"></div>
+
+<!-- =====================================================
+     HEADER
+===================================================== -->
+
+<header class="header">
+
+  <a class="logo" href="#home">SEOKY</a>
+
+  <div class="header-actions">
+
+    <button
+      class="icon-btn"
+      onclick="openSearch()"
+      aria-label="Search"
+    >
+      ⌕
+    </button>
+
+    <button
+      class="icon-btn cart-wrap"
+      onclick="openCart()"
+      aria-label="Cart"
+    >
+      🛍
+      <span class="badge" id="cartCount">0</span>
+    </button>
+
+    
+
+    <button
+      class="icon-btn"
+      onclick="toggleMenu()"
+      aria-label="Menu"
+    >
+      ☰
+    </button>
+
+  </div>
+
+  <div class="menu-card" id="menuCard">
+
+    <div class="menu-head">
+      <div class="menu-head-title">MENU</div>
+      <div class="menu-head-sub">STREETWEAR · 2026</div>
+    </div>
+
+    <a href="#home" onclick="toggleMenu()">
+      <span class="menu-icon">⌂</span>
+      <span data-lang-key="home">Home</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#shop" onclick="toggleMenu()">
+      <span class="menu-icon">◈</span>
+      <span data-lang-key="shop">Shop</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#campaign" onclick="toggleMenu()">
+      <span class="menu-icon">✦</span>
+      <span data-lang-key="campaign">Campaign</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#about" onclick="toggleMenu()">
+      <span class="menu-icon">◎</span>
+      <span data-lang-key="about">About SEOKY</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#shop-details" onclick="toggleMenu()">
+      <span class="menu-icon">⌖</span>
+      <span data-lang-key="details">Shop Details</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#faq" onclick="toggleMenu()">
+      <span class="menu-icon">?</span>
+      <span>FAQ</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a href="#contact" onclick="toggleMenu()">
+      <span class="menu-icon">↗</span>
+      <span data-lang-key="contact">Contact</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <div class="menu-divider"></div>
+
+    <a
+      href="#"
+      class="menu-auth login"
+      onclick="openAuthScene('login');toggleMenu();return false;"
+    >
+      <span class="menu-icon">◉</span>
+      <span data-lang-key="login">Login</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a
+      href="#"
+      class="menu-auth"
+      onclick="openAuthScene('signup');toggleMenu();return false;"
+    >
+      <span class="menu-icon">＋</span>
+      <span data-lang-key="signup">Sign Up</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+    <a
+      href="#"
+      class="menu-auth"
+      id="signOutMenuItem"
+      style="display:none"
+      onclick="signOut();toggleMenu();return false;"
+    >
+      <span class="menu-icon">↪</span>
+      <span data-lang-key="signout">Sign Out</span>
+      <span class="menu-arrow">→</span>
+    </a>
+
+  </div>
+
+</header>
+
+<!-- =====================================================
+     MAIN
+===================================================== -->
+
+<main id="home">
+
+  <section class="hero" id="heroSlider">
+
+    <div class="hero-slider">
+
+      <div class="hero-slide active">
+        <img src="seoky-campaign.png" alt="SEOKY Collection" loading="eager" fetchpriority="high" decoding="async">
+      </div>
+
+      <div class="hero-slide">
+        <img src="seoky-campaign2.png" alt="SEOKY Campaign 2" loading="lazy" decoding="async">
+      </div>
+
+      <div class="hero-slide">
+        <img src="seoky-campaign3.png" alt="SEOKY Campaign 3" loading="lazy" decoding="async">
+      </div>
+
+    </div>
+
+    <div class="hero-content">
+
+      <div class="eyebrow">
+        Seoky / New drop
+      </div>
+
+      <h1>
+        SEOKY<br>
+        Collection
+      </h1>
+
+      <a class="cta" href="#shop">
+        Shop now
+        <span>→</span>
+      </a>
+
+    </div>
+
+    <div class="dots">
+
+      <i class="dot active" onclick="goToSlide(0)"></i>
+      <i class="dot" onclick="goToSlide(1)"></i>
+      <i class="dot" onclick="goToSlide(2)"></i>
+
+    </div>
+
+  </section>
+
+  <div class="ticker">
+    🚚 FREE SHIPPING ON ORDERS OF RS. 3,000 OR MORE →
+  </div>
+
+  <section class="section" id="shop">
+
+    <div class="section-head">
+
+      <div>
+        <div class="kicker">LATEST IN STORE</div>
+        <h2>NEW DROP</h2>
+      </div>
+
+
+    </div>
+
+    <div class="seoky-shop-tools" aria-label="Product filters">
+      <label>COLOR
+        <select id="seokyColorFilter">
+          <option value="all">All colors</option>
+          <option value="Black">Black</option>
+          <option value="Gray">Gray</option>
+          <option value="White">White</option>
+          <option value="Navy Blue">Navy Blue</option>
+          <option value="Olive Green">Olive Green</option>
+          <option value="Sand">Sand</option>
+          <option value="Burgundy">Burgundy</option>
+          <option value="Faded Blue">Faded Blue</option>
+          <option value="Chocolate Brown">Chocolate Brown</option>
+        </select>
+      </label>
+      <label>SORT BY
+        <select id="seokySortProducts">
+          <option value="featured">Featured</option>
+          <option value="price-low">Price: low to high</option>
+          <option value="price-high">Price: high to low</option>
+          <option value="name">Name: A to Z</option>
+        </select>
+      </label>
+      <button type="button" id="seokyWishlistFilter" aria-pressed="false">Saved items <span id="seokySavedCount">0</span></button>
+      <button type="button" id="seokyResetFilters">RESET</button>
+      <p class="seoky-stock-note">Demo availability: please confirm color, size and stock with SEOKY on WhatsApp.</p>
+      <p id="seokyProductCount" class="seoky-product-count" aria-live="polite">9 products</p>
+    </div>
+
+    <div class="products">
+
+      <article
+        class="product"
+        data-product-id="black-tee"
+        tabindex="0"
+        aria-label="View SEOKY BLACK TEE details"
+        onclick="openSeokyProductModal('black-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('black-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="black-tee.png"
+            alt="SEOKY BLACK TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="black-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('black-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY BLACK TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('black-tee','SEOKY BLACK TEE',1500,'black-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="gray-tee"
+        tabindex="0"
+        aria-label="View SEOKY GRAY TEE details"
+        onclick="openSeokyProductModal('gray-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('gray-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="gray-tee.png"
+            alt="SEOKY GRAY TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="gray-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('gray-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY GRAY TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('gray-tee','SEOKY GRAY TEE',1500,'gray-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="white-tee"
+        tabindex="0"
+        aria-label="View SEOKY WHITE TEE details"
+        onclick="openSeokyProductModal('white-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('white-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="white-tee.png"
+            alt="SEOKY WHITE TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="white-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('white-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY WHITE TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('white-tee','SEOKY WHITE TEE',1500,'white-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="navy-blue-tee"
+        tabindex="0"
+        aria-label="View SEOKY NAVY BLUE TEE details"
+        onclick="openSeokyProductModal('navy-blue-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('navy-blue-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="navy-blue-tee.png"
+            alt="SEOKY NAVY BLUE TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="navy-blue-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('navy-blue-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY NAVY BLUE TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('navy-blue-tee','SEOKY NAVY BLUE TEE',1500,'navy-blue-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="olive-green-tee"
+        tabindex="0"
+        aria-label="View SEOKY OLIVE GREEN TEE details"
+        onclick="openSeokyProductModal('olive-green-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('olive-green-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="olive-green-tee.png"
+            alt="SEOKY OLIVE GREEN TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="olive-green-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('olive-green-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY OLIVE GREEN TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('olive-green-tee','SEOKY OLIVE GREEN TEE',1500,'olive-green-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="sand-tee"
+        tabindex="0"
+        aria-label="View SEOKY SAND TEE details"
+        onclick="openSeokyProductModal('sand-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('sand-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="sand-tee.png"
+            alt="SEOKY SAND TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="sand-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('sand-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY SAND TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('sand-tee','SEOKY SAND TEE',1500,'sand-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="burgundy-tee"
+        tabindex="0"
+        aria-label="View SEOKY BURGUNDY TEE details"
+        onclick="openSeokyProductModal('burgundy-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('burgundy-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="burgundy-tee.png"
+            alt="SEOKY BURGUNDY TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="burgundy-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('burgundy-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY BURGUNDY TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('burgundy-tee','SEOKY BURGUNDY TEE',1500,'burgundy-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="faded-blue-tee"
+        tabindex="0"
+        aria-label="View SEOKY FADED BLUE TEE details"
+        onclick="openSeokyProductModal('faded-blue-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('faded-blue-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="faded-blue-tee.png"
+            alt="SEOKY FADED BLUE TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="faded-blue-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('faded-blue-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY FADED BLUE TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('faded-blue-tee','SEOKY FADED BLUE TEE',1500,'faded-blue-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+      <article
+        class="product"
+        data-product-id="chocolate-brown-tee"
+        tabindex="0"
+        aria-label="View SEOKY CHOCOLATE BROWN TEE details"
+        onclick="openSeokyProductModal('chocolate-brown-tee')"
+        onkeydown="if(event.target===this&&(event.key==='Enter'||event.key===' ')){event.preventDefault();openSeokyProductModal('chocolate-brown-tee')}"
+      >
+
+        <div class="product-img">
+
+          <img
+            src="chocolate-brown-tee.png"
+            alt="SEOKY CHOCOLATE BROWN TEE"
+           loading="lazy" decoding="async">
+
+          <button
+            class="heart"
+            data-product-id="chocolate-brown-tee"
+            onclick="event.stopPropagation();toggleWishlistCard('chocolate-brown-tee',this)"
+            aria-label="Save product"
+          >
+            ＋
+          </button>
+
+        </div>
+
+        <div class="product-info">
+
+          <div class="product-title">
+            SEOKY CHOCOLATE BROWN TEE
+          </div>
+
+          <div class="price">
+            Rs. 1,500
+          </div>
+
+          <button
+            class="add"
+            onclick="event.stopPropagation();addToCart('chocolate-brown-tee','SEOKY CHOCOLATE BROWN TEE',1500,'chocolate-brown-tee.png','M')"
+          >
+            ADD TO CART
+          </button>
+
+        </div>
+
+      </article>
+
+    </div>
+
+  </section>
+
+  <section class="campaign" id="campaign">
+
+    <img
+      src="seoky-campaign.png"
+      alt="SEOKY Campaign"
+     loading="eager" fetchpriority="high" decoding="async">
+
+    <div class="campaign-content">
+
+      <div
+        class="kicker"
+        style="color:#fff"
+      >
+        SEOKY CAMPAIGN
+      </div>
+
+      <h3>
+        MADE FOR<br>
+        EVERYONE.
+      </h3>
+
+      <a class="cta outline" href="#shop">
+        EXPLORE →
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="section about" id="about">
+
+    <div class="kicker">
+      ABOUT SEOKY
+    </div>
+
+    <h2>
+      KEEP IT SIMPLE.<br>
+      WEAR IT YOUR WAY.
+    </h2>
+
+    <p>
+      SEOKY is a clean streetwear concept focused on
+      everyday T-shirts, simple silhouettes and an easy
+      shopping experience.
+    </p>
+
+  </section>
+
+</main>
+
+<!-- =====================================================
+     SHOP DETAILS
+===================================================== -->
+
+<section
+  class="seoky-shop-details"
+  id="shop-details"
+>
+
+  <div class="seoky-shop-details-inner">
+
+    <h2>SHOP DETAILS</h2>
+
+    <div class="seoky-info-grid">
+
+      <div>
+        <span>📍</span>
+
+        <h3>Location</h3>
+
+        <p>
+          Ambalangoda,<br>
+          Sri Lanka
+        </p>
+      </div>
+
+      <div>
+        <span>🚚</span>
+
+        <h3>Delivery</h3>
+
+        <p>
+          Island-wide Delivery
+        </p>
+      </div>
+
+      <div>
+        <span>📦</span>
+
+        <h3>Orders</h3>
+
+        <p>
+          Order directly through WhatsApp.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- =====================================================
+     FREQUENTLY ASKED QUESTIONS
+===================================================== -->
+<section class="seoky-faq" id="faq" aria-labelledby="seokyFaqTitle">
+  <div class="seoky-faq-inner">
+    <div class="kicker">QUICK ANSWERS</div>
+    <h2 id="seokyFaqTitle">FREQUENTLY ASKED QUESTIONS</h2>
+    <p class="seoky-faq-intro">A few useful details before you order. If anything is unclear, contact SEOKY on WhatsApp.</p>
+    <div class="seoky-faq-list">
+      <details><summary>What products does SEOKY offer?</summary><p>This demo storefront features everyday streetwear T-shirts in nine colors. Check the product cards for the current displayed price and available details.</p></details>
+      <details><summary>How do I place an order?</summary><p>Add your preferred item to the cart, continue to checkout, and submit the form to prepare an order message in WhatsApp. Your order is not automatically confirmed by the website.</p></details>
+      <details><summary>Which sizes can I choose?</summary><p>The demo offers sizes S, M, L and XL. Please confirm your preferred size, color and current availability with SEOKY before ordering.</p></details>
+      <details><summary>Do you deliver across Sri Lanka?</summary><p>The storefront advertises island-wide delivery. Delivery timing is confirmed when you contact SEOKY about your order.</p></details>
+      <details><summary>Is delivery free?</summary><p>This demo advertises free shipping for orders of Rs. 3,000 or more. For orders below that amount, confirm the delivery fee with SEOKY.</p></details>
+      <details><summary>Can I exchange a size?</summary><p>Please contact SEOKY before ordering to confirm the current size-exchange policy and any conditions.</p></details>
+      <details><summary>Are stock and orders live?</summary><p>No. This is a demo storefront. Stock settings are stored in the current browser only, and the website prepares a WhatsApp message draft rather than recording a confirmed order in a shared database. Please confirm availability directly.</p></details>
+      <details><summary>Which promo codes are available in this demo?</summary><p><strong>SEOKY10</strong> applies a 10% discount, and <strong>SYK55</strong> applies a 55% discount in the current demo checkout.</p></details>
+    </div>
+    <a class="cta outline seoky-faq-cta" href="https://wa.me/94762240238" target="_blank" rel="noopener noreferrer">ASK A QUESTION ON WHATSAPP →</a>
+  </div>
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+
+<section class="seoky-policies" id="policies">
+  <div class="seoky-policies-inner">
+    <div class="kicker">BEFORE YOU ORDER</div>
+    <h2>DELIVERY &amp; SUPPORT</h2>
+    <div class="seoky-policy-grid">
+      <article><h3>Delivery areas</h3><p>Island-wide delivery in Sri Lanka. Delivery time is confirmed when placing your order.</p></article>
+      <article><h3>Delivery fee</h3><p>Orders of Rs. 3,000 or more are advertised as free shipping on this demo. For other orders, confirm the delivery fee with SEOKY before accepting the order.</p></article>
+      <article><h3>Exchanges</h3><p>Please contact SEOKY before ordering to confirm the current size-exchange policy and conditions.</p></article>
+    </div>
+    <p class="seoky-demo-notice">Demo project: orders are sent as a WhatsApp message draft. Demo stock is stored in this browser only; it is not live inventory and orders are not automatically confirmed.</p>
+    <a class="cta outline" href="https://wa.me/94762240238" target="_blank" rel="noopener noreferrer">ASK SEOKY ON WHATSAPP →</a>
+  </div>
+</section>
+
+<footer class="footer" id="contact">
+
+  <div class="footer-grid">
+
+    <div class="footer-brand">
+
+      <div class="logo">
+        SEOKY
+      </div>
+
+      <p class="tagline">
+        Simple streetwear.<br>
+        Everyday confidence.
+      </p>
+
+      <div class="footer-location">
+        📍 Ambalangoda, Sri Lanka<br>
+        🚚 Island-wide Delivery
+      </div>
+
+    </div>
+
+    <div class="footer-links">
+
+      <h4>Shop</h4>
+
+      <a href="#shop" data-seoky-color="Black">Black Tee</a>
+      <a href="#shop" data-seoky-color="Gray">Gray Tee</a>
+      <a href="#shop" data-seoky-color="White">White Tee</a>
+      <a href="#shop" data-seoky-color="Navy Blue">Navy Blue Tee</a>
+      <a href="#shop" data-seoky-color="Olive Green">Olive Green Tee</a>
+      <a href="#shop" data-seoky-color="Sand">Sand Tee</a>
+      <a href="#shop" data-seoky-color="Burgundy">Burgundy Tee</a>
+      <a href="#shop" data-seoky-color="Faded Blue">Faded Blue Tee</a>
+      <a href="#shop" data-seoky-color="Chocolate Brown">Chocolate Brown Tee</a>
+
+    </div>
+
+    <div class="footer-contact">
+
+      <h4>Contact</h4>
+
+      <p>WhatsApp</p>
+      <p>+94 76 224 0238</p>
+      <button type="button" class="seoky-admin-launch" onclick="openSeokyAdmin()">DEMO ADMIN ↗</button>
+
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    SEOKY © 2026 · All Rights Reserved.
+  </div>
+
+</footer>
+
+<!-- =====================================================
+     SEOKY SOCIAL PANEL
+===================================================== -->
+<div class="seoky-social-rail" aria-label="SEOKY social shortcuts">
+  <button type="button" class="rail-wa" aria-label="Open SEOKY social panel" aria-expanded="false" aria-controls="seoky-social-panel" title="Connect with SEOKY"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-3.6 1 1-3.5-.2-.4A9.7 9.7 0 1 1 12 21Zm5.3-7.3c-.3-.2-1.7-.9-2-1s-.5-.2-.7.2-.8 1-1 1.1-.4.2-.7 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.7l.5-.6.2-.5-.1-.5c-.1-.2-.7-1.7-1-2.3-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3 .2.4 2.1 3.2a10.3 10.3 0 0 0 4.2 2.6c.6.2 1.1.3 1.5.2.5-.1 1.7-.7 1.9-1.3s.2-1.2.2-1.3-.2-.2-.5-.4Z"/></svg></button>
+  <button type="button" class="rail-ig" aria-label="Open SEOKY social panel" aria-expanded="false" aria-controls="seoky-social-panel" title="Instagram — Coming Soon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.6" cy="6.6" r="1.3" fill="currentColor"/></svg></button>
+  <button type="button" class="rail-tt" aria-label="Open SEOKY social panel" aria-expanded="false" aria-controls="seoky-social-panel" title="TikTok — Coming Soon"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="#25F4EE" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z" transform="translate(-.65 .35)"/><path fill="#FE2C55" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z" transform="translate(.55 -.25)"/><path fill="currentColor" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z"/></svg></button>
+</div>
+<aside class="seoky-social-panel" id="seoky-social-panel" aria-label="SEOKY social links" aria-hidden="true" inert>
+  <div class="seoky-social-heading"><strong>Connect with SEOKY</strong><span>STAY CLOSE</span><button type="button" class="seoky-social-close" aria-label="Close social panel">×</button></div>
+  <a class="seoky-social-link" href="https://wa.me/94762240238?text=Hi%20SEOKY!%20%F0%9F%91%8B%20I%27d%20like%20to%20know%20more%20about%20your%20products." target="_blank" rel="noopener noreferrer" aria-label="Chat with SEOKY on WhatsApp">
+    <span class="seoky-social-icon" style="color:#25D366"><svg viewBox="0 0 24 24" aria-hidden="true" width="19" height="19"><path fill="currentColor" d="M20.5 3.5A11.8 11.8 0 0 0 2 17.7L.5 23.5l6-1.6A11.8 11.8 0 0 0 20.5 3.5ZM12 21a9.7 9.7 0 0 1-4.9-1.3l-.4-.2-3.6 1 1-3.5-.2-.4A9.7 9.7 0 1 1 12 21Zm5.3-7.3c-.3-.2-1.7-.9-2-1s-.5-.2-.7.2-.8 1-1 1.1-.4.2-.7 0a8 8 0 0 1-2.4-1.5 9 9 0 0 1-1.6-2c-.2-.3 0-.5.1-.7l.5-.6.2-.5-.1-.5c-.1-.2-.7-1.7-1-2.3-.2-.5-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4s-1 1-1 2.4 1 2.8 1.2 3 .2.4 2.1 3.2a10.3 10.3 0 0 0 4.2 2.6c.6.2 1.1.3 1.5.2.5-.1 1.7-.7 1.9-1.3s.2-1.2.2-1.3-.2-.2-.5-.4Z"/></svg></span><span class="seoky-social-copy"><b>WhatsApp</b><small>Chat with us</small></span><span aria-hidden="true">↗</span>
+  </a>
+  <div class="seoky-social-link is-soon" aria-label="Instagram coming soon">
+    <span class="seoky-social-icon"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="12" cy="12" r="4.2" fill="none" stroke="currentColor" stroke-width="2.2"/><circle cx="17.6" cy="6.6" r="1.3" fill="currentColor"/></svg></span><span class="seoky-social-copy"><b>Instagram</b><small>Follow our journey</small></span><span class="seoky-social-soon">SOON</span>
+  </div>
+  <div class="seoky-social-link is-soon" aria-label="TikTok coming soon">
+    <span class="seoky-social-icon"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path fill="#25F4EE" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z" transform="translate(-.65 .35)"/><path fill="#FE2C55" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z" transform="translate(.55 -.25)"/><path fill="currentColor" d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.73v13.67a2.896 2.896 0 0 1-2.888 2.895 2.896 2.896 0 0 1-2.895-2.895 2.896 2.896 0 0 1 2.895-2.895c.298 0 .587.046.86.13V9.093a6.6 6.6 0 0 0-.86-.058 6.64 6.64 0 1 0 6.64 6.64V8.715a8.48 8.48 0 0 0 4.964 1.598V6.686h-1.216z"/></svg></span><span class="seoky-social-copy"><b>TikTok</b><small>Fresh drops & clips</small></span><span class="seoky-social-soon">SOON</span>
+  </div>
+</aside>
+
+
+<!-- =====================================================
+     BOTTOM NAV
+===================================================== -->
+
+<nav class="bottom-nav">
+
+  <a
+    class="nav-item active"
+    href="#home"
+  >
+    <span>⌂</span>
+    <small>HOME</small>
+  </a>
+
+  <a
+    class="nav-item"
+    href="#shop"
+  >
+    <span>⌕</span>
+    <small>SHOP</small>
+  </a>
+
+  <button
+    class="nav-item"
+    onclick="openCart()"
+  >
+    <span>
+      🛍
+      <sup id="bottomCount">0</sup>
+    </span>
+
+    <small>CART</small>
+  </button>
+
+
+</nav>
+
+<!-- =====================================================
+     CART DRAWER
+===================================================== -->
+
+<div
+  class="drawer"
+  id="cartDrawer"
+  onclick="if(event.target===this)closeCart()"
+>
+
+  <div class="drawer-card">
+
+    <div class="drawer-head">
+
+      <h2>Your Cart</h2>
+
+      <button
+        class="close"
+        onclick="closeCart()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div id="cartItems"></div>
+
+    <div id="cartBottom"></div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<div
+  class="search-panel"
+  id="searchPanel"
+  onclick="if(event.target===this)closeSearch()"
+>
+
+  <div class="search-card">
+
+    <div class="drawer-head">
+
+      <h2>Search SEOKY</h2>
+
+      <button
+        class="close"
+        onclick="closeSearch()"
+      >
+        ×
+      </button>
+
+    </div>
+
+    <div class="search-row">
+
+      <input
+        id="searchInput"
+        placeholder="Search products..."
+        oninput="searchProducts()"
+      >
+
+    </div>
+
+    <div
+      id="searchResults"
+      style="padding-top:20px"
+    ></div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     PRODUCT MODAL
+===================================================== -->
+
+<div
+  class="seoky-modal-backdrop"
+  id="seokyProductModal"
+  onclick="if(event.target===this)closeSeokyProductModal()"
+>
+
+  <div class="seoky-product-modal">
+
+    <button
+      class="seoky-modal-close"
+      onclick="closeSeokyProductModal()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div class="seoky-modal-image">
+
+      <img
+        id="seokyModalImage"
+        src=""
+        alt=""
+       loading="lazy" decoding="async">
+
+      <div
+        class="gallery-thumbs"
+        id="seokyGalleryThumbs"
+      ></div>
+
+    </div>
+
+    <div class="seoky-modal-info">
+
+      <p class="seoky-modal-label">
+        SEOKY ESSENTIAL
+      </p>
+
+      <h2 id="seokyModalName"></h2>
+
+      <div
+        class="seoky-modal-price"
+        id="seokyModalPrice"
+      ></div>
+
+      <div class="product-actions">
+
+        <button
+          class="wishlist-btn"
+          id="seokyWishlist"
+          aria-label="Save product"
+        >
+          SAVE
+        </button>
+
+      </div>
+
+      <b>SELECT SIZE</b>
+
+      <div
+        class="size-row"
+        id="seokySizes"
+      >
+
+        <button class="size-btn" data-size="S">S</button>
+        <button class="size-btn active" data-size="M">M</button>
+        <button class="size-btn" data-size="L">L</button>
+        <button class="size-btn" data-size="XL">XL</button>
+
+      </div>
+
+      <button
+        class="size-guide"
+        onclick="openSizeGuide()"
+      >
+        View Size Guide
+      </button>
+
+      <div class="seoky-details-list">
+
+        <div>
+          <span>Material</span>
+          <strong>Cotton</strong>
+        </div>
+
+        <div>
+          <span>Fit</span>
+          <strong>Regular / Oversized</strong>
+        </div>
+
+        <div>
+          <span>Sizes</span>
+          <strong>S / M / L / XL</strong>
+        </div>
+
+        <div>
+          <span>Color</span>
+          <strong id="seokyModalColor"></strong>
+        </div>
+
+        <div>
+          <span>Price</span>
+          <strong id="seokyModalDetailPrice"></strong>
+        </div>
+
+        <div>
+          <span>Availability</span>
+          <strong>In stock</strong>
+        </div>
+
+      </div>
+
+      <button
+        class="add seoky-modal-cart"
+        id="seokyModalCart"
+      >
+        ADD TO CART
+      </button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     SIZE GUIDE
+===================================================== -->
+
+<div
+  class="modal-backdrop"
+  id="sizeGuideModal"
+  onclick="if(event.target===this)closeSizeGuide()"
+>
+
+  <div class="modal size-guide-modal">
+
+    <button
+      class="modal-close"
+      onclick="closeSizeGuide()"
+    >
+      ×
+    </button>
+
+    <h2 class="checkout-title">
+      SIZE GUIDE
+    </h2>
+
+    <table class="size-table">
+
+      <tr>
+        <th>Size</th>
+        <th>Chest</th>
+        <th>Length</th>
+      </tr>
+
+      <tr>
+        <td>S</td>
+        <td>36–38</td>
+        <td>27</td>
+      </tr>
+
+      <tr>
+        <td>M</td>
+        <td>38–40</td>
+        <td>28</td>
+      </tr>
+
+      <tr>
+        <td>L</td>
+        <td>40–42</td>
+        <td>29</td>
+      </tr>
+
+      <tr>
+        <td>XL</td>
+        <td>42–44</td>
+        <td>30</td>
+      </tr>
+
+    </table>
+
+    <div class="seoky-size-helper">
+      <h3>FIND YOUR SIZE</h3>
+      <p>Measure around the fullest part of your chest, in inches:</p>
+      <div class="seoky-size-helper-row">
+        <input id="seokyChestInput" type="number" min="28" max="62" step="0.5" inputmode="decimal" placeholder="e.g. 39" aria-label="Chest measurement in inches">
+        <button type="button" onclick="seokyFindMySize()">FIND MY SIZE</button>
+      </div>
+      <p class="seoky-size-helper-result" id="seokySizeResult" aria-live="polite"></p>
+    </div>
+
+    <p
+      style="
+        color:#777;
+        margin-top:12px;
+        font-size:12px
+      "
+    >
+      Measurements are approximate.
+      Check your preferred fit before ordering.
+    </p>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     CHECKOUT
+===================================================== -->
+
+<div
+  class="modal-backdrop"
+  id="checkoutModal"
+  onclick="if(event.target===this)closeCheckout()"
+>
+
+  <div class="modal">
+
+    <button
+      class="modal-close"
+      onclick="closeCheckout()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <h2 class="checkout-title">
+      CHECKOUT
+    </h2>
+
+    <p style="color:#777;margin-top:8px">
+      Enter your details, then send your order through WhatsApp.
+    </p>
+
+    <div class="checkout-grid">
+
+      <form
+        id="checkoutForm"
+        onsubmit="submitCheckout(event)"
+      >
+
+        <label>Name</label>
+
+        <input
+          id="checkoutName"
+          required
+          placeholder="Your name"
+        >
+
+        <label>Phone</label>
+
+        <input
+          id="checkoutPhone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          pattern="[+0-9() -]{9,16}"
+          title="Enter a valid phone number, including country code if needed."
+          required
+          placeholder="07X XXX XXXX"
+        >
+
+        <label>Address</label>
+
+        <textarea
+          id="checkoutAddress"
+          rows="4"
+          required
+          placeholder="Delivery address"
+        ></textarea>
+
+        <button
+          class="add"
+          type="submit"
+        >
+          PLACE ORDER VIA WHATSAPP
+        </button>
+
+      </form>
+
+      <div class="checkout-summary">
+
+        <h3>YOUR ORDER</h3>
+
+        <div
+          id="checkoutItems"
+          style="margin-top:15px"
+        ></div>
+
+        <hr
+          style="
+            margin:15px 0;
+            border:0;
+            border-top:1px solid #333
+          "
+        >
+
+        <div id="checkoutTotals"></div>
+
+        <strong id="checkoutTotal"></strong>
+        <p id="checkoutDeliveryNote" class="seoky-checkout-note"></p>
+        <p class="seoky-checkout-note">Sending this message does not confirm your order. Demo stock is not live inventory; SEOKY must confirm stock, delivery fee and final details on WhatsApp.</p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     CINEMATIC AUTH SCENE
+===================================================== -->
+
+<div
+  class="auth-scene"
+  id="authScene"
+>
+
+  <div class="auth-room"></div>
+
+  <div class="auth-ambient"></div>
+
+  <div class="auth-darkness"></div>
+
+  <div class="auth-lamp">
+
+    <div class="lamp-wire"></div>
+    <div class="lamp-holder"></div>
+    <div class="lamp-shade"></div>
+    <div class="lamp-halo"></div>
+    <div class="lamp-bulb"></div>
+
+  </div>
+
+  <div class="lamp-light"></div>
+
+  <div class="auth-switch-wall">
+
+    <div class="wall-label">
+      POWER
+    </div>
+
+    <button
+      class="wall-switch"
+      id="wallSwitch"
+      onclick="toggleAuthLight()"
+      aria-label="Turn light on"
+    >
+
+      <span class="switch-lever"></span>
+
+    </button>
+
+    <div
+      class="switch-status"
+      id="switchStatus"
+    >
+      OFF
+    </div>
+
+  </div>
+
+  <button
+    class="auth-scene-close"
+    onclick="closeAuthScene()"
+    aria-label="Close"
+  >
+    ×
+  </button>
+
+  <div class="auth-scene-hint">
+    TURN ON THE LIGHT
+  </div>
+
+  <div class="auth-panel">
+
+    <button
+      class="auth-panel-close"
+      onclick="closeAuthScene()"
+      aria-label="Close"
+    >
+      ×
+    </button>
+
+    <div
+      class="auth-title"
+      id="authTitle"
+    >
+      WELCOME BACK.
+    </div>
+
+    <p
+      class="auth-subtitle"
+      id="authSubtitle"
+    >
+      Sign in to your SEOKY account.
+    </p>
+
+    <div class="auth-tabs">
+
+      <span
+        class="auth-tab-slider"
+        id="authTabSlider"
+      ></span>
+
+      <button
+        class="auth-tab active"
+        id="loginTab"
+        onclick="setAuthMode('login')"
+      >
+        LOGIN
+      </button>
+
+      <button
+        class="auth-tab"
+        id="signupTab"
+        onclick="setAuthMode('signup')"
+      >
+        SIGN UP
+      </button>
+
+    </div>
+
+    <form
+      id="loginForm"
+      class="auth-form active"
+      onsubmit="submitLogin(event)"
+    >
+
+      <div class="auth-field">
+
+        <label>EMAIL</label>
+
+        <input
+          id="authLoginEmail"
+          type="email"
+          required
+          placeholder="you@example.com"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>PASSWORD</label>
+
+        <input
+          id="authLoginPassword"
+          type="password"
+          required
+          placeholder="Your password"
+        >
+
+      </div>
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        ENTER SEOKY →
+      </button>
+
+      <p class="auth-note">
+        Frontend demo account system.
+      </p>
+
+    </form>
+
+    <form
+      id="signupForm"
+      class="auth-form"
+      onsubmit="submitSignup(event)"
+    >
+
+      <div class="auth-field">
+
+        <label>NAME</label>
+
+        <input
+          id="authSignupName"
+          type="text"
+          required
+          placeholder="Your name"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>EMAIL</label>
+
+        <input
+          id="authSignupEmail"
+          type="email"
+          required
+          placeholder="you@example.com"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>PASSWORD</label>
+
+        <input
+          id="authSignupPassword"
+          type="password"
+          minlength="6"
+          required
+          placeholder="At least 6 characters"
+        >
+
+      </div>
+
+      <div class="auth-field">
+
+        <label>CONFIRM PASSWORD</label>
+
+        <input
+          id="authSignupConfirm"
+          type="password"
+          minlength="6"
+          required
+          placeholder="Repeat your password"
+        >
+
+      </div>
+
+      <button
+        class="auth-submit"
+        type="submit"
+      >
+        CREATE ACCOUNT →
+      </button>
+
+      <p class="auth-note">
+        Your demo account is stored only in this browser.
+      </p>
+
+    </form>
+
+  </div>
+
+</div>
+
+<!-- =====================================================
+     TOAST
+===================================================== -->
+
+<div
+  class="toast"
+  id="toast"
+>
+  Done
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="seoky-admin-overlay" id="seokyAdminOverlay" role="dialog" aria-modal="true" aria-labelledby="seokyAdminTitle" onclick="if(event.target===this)closeSeokyAdmin()">
+  <section class="seoky-admin-panel">
+    <div class="seoky-admin-head"><div><h2 id="seokyAdminTitle">SEOKY ADMIN</h2><p>Manage demo prices and stock for all 9 tee colors.</p></div><button class="seoky-admin-close" type="button" aria-label="Close admin panel" onclick="closeSeokyAdmin()">×</button></div>
+    <div class="seoky-admin-warning"><strong>Demo only:</strong> settings are stored in this browser only. This PIN is not secure authentication and the panel is not connected to a shared inventory database. Do not use it for a real live store.</div>
+    <div class="seoky-admin-table-wrap"><table class="seoky-admin-table"><thead><tr><th>PRODUCT</th><th>PRICE (LKR)</th><th>DEMO STOCK</th></tr></thead><tbody id="seokyAdminRows"></tbody></table></div>
+    <div class="seoky-admin-actions"><button class="primary" type="button" onclick="saveSeokyAdminSettings()">SAVE CHANGES</button><button type="button" onclick="resetSeokyAdminSettings()">RESET TO DEFAULTS</button><button type="button" onclick="closeSeokyAdmin()">CLOSE</button></div>
+    <div class="seoky-admin-status" id="seokyAdminStatus" role="status" aria-live="polite"></div>
+  </section>
+</div>
+
+
+<script src="script.js" defer></script>
+<script src="pwa.js" defer></script>
+</body>
+</html>
